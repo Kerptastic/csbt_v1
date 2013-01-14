@@ -48,3 +48,7 @@ gem "twitter-bootstrap-rails", ">= 2.1.8", :group => :assets
 gem "libv8", ">= 3.11.8"
 gem "therubyracer", ">= 0.11.0", :group => :assets, :platform => :ruby, :require => "v8"
 gem "devise", ">= 2.1.2"
+gem "quiet_assets", ">= 1.0.1", :group => :development
+gem "figaro", ">= 0.5.0"
+gem "better_errors", ">= 0.3.2", :group => :development
+gem "binding_of_caller", ">= 0.6.8", :group => :development
