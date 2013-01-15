@@ -1,0 +1,63 @@
+Pre) Ensure you have git installed on your box
+
+
+
+1) Get the repository from github
+
+-- git clone https://github.com/Kerptastic/csbt.git
+
+
+
+
+
+2) Create a branch to work out of
+
+-- git checkout -b <branch name>
+
+          or do it in 2 lines
+
+-- git branch <branch name>
+-- git checkout <branch name>
+
+
+
+
+
+3) Make your changes in your branch. Once done, add the files to the staging area for commit.
+Do this at the project directory to recursively add all files.
+
+-- git add .
+
+          or add individually
+
+-- git add <filename1>
+-- git add <filename2>
+
+
+
+
+
+4) Now commit to your LOCAL branch (nothing done on github)
+
+-- git commit -m '<some message about your changes>'
+
+
+
+
+
+5) Now push it to github. THIS WILL NOT MERGE IT INTO MASTEER!!! You will see the changes in
+your branch on github, but not in your local master or the master...
+
+-- git push origin <branch name>
+
+
+
+
+
+5) Everything looks good? OK - time to push it to master. First, switch to your local master
+branch. Then merge the info from the working branch to the master. Finally, push it to the
+origin master branch.
+
+-- git checkout master
+-- git merge <branch name>
+-- git push origin master
