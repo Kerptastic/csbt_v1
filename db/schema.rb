@@ -11,25 +11,62 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114054053) do
+ActiveRecord::Schema.define(:version => 20121224054448) do
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  create_table "bowlers", :force => true do |t|
+    t.string   "first_name",             :limit => 25,                 :null => false
+    t.string   "last_name",              :limit => 25,                 :null => false
+    t.string   "username",               :limit => 25,                 :null => false
+    t.string   "email",                  :limit => 50,                 :null => false
+    t.integer  "contact_info_id"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "name"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "bowlers", ["email"], :name => "index_bowlers_on_email", :unique => true
+  add_index "bowlers", ["reset_password_token"], :name => "index_bowlers_on_reset_password_token", :unique => true
+
+  create_table "contact_infos", :force => true do |t|
+    t.string   "street",     :limit => 100, :null => false
+    t.string   "city",       :limit => 25,  :null => false
+    t.string   "state",      :limit => 2,   :null => false
+    t.integer  "zip",        :limit => 8,   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "entries", :force => true do |t|
+    t.integer  "tournament_id", :null => false
+    t.integer  "bowlers_id",    :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.integer  "tournament_id",              :null => false
+    t.integer  "bowlers_id",                 :null => false
+    t.integer  "number",                     :null => false
+    t.integer  "score",         :limit => 3, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name",           :limit => 55, :null => false
+    t.date     "date",                         :null => false
+    t.string   "bowling_center", :limit => 75, :null => false
+    t.string   "format",         :limit => 25, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
 end

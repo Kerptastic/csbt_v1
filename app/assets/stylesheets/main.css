@@ -1,0 +1,151 @@
+/** sticky footer - ensure the html is taking up the whole browser space **/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/** sticky footer - margin the height of the footer you want stuck to the bottom **/
+body {
+    margin: 0 0 24px;
+    background-color: #000000;
+}
+
+/** sticky footer - the height should match the margin-bottom for the body tag **/
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 24px;
+    width: 100%;
+    text-align: center;
+    color: #fffFff;
+}
+
+
+/**************************************************
+ *
+ * Main layout classes
+ *
+/**************************************************/
+.banner {
+    background: #000000 url("../assets/banner_120.jpg") no-repeat center;
+    height: 120px;
+}
+
+.sponsors-bar {
+    height: 95px;
+    min-width: 875px;
+}
+
+.sponsors-bar > div > a {
+    width: 195px;
+    height: 75px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+}
+
+.logo {
+    height: 75px;
+    min-width: 195px;
+    margin: 10px 0;
+
+    background: #ffffff no-repeat center;
+    background-size: 100%;
+}
+
+.sidebar-nav {
+    min-width: 195px;
+}
+
+.content {
+}
+
+
+
+/**************************************************
+ *
+ * Images for block elements
+ *
+/**************************************************/
+.hammer-logo {
+    background-image: url("../assets/hammer_logo.png");
+}
+
+.golden-logo {
+    background-image: url("../assets/goldenbowl_logo.png");
+}
+
+.ty-logo {
+    background-image: url("../assets/ty_logo.png");
+}
+
+/**************************************************
+ *
+ * Media queries.
+ *
+/**************************************************/
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    #sponsors-bar {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #sponsors-bar {
+        display: block;
+    }
+}
+
+/**************************************************
+ *
+ * Overriding Look and Feel of Twitter Bootstrap
+ *
+/**************************************************/
+.nav > li a {
+    color: #ffffff;
+}
+
+.nav > li a:hover {
+    color: #000000;
+}
+
+
+/**************************************************
+ *
+ * Support classes
+ *
+/**************************************************/
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**************************************************
+ *
+ * Debugging classes
+ *
+/**************************************************/
+.border {
+    border: 1px solid Red;
+}
+
+.inline {
+    display: inline-block;
+}

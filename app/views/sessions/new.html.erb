@@ -1,0 +1,29 @@
+<% content_for :login do -%>
+    <%= stylesheet_link_tag 'login' %>
+<% end -%>
+
+
+<%= form_for resource, :as => resource_name, :url => session_path(resource_name),
+             :html => { :id => "login-form", :class => "form-login border" } do |f| %>
+    <h2 class="form-login-heading">Sessions#New to My CSBT</h2>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.text_field :username,
+                           { :placeholder => "Username", :class => "input-block-level" } %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.password_field :password,
+                               { :placeholder => "Password", :class => "input-block-level" } %>
+      </div>
+    </div>
+
+    <div class="controls">
+      <%= f.submit "Submit", :id => "submit-button", :class => "btn btn-large btn-primary" %>
+      <a href="/register" class="btn btn-large btn-inverse float-right">Register</a>
+    </div>
+<% end %>
+
+

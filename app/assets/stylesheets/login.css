@@ -1,0 +1,32 @@
+.form-login {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 19px 29px 29px;
+}
+
+.form-login .form-login-heading,
+.form-login .checkbox {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.form-login input[type="text"],
+.form-login input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+
+.checkbox-label {
+    display: inline-block;
+    color: #ffffff;
+    height: 22px;
+    margin: 0 0 10px 0;
+}
+
+input[type=checkbox] {
+    display: inline-block;
+    margin-top: -2px;
+}

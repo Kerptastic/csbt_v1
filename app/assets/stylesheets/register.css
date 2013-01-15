@@ -1,0 +1,43 @@
+.form-register {
+    min-width: 420px;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 19px 29px 29px;
+}
+
+.form-register .form-register-heading {
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.form-register input[type="text"],
+.form-register input[type="password"] {
+    font-size: 14px;
+    height: auto;
+}
+
+.form-horizontal .control-group {
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.current-step {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+legend h2 {
+    color: #ffffff
+}
+
+.reg-prev-button {
+    margin-left: 10px;
+}
+
+.reg-next-button {
+    margin-right: 30px;
+}
+
+.reg-submit-button {
+    margin-right: 30px;
+}
