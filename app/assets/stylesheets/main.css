@@ -35,6 +35,7 @@ footer {
 .sponsors-bar {
     height: 95px;
     min-width: 875px;
+    margin-bottom: 20px;
 }
 
 .sponsors-bar > div > a {
@@ -42,8 +43,8 @@ footer {
     height: 75px;
     margin: 0 auto;
     background-color: #ffffff;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: 100%;
     display: block;
 }
@@ -52,6 +53,8 @@ footer {
     height: 75px;
     min-width: 195px;
     margin: 10px 0;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
 
     background: #ffffff no-repeat center;
     background-size: 100%;
@@ -59,9 +62,24 @@ footer {
 
 .sidebar-nav {
     min-width: 195px;
+    background-color: #212120;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    padding: 8px;
 }
 
 .content {
+    min-width: 535px;
+    background-color: #212120;
+    border-radius: 15px;
+    -moz-border-radius: 8px;
+    padding: 18px 18px 0 18px;
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+
+.content h1 {
+    margin-top: 0px;
 }
 
 
@@ -81,6 +99,10 @@ footer {
 
 .ty-logo {
     background-image: url("../assets/ty_logo.png");
+}
+
+.dexter-logo {
+    background-image: url("../assets/dexter_logo2.png");
 }
 
 /**************************************************

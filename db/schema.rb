@@ -14,18 +14,28 @@
 ActiveRecord::Schema.define(:version => 20121224054448) do
 
   create_table "bowlers", :force => true do |t|
-    t.string   "first_name",             :limit => 25,                 :null => false
-    t.string   "last_name",              :limit => 25,                 :null => false
-    t.string   "username",               :limit => 25,                 :null => false
-    t.string   "email",                  :limit => 50,                 :null => false
+    t.string   "first_name",             :limit => 25,                                                 :null => false
+    t.string   "last_name",              :limit => 25,                                                 :null => false
+    t.string   "username",               :limit => 25,                                                 :null => false
+    t.string   "email",                  :limit => 50,                                                 :null => false
+    t.integer  "age",                    :limit => 2
+    t.integer  "height_ft",              :limit => 1
+    t.integer  "height_in",              :limit => 2
+    t.date     "joined_date"
+    t.string   "hometown"
+    t.decimal  "current_avg",                            :precision => 5, :scale => 2
+    t.decimal  "career_avg",                             :precision => 5, :scale => 2
+    t.integer  "num_titles"
+    t.string   "bio",                    :limit => 1000
+    t.string   "picture_url"
     t.integer  "contact_info_id"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
-    t.string   "encrypted_password",                   :default => "", :null => false
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
+    t.string   "encrypted_password",                                                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        :default => 0
+    t.integer  "sign_in_count",                                                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

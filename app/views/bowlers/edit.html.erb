@@ -1,0 +1,33 @@
+<% content_for :profile do -%>
+    <%= stylesheet_link_tag 'profile' %>
+<% end -%>
+
+
+<%= form_for @bowler, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}" do |f| -%>
+   <h1>Edit Your Profile</h1>
+
+    <div class="control-group">
+      <%= f.label :age, "Age:", :class => "control-label", :for => "age" %>
+      <div class="controls">
+        <%= f.text_field :age, :id => "age" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :bio, "Bio:", :class => "control-label", :for => "bio" %>
+      <div class="controls">
+        <%= f.text_area :bio, :id => "bio" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :height_ft, "Height:", :class => "control-label", :for => "height_ft" %>
+      <div class="controls">
+        <%= f.text_field :height_ft, :id => "height_ft" %>
+      </div>
+      <div class="controls">
+        <%= f.text_field :height_in, :id => "height_in" %>
+      </div>
+    </div>
+<% end %>
+

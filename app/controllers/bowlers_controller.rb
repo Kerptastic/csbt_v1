@@ -1,17 +1,12 @@
 class BowlersController < Devise::RegistrationsController
-
   def new
     super
-    puts "Create a new Bowler HERE"
-    #@bowler = Bowler.new
-    #@contact = ContactInfo.new
   end
 
 
   def create
-    puts "In the post registering a bowler"
     @bowler = Bowler.new(params[:bowler])
-
+    @bowler.picture_url = "../assets/#{@bowler.first_name.downcase}_#{@bowler.last_name.downcase}.jpg"
     @bowler.contact_info = ContactInfo.new(params[:contact_info])
 
     if @bowler.save
@@ -32,6 +27,14 @@ class BowlersController < Devise::RegistrationsController
 
   def destroy
     super
+  end
+
+  def show
+    @bowler = Bowler.where(:last_name => params[:lastname], :first_name => params[:firstname]).first
+  end
+
+  def edit
+
   end
 
 end

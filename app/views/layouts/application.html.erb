@@ -6,24 +6,25 @@
         <%= javascript_include_tag "application" %>
         <%= yield(:register) if content_for? :register %>
         <%= yield(:login) if content_for? :login %>
+        <%= yield(:profile) if content_for? :profile %>
         <%= csrf_meta_tags %>
     </head>
 
     <body>
         <header>
-            <div class="banner border">
+            <div class="banner">
               <!--<p class="notice"><%#= notice %></p>-->
               <!--<p class="alert"><%#= alert %></p> -->
             </div>
         </header>
 
         <div class="container-fluid">
-            <div id="sponsors-bar" class="row-fluid sponsors-bar border">
+            <div id="sponsors-bar" class="row-fluid sponsors-bar">
                 <div class="span3 logo">
                     <a class="hammer-logo" href="http://www.hammerbowling.com/" rel="external"></a>
                 </div>
                 <div class="span3 logo">
-                    <a class="bedrock-logo" href="http://www.bedrockbowling.com/" rel="external"></a>
+                    <a class="dexter-logo" href="http://www.dexterbowling.com/" rel="external"></a>
                 </div>
                 <div class="span3 logo">
                     <a class="ty-logo" href="http://www.totallyyoursbowlingservices.com/" rel="external"></a>
@@ -33,28 +34,28 @@
                 </div>
             </div>
 
-            <div class="row-fluid border">
-                <nav class="span3 border">
+            <div class="row-fluid">
+                <nav class="span3">
                     <div class="sidebar-nav">
                         <ul class="nav nav-list">
                             <li class="nav-header"><a href="/">CSBT Home</a></li>
                             <li><a href="/schedule">Schedule</a></li>
-                            <li><a href="">Results</a></li>
-                            <li><a href="">Bowlers</a></li>
-                            <li><a href="">POY Standings</a></li>
-                            <li><a href="">Records & Achievements</a></li>
-                            <li class="nav-header"><a href="/login">MY CSBT</a></li>
+                            <li><a href="/results">Results</a></li>
+                            <li><a href="/bowlers">Bowlers</a></li>
+                            <li><a href="/poy">POY Standings</a></li>
+                            <li><a href="/records">Records & Achievements</a></li>
+                            <li class="nav-header"><a href=<%= if @bowler.nil? || @bowler.id.nil?; "/login"; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}" end %>>MY CSBT</a></li>
 
                             <% if bowler_signed_in? -%>
-                                <li><a href="">Profile</a></li>
-                                <li><a href="">Statistics</a></li>
-                                <%= link_to "Sign out", destroy_bowler_session_path, :method => :delete %>
+                                <li><a href=<%= if @bowler.nil? || @bowler.id.nil?; ""; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
+                                <li><a href="/statistics">Statistics</a></li>
+                                <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>
                             <% end -%>
                         </ul>
                     </div>
                 </nav>
 
-                <div class="span9 border">
+                <div class="span9">
                     <div class="content">
 
                     <%= yield %>
@@ -64,7 +65,7 @@
             </div>
         </div>
 
-        <footer class="border">
+        <footer class="">
           &copy 2012 Colorado Scratch Bowler's Tour
         </footer>
     </body>

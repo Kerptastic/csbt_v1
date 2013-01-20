@@ -7,7 +7,9 @@ class Bowler < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :username, :email, :password,
-                  :password_confirmation, :remember_me, :contact_info
+                  :password_confirmation, :remember_me, :contact_info,
+                  :age, :height_ft, :height_in, :joined_date, :current_avg, :career_avg,
+                  :hometown, :num_titles, :bio, :picture_url
 
   #validations
   validates :first_name, :presence => true,
@@ -23,21 +25,11 @@ class Bowler < ActiveRecord::Base
   belongs_to :contact_info, :dependent => :destroy
   #belongs_to :entry
 
-  #protected
-  #def self.find_for_database_authentication(warden_conditions)
-  #  puts "FIND FOR DB - Model"
-  #  #login = conditions.delete(:username)
-  #  #where(conditions).where(["username = :username OR email = :username",
-  #  #                         {:username => login}]).first
-  #
-  #  conditions = warden_conditions.dup
-  #
-  #  if(login = conditions.delete(:username).downcase)
-  #    puts "In login part: #{login}"
-  #    where(conditions).where('$or' => [ { :username => /^#{Regexp.escape(login)}$/i } ]).first
-  #  else
-  #    puts "In else part: #{where(conditions).first}"
-  #    where(conditions).first
-  #  end
-  #end
+  def full_name
+      "#{first_name} #{last_name}"
+  end
+
+  def height
+      "#{height_ft}'#{height_in}\""
+  end
 end

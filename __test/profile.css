@@ -1,0 +1,53 @@
+.photo {
+    width: 170px;
+    height: 200px;
+}
+
+.photo-holder {
+    float: left;
+    width: 170px;
+    height: 200px;
+}
+
+
+
+
+.personal-info {
+    margin-left: 180px;
+    width: 600px;
+    height: 300px;
+}
+
+
+.basic-info {
+    margin-left: 180px;
+    width: 600px;
+    height: 100px;
+}
+
+.basic-info h1 {
+    margin: 0 0 0 6px;
+}
+
+.basic-info-table {
+    margin: -6px 0 0 40px;
+}
+
+.basic-info-table td {
+    margin: 0;
+    font-size: .80em;
+}
+
+
+
+.info-heading {
+    font-weight: bold;
+}
+
+.info-data {
+    padding: 0 26px 0 5px;
+}
+
+.border {
+    border: 1px solid red;
+}

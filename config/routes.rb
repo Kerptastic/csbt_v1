@@ -1,7 +1,4 @@
 CSBTV1::Application.routes.draw do
-  #devise_for :users
-  #devise_for :bowlers
-
   devise_for :bowlers,
              :controllers => { :registrations => "bowlers", :sessions => "sessions" },
              :skip => [:registrations, :sessions]
@@ -14,7 +11,8 @@ CSBTV1::Application.routes.draw do
     post "/register" => "bowlers#create", :as => :bowler_registration
     delete "/cancel" => "bowlers#destroy"
 
-    get "/profile/:id" => "bowlers#profile"
+    get "/profile/:lastname.:firstname" => "bowlers#show", :as => :bowler_show
+    get "/profile/:lastname.:firstname/edit" => "bowlers#edit", :as => :bowler_edit
 
   end
 

@@ -1,0 +1,77 @@
+.photo {
+    width: 170px;
+    height: 200px;
+}
+
+.photo-holder {
+    float: left;
+    width: 170px;
+    height: 200px;
+}
+
+
+
+
+.personal-info {
+    margin-left: 180px;
+    margin-top: 14px;
+    min-width: 535px;
+    height: 100%;
+    color: #fff;
+}
+
+
+.basic-info {
+    margin-left: 180px;
+    min-width: 535px;
+    height: 100px;
+}
+
+.basic-info h1 {
+    margin: 0 0 0 6px;
+    color: #fff;
+}
+
+.basic-info hr {
+    margin: 10px 0 10px 0;
+    width: 100%;
+}
+
+.basic-info-table {
+    margin: -6px 0 0 40px;
+}
+
+.basic-info-table td {
+    margin: 0;
+    font-size: .80em;
+    color: #fff;
+}
+
+
+
+.info-heading {
+    font-weight: bold;
+}
+
+.info-data {
+    padding: 0 26px 0 5px;
+}
+
+.border {
+    border: 1px solid red;
+}
+
+.nav-tabs {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.tab-pane {
+    margin-left: 10px;
+}
+
+.nav-tabs > li > a {
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}

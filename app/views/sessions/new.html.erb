@@ -4,8 +4,8 @@
 
 
 <%= form_for resource, :as => resource_name, :url => session_path(resource_name),
-             :html => { :id => "login-form", :class => "form-login border" } do |f| %>
-    <h2 class="form-login-heading">Sessions#New to My CSBT</h2>
+             :html => { :id => "login-form", :class => "form-login" } do |f| %>
+    <h2 class="form-login-heading">Login to My CSBT</h2>
     <div class="control-group">
       <div class="controls">
         <%= f.text_field :username,
