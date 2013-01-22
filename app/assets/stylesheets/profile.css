@@ -9,9 +9,6 @@
     height: 200px;
 }
 
-
-
-
 .personal-info {
     margin-left: 180px;
     margin-top: 14px;
@@ -19,7 +16,6 @@
     height: 100%;
     color: #fff;
 }
-
 
 .basic-info {
     margin-left: 180px;
@@ -74,4 +70,25 @@
     border-top: 1px solid #fff;
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
+}
+
+.left-edit-column {
+    float: left;
+    width: 200px;
+}
+
+.right-edit-column {
+    width: 200px;
+    margin-left: 200px;
+}
+
+
+.height-select-ft {
+    width: 50px;
+    float: left;
+}
+
+.height-select-in {
+    width: 50px;
+    margin-left: 70px;
 }

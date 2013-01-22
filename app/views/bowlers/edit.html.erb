@@ -3,31 +3,35 @@
 <% end -%>
 
 
-<%= form_for @bowler, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}" do |f| -%>
-   <h1>Edit Your Profile</h1>
+<%= form_for @bowler, :html => { :class => "form-horizontal" }, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}" do |f| -%>
+    <h1>Edit Your Profile</h1>
 
-    <div class="control-group">
-      <%= f.label :age, "Age:", :class => "control-label", :for => "age" %>
-      <div class="controls">
-        <%= f.text_field :age, :id => "age" %>
+    <div class="left-edit-column">
+      <div class="control-group">
+        <%= f.label :age, "Age:", :class => "control-label", :for => "age" %>
+        <div class="controls">
+          <%= f.text_field :age, :id => "age" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :height_ft, "Height:", :class => "control-label", :for => "height_ft" %>
+        <div class="controls">
+          <%= select :height_ft, :height_ft, options_for_select(height_ft, "5"), { }, { :class => "height-select-ft" } %>
+          <%= select :height_in, :height_in, options_for_select(height_in, "9"), { }, { :class => "height-select-in" } %>
+        </div>
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :bio, "Bio:", :class => "control-label", :for => "bio" %>
-      <div class="controls">
-        <%= f.text_area :bio, :id => "bio" %>
+    <div class="right-edit-column">
+      <div class="control-group">
+        <%= f.label :bio, "Bio:", :class => "control-label", :for => "bio" %>
+        <div class="controls">
+          <%= f.text_area :bio, :id => "bio" %>
+        </div>
       </div>
-    </div>
 
-    <div class="control-group">
-      <%= f.label :height_ft, "Height:", :class => "control-label", :for => "height_ft" %>
-      <div class="controls">
-        <%= f.text_field :height_ft, :id => "height_ft" %>
-      </div>
-      <div class="controls">
-        <%= f.text_field :height_in, :id => "height_in" %>
-      </div>
+
     </div>
 <% end %>
 
