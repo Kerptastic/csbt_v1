@@ -3,35 +3,55 @@
 <% end -%>
 
 
-<%= form_for @bowler, :html => { :class => "form-horizontal" }, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}" do |f| -%>
+<%#= form_for @bowler, :html => { :id => "edit-bowler-form", :class => "" }, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}" do |f| -%>
+<div>
+  <div class="edit-info">
     <h1>Edit Your Profile</h1>
+    <hr/>
 
     <div class="left-edit-column">
-      <div class="control-group">
-        <%= f.label :age, "Age:", :class => "control-label", :for => "age" %>
-        <div class="controls">
-          <%= f.text_field :age, :id => "age" %>
-        </div>
+      <div class="edit-section">
+        <%= f.label :birthday, "Birthday:", :for => "birthday", :class => "input-label" %>
+        <%= f.text_field :birthday, :id => "birthday", :class => "edit-profile-field" %>
       </div>
 
-      <div class="control-group">
-        <%= f.label :height_ft, "Height:", :class => "control-label", :for => "height_ft" %>
-        <div class="controls">
-          <%= select :height_ft, :height_ft, options_for_select(height_ft, "5"), { }, { :class => "height-select-ft" } %>
-          <%= select :height_in, :height_in, options_for_select(height_in, "9"), { }, { :class => "height-select-in" } %>
-        </div>
+      <div class="edit-section">
+        <%= f.label :height_ft, "Height:", :for => "height_ft", :class => "input-label" %>
+        <%= select :height_ft, :height_ft, options_for_select(height_ft, "5"), { }, { :class => "edit-height-select-ft" } %>
+        <%= f.label :height_ft, "ft.", :for => "height_ft", :class => "height-label" %>
+        <%= select :height_in, :height_in, options_for_select(height_in, "9"), { }, { :class => "edit-height-select-in" } %>
+        <%= f.label :height_in, "in.", :for => "height_in", :class => "height-label" %>
+      </div>
+
+      <div class="edit-section">
+        <%= f.label :hometown, "Hometown:", :for => "hometown", :class => "input-label" %>
+        <%= f.text_field :hometown, :id => "hometown", :class => "edit-profile-field" %>
+      </div>
+
+      <div class="edit-section">
+        <%= f.label :high_game, "High Game:", :for => "high_game", :class => "input-label" %>
+        <%= f.text_field :high_game, :id => "high_game", :class => "edit-profile-field" %>
+      </div>
+      <div class="edit-section">
+        <%= f.label :high_series, "High Series:", :for => "high_series", :class => "input-label" %>
+        <%= f.text_field :high_series, :id => "high_series", :class => "edit-profile-field" %>
+      </div>
+      <div class="edit-section">
+        <%= f.label :num_threes, "Total 300s:", :for => "num_threes", :class => "input-label" %>
+        <%= f.text_field :num_threes, :id => "num_threes", :class => "edit-profile-field" %>
+      </div>
+      <div class="edit-section">
+        <%= f.label :num_eights, "Total 800s:", :for => "num_eights", :class => "input-label" %>
+        <%= f.text_field :num_eights, :id => "num_eights", :class => "edit-profile-field" %>
       </div>
     </div>
 
-    <div class="right-edit-column">
-      <div class="control-group">
-        <%= f.label :bio, "Bio:", :class => "control-label", :for => "bio" %>
-        <div class="controls">
-          <%= f.text_area :bio, :id => "bio" %>
-        </div>
-      </div>
-
-
-    </div>
-<% end %>
+    <!--<div class="right-edit-column">-->
+    <!--<div class="edit-section">-->
+    <!--<%#= f.label :bio, "Bio:", :for => "bio", :class => "input-label" %>-->
+    <!--<%#= f.text_area :bio, :id => "bio", :class => "edit-bio" %>-->
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
 
