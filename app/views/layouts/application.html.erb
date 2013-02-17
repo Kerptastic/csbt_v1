@@ -43,7 +43,7 @@
                             <li><a href="/results">Results</a></li>
                             <li><a href="/bowlers">Bowlers</a></li>
                             <li><a href="/poy">POY Standings</a></li>
-                            <li><a href="/records">Records & Achievements</a></li>
+                            <li><a href="/records">All-Time Records</a></li>
                             <li class="nav-header"><a href=<%= if @bowler.nil? || @bowler.id.nil?; "/login"; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}" end %>>MY CSBT</a></li>
 
                             <% if bowler_signed_in? -%>

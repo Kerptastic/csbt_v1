@@ -19,7 +19,7 @@
                 <td class="info-heading">Height:</td>
                 <td class="info-data"><%= @bowler.height %></td>
                 <td class="info-heading">Hometown:</td>
-                <td class="info-data"><%= @bowler.hometown %></td>
+                <td class="info-data"><%= @bowler.hometown_city %>, <%= @bowler.hometown_state %></td>
                 <td class="info-heading">2013 Avg:</td>
                 <td class="info-data"><%= number_with_precision(@bowler.current_avg, :precision => 2) %></td>
             </tr>

@@ -77,27 +77,40 @@
     color: #fff;
 }
 
+.content {
+    min-width: 930px;
+    height: 100%;
+}
 
-
-
-
-
-
+#edit-bowler-form {
+    color: #fff;
+}
 
 .left-edit-column {
+    width: 415px;
+    min-width: 415px;
     float: left;
-    width: 300px;
+}
+
+.center-edit-column {
+    width: 250px;
+    min-width: 250px;
+    margin-left: 20px;
+    float: left;
 }
 
 .right-edit-column {
-    width: 450px;
-    max-width: 450px;
-    margin-left: -45px;
-    float: left;
-    height: 320px;
+    width: 250px;
+    min-width: 250px;
+    height: 300px;
+    margin: 30px 0 0 710px;
 }
 
-.input-label {
+.edit-section {
+    margin: 10px 0 5px 0;
+}
+
+.edit-profile-label {
     width: 80px;
     height: 30px;
     margin-right: 10px;
@@ -106,32 +119,12 @@
     text-align: right;
 }
 
-.edit-height-select-ft {
-    width: 50px;
-    float: left;
-}
-
-.edit-height-select-in {
-    width: 50px;
-    float: left;
-}
-
-.height-label {
-    width: 20px;
-    margin-left: 5px;
+.edit-bio-label {
+    width: 30px;
     height: 30px;
     padding-top: 4px;
     float: left;
-}
-
-.edit-section {
-    margin-bottom: 5px;
-    margin-top: 10px;
-    height: 40px;
-}
-
-#edit-bowler-form {
-    color: #fff;
+    text-align: right;
 }
 
 .edit-profile-field {
@@ -141,21 +134,40 @@
 .edit-bio {
     width: 350px;
     height: 280px;
+    margin-left: 10px;
 }
 
-.edit-info {
-    margin-left: 20px;
-    min-width: 700px;
-    //height: 415px;
+.edit-height-select {
+    width: 50px;
+    float: left;
 }
 
-.edit-info h1 {
-    margin: 0 0 0 6px;
-    color: #fff;
+.ft-label {
+    width: 20px;
+    margin-left: 5px;
+    height: 30px;
+    padding-top: 4px;
+    float: left;
 }
 
-.border {
-    border: 1px solid red;
+.in-label {
+    width: 20px;
+    margin-left: 220px;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.edit-profile-select {
+    width: 124px;
+}
+
+select {
+    padding-left: 3px;
+}
+
+.edit-submit-button {
+    margin: 50px 0 0 116px;
 }
 
 

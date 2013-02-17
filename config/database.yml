@@ -14,9 +14,9 @@ development:
   reconnect: false
   database: CSBT_v1_development
   pool: 5
-  username: dev
+  username: root
   password: password
-  host: localhost
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,9 +27,9 @@ test: &test
   reconnect: false
   database: CSBT_v1_test
   pool: 5
-  username: dev
+  username: root
   password: password
-  host: localhost
+  host: 127.0.0.1
 
 production:
   adapter: mysql2
@@ -37,9 +37,9 @@ production:
   reconnect: false
   database: CSBT_v1_production
   pool: 5
-  username: dev
+  username: root
   password: password
-  host: localhost
+  host: 127.0.0.1
 
 cucumber:
   <<: *test

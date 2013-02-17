@@ -21,6 +21,10 @@ footer {
     color: #fffFff;
 }
 
+/** fixes **/
+textarea {
+    resize: none;
+}
 
 /**************************************************
  *
@@ -62,7 +66,6 @@ footer {
 }
 
 .sidebar-nav {
-    min-width: 195px;
     background-color: #212120;
     border-radius: 8px;
     -moz-border-radius: 8px;

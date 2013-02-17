@@ -38,7 +38,15 @@ class BowlersController < Devise::RegistrationsController
 
         if !current_bowler.nil? && !current_bowler.id.nil?
             @bowler = current_bowler
+          puts "In edit getting current bowler"
         end
+    end
+
+    def update
+      puts "In the update"
+
+      redirect_to :action => 'show'
+
     end
 
 end

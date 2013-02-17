@@ -13,9 +13,10 @@ gem "email_spec", ">= 1.4.0", :group => :test
 gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
 gem "launchy", ">= 2.1.2", :group => :test
 gem "capybara", ">= 2.0.1", :group => :test
-gem "less-rails", ">= 2.2.6", :group => :assets
-gem "twitter-bootstrap-rails", ">= 2.1.8", :group => :assets
-gem "libv8", ">= 3.11.8"
+#gem "less-rails", ">= 2.2.6", :group => :assets
+#gem "twitter-bootstrap-rails", ">= 2.1.8", :group => :assets
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+#gem "libv8", ">= 3.11.8"
 gem "therubyracer", ">= 0.11.0", :group => :assets, :platform => :ruby, :require => "v8"
 gem "devise", ">= 2.1.2"
 gem "quiet_assets", ">= 1.0.1", :group => :development
