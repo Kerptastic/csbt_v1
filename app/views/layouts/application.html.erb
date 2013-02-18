@@ -47,7 +47,7 @@
                             <li class="nav-header"><a href=<%= if @bowler.nil? || @bowler.id.nil?; "/login"; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}" end %>>MY CSBT</a></li>
 
                             <% if bowler_signed_in? -%>
-                                <li><a href=<%= if @bowler.nil? || @bowler.id.nil?; ""; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
+                                <li><a href=<%= if current_bowler.nil? || current_bowler.id.nil?; ''; else "/profile/#{current_bowler.last_name.downcase}.#{current_bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
                                 <li><a href="/statistics">Statistics</a></li>
                                 <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>
                             <% end -%>

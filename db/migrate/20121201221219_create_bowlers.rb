@@ -10,7 +10,7 @@ class CreateBowlers < ActiveRecord::Migration
       t.integer "height_in",       :limit => 2
       t.date    "joined_date"
       t.string  "hometown_city",   :default => 'Denver'
-      t.string  "hometown_state",  :default => 'Colorado'
+      t.string  "hometown_state",  :default => 'CO'
       t.decimal "current_avg",     :precision => 5, :scale => 2
       t.decimal "career_avg",      :precision => 5, :scale => 2
       t.integer "num_titles",      :limit => 4

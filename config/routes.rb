@@ -15,6 +15,7 @@ CSBTV1::Application.routes.draw do
     put '/profile/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update
     get '/profile/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit
 
+    get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
   end
 
   root :to => 'home#index'

@@ -37,16 +37,27 @@ class BowlersController < Devise::RegistrationsController
         @bowler = nil
 
         if !current_bowler.nil? && !current_bowler.id.nil?
+
+          if current_bowler[:first_name].downcase == params[:firstname].downcase && current_bowler[:last_name].downcase == params[:lastname].downcase
             @bowler = current_bowler
-          puts "In edit getting current bowler"
+          else
+            redirect_to :action => 'badboy'
+          end
+
         end
     end
 
     def update
       puts "In the update"
 
-      redirect_to :action => 'show'
+      Bowler.update_all(params[:bowler])
 
+      redirect_to :action => 'show'
+    end
+
+
+    def badboy
+      #log something here
     end
 
 end
