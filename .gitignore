@@ -27,8 +27,9 @@ db/*.sqlite3
 .rspec
 .redcar/
 .sass-cache
+Gemfile
 /config/config.yml
-#/config/database.yml
+/config/database.yml
 /coverage.data
 /coverage/
 /db/*.javadb/

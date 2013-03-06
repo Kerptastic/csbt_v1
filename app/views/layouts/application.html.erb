@@ -7,6 +7,7 @@
         <%= yield(:register) if content_for? :register %>
         <%= yield(:login) if content_for? :login %>
         <%= yield(:profile) if content_for? :profile %>
+        <%= yield(:tournament) if content_for? :tournament %>
         <%= csrf_meta_tags %>
     </head>
 
@@ -39,9 +40,8 @@
                     <div class="sidebar-nav">
                         <ul class="nav nav-list">
                             <li class="nav-header"><a href="/">CSBT Home</a></li>
-                            <li><a href="/schedule">Schedule</a></li>
-                            <li><a href="/results">Results</a></li>
-                            <li><a href="/bowlers">Bowlers</a></li>
+                            <li><a href="/tournaments">Schedule</a></li>
+                            <li><a href="/profiles">Bowlers</a></li>
                             <li><a href="/poy">POY Standings</a></li>
                             <li><a href="/records">All-Time Records</a></li>
                             <li class="nav-header"><a href=<%= if @bowler.nil? || @bowler.id.nil?; "/login"; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}" end %>>MY CSBT</a></li>

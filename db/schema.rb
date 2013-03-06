@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224054448) do
+ActiveRecord::Schema.define(:version => 20130225062423) do
 
   create_table "bowlers", :force => true do |t|
-    t.string   "first_name",             :limit => 25,                                                         :null => false
-    t.string   "last_name",              :limit => 25,                                                         :null => false
-    t.string   "username",               :limit => 25,                                                         :null => false
-    t.string   "email",                  :limit => 50,                                                         :null => false
+    t.string   "first_name",             :limit => 25,                                                       :null => false
+    t.string   "last_name",              :limit => 25,                                                       :null => false
+    t.string   "username",               :limit => 25,                                                       :null => false
+    t.string   "email",                  :limit => 50,                                                       :null => false
     t.date     "birthday"
     t.integer  "height_ft",              :limit => 1
     t.integer  "height_in",              :limit => 2
     t.date     "joined_date"
     t.string   "hometown_city",                                                        :default => "Denver"
-    t.string   "hometown_state",                                                       :default => "Colorado"
+    t.string   "hometown_state",                                                       :default => "CO"
     t.decimal  "current_avg",                            :precision => 5, :scale => 2
     t.decimal  "career_avg",                             :precision => 5, :scale => 2
     t.integer  "num_titles"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20121224054448) do
     t.integer  "high_series",            :limit => 3
     t.integer  "high_game",              :limit => 3
     t.integer  "contact_info_id"
-    t.datetime "created_at",                                                                                   :null => false
-    t.datetime "updated_at",                                                                                   :null => false
-    t.string   "encrypted_password",                                                   :default => "",         :null => false
+    t.datetime "created_at",                                                                                 :null => false
+    t.datetime "updated_at",                                                                                 :null => false
+    t.string   "encrypted_password",                                                   :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(:version => 20121224054448) do
   add_index "bowlers", ["email"], :name => "index_bowlers_on_email", :unique => true
   add_index "bowlers", ["reset_password_token"], :name => "index_bowlers_on_reset_password_token", :unique => true
 
+  create_table "bowling_centers", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "url",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "contact_infos", :force => true do |t|
     t.string   "street",     :limit => 100, :null => false
     t.string   "city",       :limit => 25,  :null => false
@@ -60,28 +67,41 @@ ActiveRecord::Schema.define(:version => 20121224054448) do
   end
 
   create_table "entries", :force => true do |t|
-    t.integer  "tournament_id", :null => false
-    t.integer  "bowlers_id",    :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "tournaments_id", :null => false
+    t.integer  "bowlers_id",     :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "games", :force => true do |t|
-    t.integer  "tournament_id",              :null => false
-    t.integer  "bowlers_id",                 :null => false
-    t.integer  "number",                     :null => false
-    t.integer  "score",         :limit => 3, :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "tournaments_id",              :null => false
+    t.integer  "bowlers_id",                  :null => false
+    t.integer  "number",                      :null => false
+    t.integer  "score",          :limit => 3, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "oil_patterns", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "url",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tournaments", :force => true do |t|
-    t.string   "name",           :limit => 55, :null => false
-    t.date     "date",                         :null => false
-    t.string   "bowling_center", :limit => 75, :null => false
-    t.string   "format",         :limit => 25, :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string   "name",              :limit => 45,                         :null => false
+    t.date     "date"
+    t.string   "format",            :limit => 45, :default => "Standard", :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "num_entries"
+    t.integer  "winner_id"
+    t.integer  "runner_up_id"
+    t.integer  "top_woman_id"
+    t.integer  "top_senior_id"
+    t.integer  "oil_pattern_id"
+    t.integer  "bowling_center_id"
   end
 
 end

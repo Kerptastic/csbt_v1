@@ -1,0 +1,107 @@
+<% content_for :profile do -%>
+    <%= stylesheet_link_tag 'schedule' %>
+<% end -%>
+
+
+<h1>Tournament Schedule / Results</h1>
+<hr/>
+
+<div class='season-choose'>
+  <label class='float-left'>Season:</label>
+  <select class='season-select'>
+    <option selected='true'>2012-2013</option>
+    <option>2011-2012</option>
+    <option>2010-2011</option>
+  </select>
+</div>
+
+<div class='accordion' id='tourney-accordion'>
+
+  <% @tournaments.each_with_index do |tourney, index| %>
+      <div class='accordion-group'>
+        <div class='accordion-heading'>
+          <a class='accordion-toggle' data-toggle='collapse' data-parent='#tourney-accordion' href='#tourney<%= index %>'>
+            <div class=''>
+              <%= "#{index+1}. #{tourney.name} - #{tourney.format} Format - " %><%= if tourney.num_entries.nil?;
+                                                                                        'TBD Entries'
+                                                                                    else
+                                                                                        "#{tourney.num_entries} Entries"
+                                                                                    end %>
+            </div>
+            <div class='heading-date'>
+              <%= tourney.date %>
+            </div>
+          </a>
+        </div>
+
+        <div id='tourney<%= index %>' class="accordion-body collapse <%= if index == 0;
+                                                                             'in'
+                                                                         end %>">
+          <div class='accordion-inner'>
+            <div class='info-section'>
+              <div class='left-info-column'>
+                <div class='float-left'>
+                  <p class='info-label left-info-label'>Champion:</p>
+                </div>
+                <div>
+                  <p class='info'><%= tourney.winner.full_name %></p>
+                </div>
+              </div>
+              <div class='center-info-column'>
+                <div class='float-left'>
+                  <p class='info-label center-info-label'>Top Senior:</p>
+                </div>
+                <div>
+                  <p class='info'><%= tourney.top_senior.full_name %></p>
+                </div>
+              </div>
+              <div class='right-info-column'>
+                <div class='float-left'>
+                  <p class='info-label right-info-label'>Bowling Center:</p>
+                </div>
+                <div>
+                  <a class='info' href="<%= tourney.bowling_center.url %>"><%= tourney.bowling_center.name %></a>
+                </div>
+              </div>
+
+              <div class='left-info-column'>
+                <div class='float-left'>
+                  <p class='info-label left-info-label'>Runner-Up:</p>
+                </div>
+                <div>
+                  <p class='info'><%= tourney.runner_up.full_name %></p>
+                </div>
+              </div>
+              <div class='center-info-column'>
+                <div class='float-left'>
+                  <p class='info-label center-info-label'>Top Woman:</p>
+                </div>
+                <div>
+                  <p class='info'><%= tourney.top_woman.full_name %></p>
+                </div>
+              </div>
+              <div class='right-info-column'>
+                <div class='float-left'>
+                  <p class='info-label right-info-label'>Oil Pattern:</p>
+                </div>
+                <div>
+                  <a class='info' href="<%= tourney.oil_pattern.url %>"><%= tourney.oil_pattern.name %></a>
+                </div>
+              </div>
+
+              <div style="width: 220px; height: 24px;">
+                <div class='float-left'>
+                  <a class='info' href="/tournament/<%= tourney.id %>">Full Results</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+
+<!--<div class='full-results float-right'>-->
+<!--<a href='#'>Full Results</a>-->
+<!--</div>-->

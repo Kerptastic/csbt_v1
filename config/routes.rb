@@ -10,12 +10,16 @@ CSBTV1::Application.routes.draw do
     get '/register' => 'bowlers#new', :as => :new_bowler_registration
     post '/register' => 'bowlers#create', :as => :bowler_registration
     delete '/cancel' => 'bowlers#destroy'
+    get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
 
+    get '/profiles' => 'bowlers#index', :as => :bowler_path
     get '/profile/:lastname.:firstname' => 'bowlers#show', :as => :bowler_show
     put '/profile/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update
     get '/profile/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit
 
-    get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
+    get '/tournaments' => 'tournaments#index', :as => :tournament_path
+    get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
+
   end
 
   root :to => 'home#index'

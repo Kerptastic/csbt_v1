@@ -14,7 +14,7 @@ development:
   reconnect: false
   database: CSBT_v1_development
   pool: 5
-  username: root
+  username: dev
   password: password
   host: 127.0.0.1
 
@@ -27,14 +27,14 @@ test: &test
   reconnect: false
   database: CSBT_v1_test
   pool: 5
-  username: root
+  username: dev
   password: password
   host: 127.0.0.1
 
 production:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  reconnect: dev
   database: CSBT_v1_production
   pool: 5
   username: root
