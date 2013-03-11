@@ -17,7 +17,7 @@
 # General form for email scenarios are:
 #   - clear the email queue (done automatically by email_spec)
 #   - execute steps that sends an email
-#   - check the user received an/no/[0-9] emails
+#   - check the users received an/no/[0-9] emails
 #   - open the email
 #   - inspect the email contents
 #   - interact with the email (e.g. click links)

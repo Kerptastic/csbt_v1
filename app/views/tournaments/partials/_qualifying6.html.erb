@@ -1,0 +1,44 @@
+<table>
+  <tr>
+    <td class="cut-hidden"></td>
+    <td class="position-header">Pos.</td>
+    <td class="bowler-header">Bowler</td>
+    <td class="games-header centered-text" colspan=6>Games</td>
+    <td class="total-pins-header">Total Pins</td>
+    <td class="plus-minus-header">+/-</td>
+    <td class="avg-header">Avg.</td>
+    <td class="points-header">Points</td>
+  </tr>
+
+  <% @tourney.entries.sort { |a, b| b.qual_block_total <=> a.qual_block_total }.each_with_index do |entry, index| %>
+      <tr class="<%= %>">
+        <td class="<%= if entry.is_qual_cut then 'cut cut-left' else 'cut-hidden' end %>"><%= if entry.is_qual_cut then 'CUT' elsif entry.is_high_senior then 'SENIOR' elsif entry.is_high_woman then 'WOMAN' else '' end %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= index + 1 %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text">
+          <a href="/profile/<%= entry.bowler.last_name.downcase %>.<%= entry.bowler.first_name.downcase %>"><%= entry.bowler.full_name %></a>
+        </td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q1score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q2score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q3score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q4score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q5score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.q6score %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.qual_block_total %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.qual_block_plus_minus %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= number_with_precision(entry.qual_block_avg, :precision => 2) %></td>
+        <td class="<%= if entry.is_qual_cut then 'cut' end %>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"></td>
+      </tr>
+  <% end %>
+</table>

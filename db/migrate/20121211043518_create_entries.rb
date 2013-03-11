@@ -1,13 +1,22 @@
 class CreateEntries < ActiveRecord::Migration
-  def change
-    create_table :entries do |t|
-      t.references :tournaments, :null => false
-      t.references :bowlers    , :null => false
-      t.timestamps
-    end
-  end
+    def change
+        create_table :entries do |t|
+            #foreign keys
+            t.integer 'tournament_id', :limit => 5
+            t.integer 'bowler_id', :limit => 5
 
-  def down
-    drop_table :entries
-  end
+            #columns
+            t.boolean 'is_qual_cut', :default => false
+            t.boolean 'is_semi_cut', :default => false
+            t.boolean 'is_high_woman', :default => false
+            t.boolean 'is_high_senior', :default => false
+
+            #helpers
+            t.timestamps
+        end
+    end
+
+    #def down
+    #  drop_table :entries
+    #end
 end

@@ -3,9 +3,9 @@ class TournamentsController < ApplicationController
     def index
         @tournaments = Tournament.all
 
-        @tournaments.each do |t|
-            puts t.name + "\n"
-        end
+        #@tournaments.each do |t|
+        #    puts t.name + "\n"
+        #end
     end
 
     def show

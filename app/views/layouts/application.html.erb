@@ -44,10 +44,10 @@
                             <li><a href="/profiles">Bowlers</a></li>
                             <li><a href="/poy">POY Standings</a></li>
                             <li><a href="/records">All-Time Records</a></li>
-                            <li class="nav-header"><a href=<%= if @bowler.nil? || @bowler.id.nil?; "/login"; else "/profile/#{@bowler.last_name.downcase}.#{@bowler.first_name.downcase}" end %>>MY CSBT</a></li>
+                            <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?; '/login' else "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}" end %>>MY CSBT</a></li>
 
-                            <% if bowler_signed_in? -%>
-                                <li><a href=<%= if current_bowler.nil? || current_bowler.id.nil?; ''; else "/profile/#{current_bowler.last_name.downcase}.#{current_bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
+                            <% if user_signed_in? -%>
+                                <li><a href=<%= if current_user.nil? || current_user.id.nil?; '' else "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
                                 <li><a href="/statistics">Statistics</a></li>
                                 <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>
                             <% end -%>

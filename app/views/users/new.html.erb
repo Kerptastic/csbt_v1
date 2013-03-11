@@ -3,7 +3,7 @@
     <%= javascript_include_tag 'registration_form' %>
 <% end -%>
 
-<%= form_for @bowler, :url => "/register",
+<%= form_for @user, :url => "/register",
              :html => { :id => "registration-form",
                         :class => "form-register form-horizontal"} do |f| %>
 
@@ -11,39 +11,39 @@
       <legend><h2>Setup Username</h2></legend>
 
       <div class="control-group">
-        <%= f.label :first_name, "First Name:", :class => "control-label", :for => "first-name" %>
+        <%= f.label :first_name, 'First Name:', :class => 'control-label', :for => 'first-name' %>
         <div class="controls">
-          <%= f.text_field :first_name, :id => "first-name" %>
+          <%= text_field :bowler, :first_name, :id => 'first-name' %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label :last_name, "Last Name:", :class => "control-label", :for => "last-name" %>
+        <%= f.label :last_name, 'Last Name:', :class => 'control-label', :for => 'last-name' %>
         <div class="controls">
-          <%= f.text_field :last_name, :id => "last-name" %>
+          <%= text_field :bowler, :last_name, :id => 'last-name' %>
         </div>
       </div>
 
       <hr>
 
       <div class="control-group">
-        <%= f.label :username, "Username", :class => "control-label", :for => "username" %>
+        <%= f.label :username, 'Username', :class => 'control-label', :for => 'username' %>
         <div class="controls">
-          <%= f.text_field :username, :id => "username" %>
+          <%= f.text_field :username, :id => 'username' %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label "Password:", :class => "control-label", :for => "password" %>
+        <%= f.label 'Password:', :class => 'control-label', :for => 'password' %>
         <div class="controls">
-          <%= f.password_field :password, :id => "password" %>
+          <%= f.password_field :password, :id => 'password' %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label "Re-enter Password:", :class => "control-label", :for => "re-password" %>
+        <%= f.label 'Re-enter Password:', :class => 'control-label', :for => 're-password' %>
         <div class="controls">
-          <%= f.password_field :password_confirmation, :id => "re-password" %>
+          <%= f.password_field :password_confirmation, :id => 're-password' %>
         </div>
       </div>
     </fieldset>
@@ -53,43 +53,43 @@
       <legend><h2>Contact Info</h2></legend>
 
       <div class="control-group">
-        <%= f.label :street, "Street:", :class => "control-label", :for => "street" %>
+        <%= f.label :street, 'Street:', :class => 'control-label', :for => 'street' %>
         <div class="controls">
           <%= text_field :contact_info, :street, :id => "street" %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label :city, "City:", :class => "control-label", :for => "city" %>
+        <%= f.label :city, 'City:', :class => 'control-label', :for => 'city' %>
         <div class="controls">
-          <%= text_field :contact_info, :city, :id => "city" %>
+          <%= text_field :contact_info, :city, :id => 'city' %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label :state, "State:", :class => "control-label", :for => "state" %>
+        <%= f.label :state, 'State:', :class => 'control-label', :for => 'state' %>
         <div class="controls">
           <%= select :contact_info, :state, options_for_select(us_states) %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label :zip, "Zipcode:", :class => "control-label", :for => "zipcode" %>
+        <%= f.label :zip, 'Zipcode:', :class => 'control-label', :for => 'zipcode' %>
         <div class="controls">
-          <%= text_field :contact_info, :zip, :id => "zipcode" %>
+          <%= text_field :contact_info, :zip, :id => 'zipcode' %>
         </div>
       </div>
 
       <div class="control-group">
-        <%= f.label :email, "Email:", :class => "control-label", :for => "email" %>
+        <%= f.label :email, 'Email:', :class => 'control-label', :for => 'email' %>
         <div class="controls">
-          <%= f.email_field :email, :id => "email" %>
+          <%= f.email_field :email, :id => 'email' %>
         </div>
       </div>
     </fieldset>
 
     <div class="controls">
-      <%= f.submit "Submit", :id => "submit-button", :class => "btn btn-primary float-right reg-submit-button" %>
+      <%= f.submit 'Submit', :id => 'submit-button', :class => 'btn btn-primary float-right reg-submit-button' %>
     </div>
 <% end %>
 

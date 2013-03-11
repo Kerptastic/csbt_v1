@@ -11,44 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225062423) do
+ActiveRecord::Schema.define(:version => 20130309213228) do
 
   create_table "bowlers", :force => true do |t|
-    t.string   "first_name",             :limit => 25,                                                       :null => false
-    t.string   "last_name",              :limit => 25,                                                       :null => false
-    t.string   "username",               :limit => 25,                                                       :null => false
-    t.string   "email",                  :limit => 50,                                                       :null => false
+    t.integer  "user_id",        :limit => 8
+    t.string   "first_name",     :limit => 25,                         :null => false
+    t.string   "last_name",      :limit => 25,                         :null => false
     t.date     "birthday"
-    t.integer  "height_ft",              :limit => 1
-    t.integer  "height_in",              :limit => 2
+    t.integer  "height_ft",      :limit => 1
+    t.integer  "height_in",      :limit => 2
     t.date     "joined_date"
-    t.string   "hometown_city",                                                        :default => "Denver"
-    t.string   "hometown_state",                                                       :default => "CO"
-    t.decimal  "current_avg",                            :precision => 5, :scale => 2
-    t.decimal  "career_avg",                             :precision => 5, :scale => 2
-    t.integer  "num_titles"
-    t.string   "bio",                    :limit => 1000
+    t.string   "hometown_city",                  :default => "Denver"
+    t.string   "hometown_state",                 :default => "CO"
+    t.string   "bio",            :limit => 1000
     t.string   "picture_url"
-    t.integer  "num_threes",             :limit => 3
-    t.integer  "num_eights",             :limit => 3
-    t.integer  "high_series",            :limit => 3
-    t.integer  "high_game",              :limit => 3
-    t.integer  "contact_info_id"
-    t.datetime "created_at",                                                                                 :null => false
-    t.datetime "updated_at",                                                                                 :null => false
-    t.string   "encrypted_password",                                                   :default => "",       :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                                        :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.integer  "num_threes",     :limit => 3
+    t.integer  "num_eights",     :limit => 3
+    t.integer  "high_series",    :limit => 3
+    t.integer  "high_game",      :limit => 3
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
   end
-
-  add_index "bowlers", ["email"], :name => "index_bowlers_on_email", :unique => true
-  add_index "bowlers", ["reset_password_token"], :name => "index_bowlers_on_reset_password_token", :unique => true
 
   create_table "bowling_centers", :force => true do |t|
     t.string   "name",       :null => false
@@ -58,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130225062423) do
   end
 
   create_table "contact_infos", :force => true do |t|
+    t.integer  "bowler_id",  :limit => 8
     t.string   "street",     :limit => 100, :null => false
     t.string   "city",       :limit => 25,  :null => false
     t.string   "state",      :limit => 2,   :null => false
@@ -67,19 +51,22 @@ ActiveRecord::Schema.define(:version => 20130225062423) do
   end
 
   create_table "entries", :force => true do |t|
-    t.integer  "tournaments_id", :null => false
-    t.integer  "bowlers_id",     :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "tournament_id",  :limit => 8
+    t.integer  "bowler_id",      :limit => 8
+    t.boolean  "is_qual_cut",                 :default => false
+    t.boolean  "is_semi_cut",                 :default => false
+    t.boolean  "is_high_woman",               :default => false
+    t.boolean  "is_high_senior",              :default => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   create_table "games", :force => true do |t|
-    t.integer  "tournaments_id",              :null => false
-    t.integer  "bowlers_id",                  :null => false
-    t.integer  "number",                      :null => false
-    t.integer  "score",          :limit => 3, :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "entry_id"
+    t.integer  "score",      :null => false
+    t.string   "gameid",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "oil_patterns", :force => true do |t|
@@ -90,18 +77,32 @@ ActiveRecord::Schema.define(:version => 20130225062423) do
   end
 
   create_table "tournaments", :force => true do |t|
+    t.integer  "bowling_center_id", :limit => 8
+    t.integer  "oil_pattern_id",    :limit => 8
     t.string   "name",              :limit => 45,                         :null => false
     t.date     "date"
     t.string   "format",            :limit => 45, :default => "Standard", :null => false
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
-    t.integer  "num_entries"
-    t.integer  "winner_id"
-    t.integer  "runner_up_id"
-    t.integer  "top_woman_id"
-    t.integer  "top_senior_id"
-    t.integer  "oil_pattern_id"
-    t.integer  "bowling_center_id"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "username",               :limit => 25,                 :null => false
+    t.string   "email",                  :limit => 50,                 :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                        :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

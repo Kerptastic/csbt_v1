@@ -10,5 +10,5 @@
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
 ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
+ADMIN_EMAIL: users@example.com
 ADMIN_PASSWORD: please

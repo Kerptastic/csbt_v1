@@ -1,13 +1,10 @@
 class Game < ActiveRecord::Base
-  attr_accessible :score, :number, :bowler, :tournament
+    attr_accessible :score, :gameid, :entry
 
-  #validations
-  validates :score,  :presence => true, :length => { :is => 3 }
-  validates :number, :presence => true
-  validates_associated :bowler
-  validates_associated :tournament
+    #validations
+    validates :score, :presence => true
+    validates :gameid, :presence => true
 
-  #associations
-  belongs_to :bowler
-  belongs_to :tournament
+    #associations
+    belongs_to :entry
 end

@@ -1,90 +1,167 @@
+table, h3 {
+    color: #ffffff;
+}
+
+hr {
+    margin: 10px 0 10px 0;
+}
+
+table {
+    margin: 0 auto 18px auto;
+}
+
+td {
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+td.cut-hidden {
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #ffffff;
+    background-color: transparent;
+    text-align: left;
+    width: 60px;
+}
+
+.cut {
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-bottom: 3px solid #ffff00;
+}
+
+.cut-left {
+    border-left: none;
+    border-top: none;
+    border-right: 1px solid #ffffff;
+    background-color: transparent;
+}
+
+.highlight {
+    background-color: #ffff00;
+    border-color: #000000;
+    color: #000000;
+}
+
+/*td.cut.hidden {*/
+    /*border-bottom: 3px solid #ffff00;*/
+/*}*/
+
+.position-header {
+    width: 35px;
+}
+
+.bowler-header {
+    width: 160px;
+}
+
+.games-header {
+    width: 212px;
+}
+
+.total-pins-header {
+    width: 80px;
+}
+
+.plus-minus-header {
+    width: 60px;
+}
+
+.avg-header {
+    width: 60px;
+}
+
+.points-header {
+    width: 50px;
+}
+
 /*h1 {*/
-    /*margin: 0 0 0 6px;*/
-    /*color: #ffffff;*/
+/*margin: 0 0 0 6px;*/
+/*color: #ffffff;*/
 /*}*/
 
 /*.season-choose {*/
-    /*color: #ffffff;*/
-    /*margin-bottom: 10px;*/
+/*color: #ffffff;*/
+/*margin-bottom: 10px;*/
 /*}*/
 
 /*.season-choose label {*/
-    /*padding-top: 5px;*/
+/*padding-top: 5px;*/
 /*}*/
 
 /*.season-select {*/
-    /*margin-left: 8px;*/
-    /*width: 110px;*/
+/*margin-left: 8px;*/
+/*width: 110px;*/
 /*}*/
 
 /*.accordion-toggle {*/
-    /*background-color: #595959;*/
+/*background-color: #595959;*/
 /*}*/
 
 /*.accordion-inner {*/
-    /*background-color: #111111;*/
+/*background-color: #111111;*/
 /*}*/
 
 /*.accordion-toggle, .accordion-toggle:hover {*/
-    /*color: #ffffff;*/
-    /*font-size: 18px;*/
-    /*font-weight: bold;*/
+/*color: #ffffff;*/
+/*font-size: 18px;*/
+/*font-weight: bold;*/
 /*}*/
 
 /*.heading-date {*/
-    /*float: right;*/
-    /*margin-top: -22px;*/
+/*float: right;*/
+/*margin-top: -22px;*/
 /*}*/
 
-
 /*.info-header {*/
-    /*color: #ffffff;*/
+/*color: #ffffff;*/
 /*}*/
 
 /*.info-section {*/
-    /*color: #ffffff;*/
+/*color: #ffffff;*/
 /*}*/
 
-
 /*.info-label {*/
-    /*font-weight: bold;*/
+/*font-weight: bold;*/
 /*}*/
 
 /*.left-info-label {*/
-    /*width: 84px;*/
+/*width: 84px;*/
 /*}*/
 
 /*.center-info-label {*/
-    /*width: 94px;*/
+/*width: 94px;*/
 /*}*/
 
 /*.right-info-label {*/
-    /*width: 116px;*/
+/*width: 116px;*/
 /*}*/
 
 /*.info {*/
-    /*//width: 250px;*/
+/*//width: 250px;*/
 /*}*/
 
 /*.accordion-body hr {*/
-    /*margin: 10px 0 10px 0;*/
+/*margin: 10px 0 10px 0;*/
 /*}*/
 
 /*.left-info-column {*/
-    /*width: 220px;*/
-    /*height: 30px;*/
-    /*float: left;*/
+/*width: 220px;*/
+/*height: 30px;*/
+/*float: left;*/
 /*}*/
 
 /*.center-info-column {*/
-    /*width: 220px;*/
-    /*height: 30px;*/
-    /*float: left;*/
-    /*margin-left: 10px;*/
+/*width: 220px;*/
+/*height: 30px;*/
+/*float: left;*/
+/*margin-left: 10px;*/
 /*}*/
 
 /*.right-info-column {*/
-    /*width: 280px;*/
-    /*height: 30px;*/
-    /*margin-left: 460px;*/
+/*width: 280px;*/
+/*height: 30px;*/
+/*margin-left: 460px;*/
 /*}*/

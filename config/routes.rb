@@ -1,26 +1,28 @@
 CSBTV1::Application.routes.draw do
-  devise_for :bowlers,
-             :controllers => { :registrations => 'bowlers', :sessions => 'sessions' },
+  devise_for :users,
+             :controllers => { :registrations => 'users', :sessions => 'sessions' },
              :skip => [:registrations, :sessions]
-  as :bowler do
-    get '/login' => 'sessions#new', :as => :new_bowler_session
-    post '/login' => 'sessions#create', :as => :bowler_session
-    delete '/logout' => 'sessions#destroy', :as => :destroy_bowler_session
+  as :user do
+    get '/login' => 'sessions#new', :as => :new_user_session
+    post '/login' => 'sessions#create', :as => :user_session
+    delete '/logout' => 'sessions#destroy', :as => :destroy_user_session
 
-    get '/register' => 'bowlers#new', :as => :new_bowler_registration
-    post '/register' => 'bowlers#create', :as => :bowler_registration
-    delete '/cancel' => 'bowlers#destroy'
-    get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
+    get '/register' => 'users#new', :as => :new_user_registration
+    post '/register' => 'users#create', :as => :user_registration
+    delete '/cancel' => 'users#destroy'
 
     get '/profiles' => 'bowlers#index', :as => :bowler_path
     get '/profile/:lastname.:firstname' => 'bowlers#show', :as => :bowler_show
     put '/profile/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update
     get '/profile/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit
+    get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
 
     get '/tournaments' => 'tournaments#index', :as => :tournament_path
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
-
   end
+
+
+
 
   root :to => 'home#index'
 

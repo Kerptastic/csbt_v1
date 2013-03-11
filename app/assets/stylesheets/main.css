@@ -144,9 +144,13 @@ textarea {
 
 /**************************************************
  *
- * Support classes
+ * Common global classes
  *
 /**************************************************/
+.centered-text {
+    text-align: center;
+}
+
 .float-left {
     float: left;
 }

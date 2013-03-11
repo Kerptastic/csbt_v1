@@ -16,9 +16,9 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
-  # Configure which keys are used when authenticating a user. The default is
+  # Configure which keys are used when authenticating a users. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
-  # authenticating a user, both parameters are required. Remember that those
+  # authenticating a users, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
@@ -33,13 +33,13 @@ Devise.setup do |config|
   # config.request_keys = []
 
   # Configure which authentication keys should be case-insensitive.
-  # These keys will be downcased upon creating or modifying a user and when used
-  # to authenticate or find a user. Default is :email.
+  # These keys will be downcased upon creating or modifying a users and when used
+  # to authenticate or find a users. Default is :email.
   config.case_insensitive_keys = [ :username ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
-  # modifying a user and when used to authenticate or find a user. Default is :email.
+  # modifying a users and when used to authenticate or find a users. Default is :email.
   config.strip_whitespace_keys = [ :username ]
 
   # Tell if authentication through request.params is enabled. True by default.
@@ -65,7 +65,7 @@ Devise.setup do |config|
   # Does not affect registerable.
   # config.paranoid = true
 
-  # By default Devise will store the user in session. You can skip storage for
+  # By default Devise will store the users in session. You can skip storage for
   # :http_auth and :token_auth by adding those symbols to the array below.
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
@@ -85,18 +85,18 @@ Devise.setup do |config|
   # config.pepper = "bf2725e6bac46bc03dd7eb9b9cb838a2cc6a3dc7500b8e4ed1f103e2510a3ed31388aece1b4b4be31c04f74b43d916432b8f607566be1a51670eb91c135a4f98"
 
   # ==> Configuration for :confirmable
-  # A period that the user is allowed to access the website even without
-  # confirming his account. For instance, if set to 2.days, the user will be
+  # A period that the users is allowed to access the website even without
+  # confirming his account. For instance, if set to 2.days, the users will be
   # able to access the website for two days without confirming his account,
   # access will be blocked just in the third day. Default is 0.days, meaning
-  # the user cannot access the website without confirming his account.
+  # the users cannot access the website without confirming his account.
   # config.allow_unconfirmed_access_for = 2.days
 
-  # A period that the user is allowed to confirm their account before their
-  # token becomes invalid. For example, if set to 3.days, the user can confirm
+  # A period that the users is allowed to confirm their account before their
+  # token becomes invalid. For example, if set to 3.days, the users can confirm
   # their account within 3 days after the mail was sent, but on the fourth day
   # their account can't be confirmed with the token any more.
-  # Default is nil, meaning there is no restriction on how long a user can take
+  # Default is nil, meaning there is no restriction on how long a users can take
   # before confirming their account.
   # config.confirm_within = 3.days
 
@@ -110,10 +110,10 @@ Devise.setup do |config|
   # config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
-  # The time the user will be remembered without asking for credentials again.
+  # The time the users will be remembered without asking for credentials again.
   # config.remember_for = 2.weeks
 
-  # If true, extends the user's remember period when remembered via cookie.
+  # If true, extends the users's remember period when remembered via cookie.
   # config.extend_remember_period = false
 
   # Options to be passed to the created cookie. For instance, you can set
@@ -126,12 +126,12 @@ Devise.setup do |config|
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
-  # to give user feedback and not to assert the e-mail validity.
+  # to give users feedback and not to assert the e-mail validity.
   # config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
-  # The time you want to timeout the user session without activity. After this
-  # time the user will be asked for credentials again. Default is 30 minutes.
+  # The time you want to timeout the users session without activity. After this
+  # time the users will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
 
   # If true, expires auth token on session timeout.
@@ -147,7 +147,7 @@ Devise.setup do |config|
   # config.unlock_keys = [ :email ]
 
   # Defines which strategy will be used to unlock an account.
-  # :email = Sends an unlock link to the user email
+  # :email = Sends an unlock link to the users email
   # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
   # :both  = Enables both strategies
   # :none  = No unlock strategy. You should handle unlocking by yourself.
@@ -189,8 +189,8 @@ Devise.setup do |config|
   # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
-  # devise role declared in your routes (usually :user).
-  # config.default_scope = :user
+  # devise role declared in your routes (usually :users).
+  # config.default_scope = :users
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
@@ -198,7 +198,7 @@ Devise.setup do |config|
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
-  # :html, should redirect to the sign in page when the user does not have
+  # :html, should redirect to the sign in page when the users does not have
   # access, but formats like :xml or :json, should return 401.
   #
   # If you have any extra navigational formats, like :iphone or :mobile, you
@@ -213,7 +213,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'users,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -221,7 +221,7 @@ Devise.setup do |config|
   #
   # config.warden do |manager|
   #   manager.intercept_401 = false
-  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
+  #   manager.default_strategies(:scope => :users).unshift :some_external_strategy
   # end
 
   # ==> Mountable engine configurations

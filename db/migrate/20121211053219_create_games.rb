@@ -1,15 +1,20 @@
 class CreateGames < ActiveRecord::Migration
-  def change
-    create_table :games do |t|
-      t.references :tournaments,               :null => false
-      t.references :bowlers    ,               :null => false
-      t.integer :number        ,               :null => false
-      t.integer :score         , :limit => 3,  :null => false
-      t.timestamps
-    end
-  end
+    def change
+        create_table :games do |t|
+            #foreign keys
+            t.integer 'entry_id'
 
-  def down
-    drop_table :games
-  end
+            #columns
+            t.integer 'score', :null => false
+            t.string 'gameid', :null => false
+
+            #helpers
+            t.timestamps
+        end
+    end
+
+
+    def down
+
+    end
 end

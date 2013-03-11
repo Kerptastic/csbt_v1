@@ -9,5 +9,5 @@ class ContactInfo < ActiveRecord::Base
             :numericality => { :only_integer => true }
 
   #relationships
-  has_one :bowler
+  belongs_to :bowler
 end

@@ -6,4 +6,5 @@ class OilPattern < ActiveRecord::Base
     validates :url, :presence => true
 
     #relationships
+    has_many :tournament
 end
