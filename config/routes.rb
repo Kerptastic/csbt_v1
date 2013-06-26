@@ -17,7 +17,8 @@ CSBTV1::Application.routes.draw do
     get '/profile/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit
     get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
 
-    get '/tournaments' => 'tournaments#index', :as => :tournament_path
+    get '/tournaments/' => 'tournaments#index', :as => :tournament_path
+    get '/tournaments/:season' => 'tournaments#index', :as => :tournament_season_path
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
   end
 

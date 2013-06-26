@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <%= stylesheet_link_tag    "application", :media => "all" %>
-        <%= javascript_include_tag "application" %>
+        <meta name='viewport' content="width=device-width, initial-scale=1.0">
+        <%= stylesheet_link_tag    'application', :media => 'all' %>
+        <%= javascript_include_tag 'application' %>
         <%= yield(:register) if content_for? :register %>
         <%= yield(:login) if content_for? :login %>
         <%= yield(:profile) if content_for? :profile %>
@@ -14,8 +14,6 @@
     <body>
         <header>
             <div class="banner">
-              <!--<p class="notice"><%#= notice %></p>-->
-              <!--<p class="alert"><%#= alert %></p> -->
             </div>
         </header>
 

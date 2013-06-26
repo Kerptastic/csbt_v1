@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
+//= require libs/bootstrap.min
+//= require libs/knockout-2.2.1
