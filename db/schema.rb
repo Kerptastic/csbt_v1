@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309213228) do
+ActiveRecord::Schema.define(:version => 20130708040512) do
 
   create_table "bowlers", :force => true do |t|
     t.integer  "user_id",        :limit => 8
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20130309213228) do
     t.boolean  "is_high_senior",              :default => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.boolean  "is_winner"
+    t.boolean  "is_runner_up"
   end
 
   create_table "games", :force => true do |t|
@@ -84,6 +86,10 @@ ActiveRecord::Schema.define(:version => 20130309213228) do
     t.string   "format",            :limit => 45, :default => "Standard", :null => false
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
+    t.integer  "winner_id",         :limit => 8
+    t.integer  "runner_up_id",      :limit => 8
+    t.integer  "top_woman_id",      :limit => 8
+    t.integer  "top_senior_id",     :limit => 8
   end
 
   create_table "users", :force => true do |t|

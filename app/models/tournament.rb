@@ -1,6 +1,7 @@
 class Tournament < ActiveRecord::Base
     attr_accessible :name, :date, :format,
-                    :bowling_center, :oil_pattern
+                    :bowling_center, :oil_pattern,
+                    :winner, :runner_up, :top_woman, :top_senior
 
     #:winner, :runner_up,
     #                :top_woman, :top_senior, :num_entries,
@@ -12,18 +13,15 @@ class Tournament < ActiveRecord::Base
     #validates :format, :presence => true
 
 
-    #relationships
+    #relationships   add_column :tournaments, :winner_id, :integer
     belongs_to :bowling_center
     belongs_to :oil_pattern
-    has_many :entries
-    #has_one :winner, :class_name => 'Bowler'
-    #has_one :runner_up, :class_name => 'Bowler'
 
-    #belongs_to :winner, :foreign_key => "winner_id", :class_name => "Bowler"
-    #belongs_to :runner_up, :foreign_key => "runner_up_id", :class_name => "Bowler"
-    #belongs_to :top_woman, :foreign_key => "top_woman_id", :class_name => "Bowler"
-    #belongs_to :top_senior, :foreign_key => "top_senior_id", :class_name => "Bowler"
-    #belongs_to :bowling_center, :foreign_key => "bowling_center_id", :class_name => "BowlingCenter"
-    #belongs_to :oil_pattern, :foreign_key => "oil_pattern_id", :class_name => "OilPattern"
-    #has_many :entry
+    belongs_to :winner, :class_name => 'Entry'
+    belongs_to :runner_up, :class_name => 'Entry'
+    belongs_to :top_woman, :class_name => 'Entry'
+    belongs_to :top_senior, :class_name => 'Entry'
+    has_many :bowlers
+
+    has_many :entries
 end

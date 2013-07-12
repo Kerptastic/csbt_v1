@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
     attr_accessible :bowler, :tournament, :games, :is_qual_cut, :is_semi_cut,
-                    :is_high_woman, :is_high_senior
+                    :is_high_woman, :is_high_senior, :is_winner, :is_runner_up
 
     #validations
 
@@ -10,79 +10,52 @@ class Entry < ActiveRecord::Base
     has_many :games
 
     #methods
-    def q1score
+
+    def get_q_score(game_num)
+        get_score('q', game_num)
+    end
+
+    def get_s_score(game_num)
+        get_score('s', game_num)
+    end
+
+    def get_f_score(game_num)
+        get_score('f', game_num)
+    end
+
+    def get_score(block, game_num)
+        if games.length != 0
+            games.where(:gameid => "#{block}#{game_num}").first.score
+        end
+    end
+
+
+
+
+    def is_in_semis
         if games.empty?
-            '-'
         else
-            games.where(:gameid => 'q1').first.score
+            !games.where('gameid like ?', 's%').empty?
         end
     end
 
-    def q2score
+
+    def is_in_finals
         if games.empty?
-            '-'
         else
-            games.where(:gameid => 'q2').first.score
+            !games.where('gameid like ?', 'f%').empty?
         end
     end
 
-    def q3score
-        if games.empty?
-            '-'
-        else
 
-            games.where(:gameid => 'q3').first.score
-        end
-    end
 
-    def q4score
-        if games.empty?
-            '-'
-        else
-            games.where(:gameid => 'q4').first.score
-        end
-    end
 
-    def q5score
-        if games.empty?
-            '-'
-        else
-            games.where(:gameid => 'q5').first.score
-        end
-    end
 
-    def q6score
-        if games.empty?
-            '-'
-        else
-            games.where(:gameid => 'q6').first.score
-        end
-    end
 
-    def s1score
-        if games
-        .empty?
-            '-'
-        else
-            games.where(:gameid => 's1').first.score
-        end
-    end
 
-    def s2score
-        if games.empty?
-            '-'
-        else
-            games.where(:gameid => 's2').first.score
-        end
-    end
 
-    def s3score
-        if games.empty?
-            '-'
-        else
-            games.where(:gameid => 's3').first.score
-        end
-    end
+
+
 
     def qual_block_total
         if games.empty?
@@ -92,33 +65,81 @@ class Entry < ActiveRecord::Base
         end
     end
 
+
+    def num_qual_block_games
+        games.where('gameid like ?', 'q%').count
+    end
+
+
+    def qual_block_avg
+        if games.empty?
+            '-'
+        else
+            qual_block_total / num_qual_block_games
+        end
+    end
+
+
     def qual_block_plus_minus
         if games.empty?
             '-'
         else
-            pm = games.where('gameid like ?', 'q%').all.sum(&:score) - (games.where('gameid like ?', 'q%').count * 200)
+            pm = qual_block_total - (num_qual_block_games * 200)
 
             if pm > 0
-                pm = "+#{pm}"
+                "+#{pm}"
             else
                 pm
             end
         end
     end
 
-    def qual_block_avg
-        if games.empty?
-            '-'
-        else
-            games.where('gameid like ?', 'q%').all.sum(&:score) / games.where('gameid like ?', 'q%').count
-        end
+
+
+    def num_semi_block_games
+        games.where('gameid like ?', 's%').count
     end
+
+
 
     def semi_block_total
         if games.empty?
             '-'
         else
             games.where('gameid like ?', 's%').all.sum(&:score)
+        end
+    end
+
+
+
+
+
+
+
+
+    def qual_plus_semis_total
+        if games.empty?
+            '-'
+        else
+           qual_block_total + semi_block_total
+        end
+    end
+
+    def qual_plus_semis_avg
+        qual_plus_semis_total  / (num_qual_block_games + num_semi_block_games)
+    end
+
+    def qual_plus_semis_plus_minus
+        if games.empty?
+            '-'
+        else
+            pm = qual_plus_semis_total - ((num_qual_block_games + num_semi_block_games) * 200)
+
+            if pm > 0
+                "+#{pm}"
+            else
+                pm
+            end
         end
     end
 end

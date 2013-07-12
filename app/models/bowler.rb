@@ -15,6 +15,7 @@ class Bowler < ActiveRecord::Base
     #relationships
     has_one :contact_info
     belongs_to :user
+    belongs_to :tournament
     has_many :entries
 
     #methods
@@ -24,5 +25,9 @@ class Bowler < ActiveRecord::Base
 
     def height
         "#{height_ft}'#{height_in}\""
+    end
+
+    def profile_url
+        "/profile/#{last_name.downcase}.#{first_name.downcase}"
     end
 end

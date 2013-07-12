@@ -1,0 +1,143 @@
+<% sorted = entries.sort { |a, b| b.qual_plus_semis_total <=> a.qual_plus_semis_total } %>
+
+<div class='game-1 float-left'>
+  <div class='bracket-entry'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='seed underline float-left'>
+      (5)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= sorted[4].bowler.profile_url %>"><%= sorted[4].bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= sorted[4].get_f_score(1) %>
+    </div>
+  </div>
+  <div class='bracket-entry connector'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='seed underline float-left'>
+      (4)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= sorted[3].bowler.profile_url %>"><%= sorted[3].bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= sorted[3].get_f_score(1) %>
+    </div>
+  </div>
+</div>
+
+<% winner = sorted[4].get_f_score(1) > sorted[3].get_f_score(1) ? sorted[4] : sorted[3] %>
+
+
+
+<div class='game-2 float-left'>
+  <div class='bracket-entry'>
+    <div class='pad underline float-left'>
+    </div>
+
+    <div class='seed underline float-left'>
+      (<%= sorted.index(winner) + 1 %>)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= winner.get_f_score(2) %>
+    </div>
+  </div>
+  <div class='bracket-entry connector'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='seed underline float-left'>
+      (3)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= sorted[2].bowler.profile_url %>"><%= sorted[2].bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= sorted[2].get_f_score(2) %>
+    </div>
+  </div>
+</div>
+
+<% winner = winner.get_f_score(2) > sorted[2].get_f_score(2) ? winner : sorted[2] %>
+
+
+
+<div class='game-3 float-left'>
+  <div class='bracket-entry'>
+    <div class='pad underline float-left'>
+    </div>
+
+    <div class='seed underline float-left'>
+      (<%= sorted.index(winner) + 1 %>)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= winner.get_f_score(3) %>
+    </div>
+  </div>
+  <div class='bracket-entry connector'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='seed underline float-left'>
+      (2)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= sorted[1].bowler.profile_url %>"><%= sorted[1].bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= sorted[1].get_f_score(3) %>
+    </div>
+  </div>
+</div>
+
+<% winner = winner.get_f_score(3) > sorted[1].get_f_score(3) ? winner : sorted[1] %>
+
+
+<div class='game-4 float-left'>
+  <div class='bracket-entry'>
+    <div class='pad underline float-left'>
+    </div>
+
+    <div class='seed underline float-left'>
+      (<%= sorted.index(winner) + 1 %>)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= winner.get_f_score(4) %>
+    </div>
+  </div>
+  <div class='bracket-entry connector'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='seed underline float-left'>
+      (1)
+    </div>
+    <div class='bowler underline float-left'>
+      <a href="<%= winner.bowler.profile_url %>"><%= sorted[0].bowler.last_name %></a>
+    </div>
+    <div class='score underline'>
+      <%= sorted[0].get_f_score(4) %>
+    </div>
+  </div>
+</div>
+
+<% winner = winner.get_f_score(4) > sorted[0].get_f_score(4) ? winner : sorted[1] %>
+
+<div class='champion float-left'>
+  <div class='bracket-entry'>
+    <div class='pad underline float-left'>
+    </div>
+    <div class='champion-bowler underline'>
+      Champion - <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
+    </div>
+  </div>
+</div>

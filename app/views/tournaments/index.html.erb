@@ -3,15 +3,14 @@
     <%= javascript_include_tag 'viewmodels/tournament_view_model' %>
 <% end -%>
 
-
 <h1>Tournament Schedule / Results</h1>
 <hr/>
 
-<div id="tournament-index">
-  <div class="season-choose">
-    <label class="float-left">Season:</label>
-    <select class="season-select" data-bind="value: currentSeason">
-      <option selected="true">2012-2013</option>                                                                   v
+<div id='tournament-index'>
+  <div class='season-choose'>
+    <label class='float-left'>Season:</label>
+    <select class='season-select' data-bind='value: currentSeason'>
+      <option selected='true'>2012-2013</option>
       <option>2011-2012</option>
       <option>2010-2011</option>
     </select>
@@ -20,15 +19,11 @@
   <%= form_tag( :tournament_path,
                 :id => 'season-form',
                 :method => :get,
-                :format => 'json',
-                #:html => { :'data-type' => 'json' },
                 :remote => true) do %>
       <%= hidden_field_tag 'season' %>
   <% end %>
 
-  <div id="tourney-display">
-
+  <div id='tourney-display' style='padding-bottom: 1px;'>
+    <%= render 'tournaments/partials/seasonTourneys', :locals => { :tournaments => @tournaments } %>
   </div>
 </div>
-
-<%#= render 'tournaments/partials/seasonTourneys', :locals => { :tournaments => @tournaments } %>

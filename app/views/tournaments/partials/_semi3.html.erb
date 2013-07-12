@@ -1,0 +1,33 @@
+<table class='game-data'>
+  <tr>
+    <td class="cut-hidden"></td>
+    <td class="position-header">Pos.</td>
+    <td class="bowler-header">Bowler</td>
+    <td class="games-3-header centered-text" colspan=3>Games</td>
+    <td class="total-pins-header">Semi Total</td>
+    <td class="total-pins-header">Qual Total</td>
+    <td class="total-pins-header">Total Pins</td>
+    <td class="plus-minus-header">+/-</td>
+    <td class="avg-header">Avg.</td>
+    <td class="points-header">Points</td>
+  </tr>
+  <% entries.sort { |a, b| b.qual_plus_semis_total <=> a.qual_plus_semis_total }.each_with_index do |entry, index| %>
+      <tr class="<%= %>">
+        <td class="<%= if entry.is_semi_cut then 'cut cut-left' else 'cut-hidden' end %>"><%= if entry.is_semi_cut then 'CUT' end %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= index + 1 %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text">
+          <a href="<%= entry.bowler.profile_url %>"><%= entry.bowler.full_name %></a>
+        </td>
+
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(1) %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(2) %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(3) %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.semi_block_total %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_block_total %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_plus_semis_total %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_plus_semis_plus_minus %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= number_with_precision(entry.qual_plus_semis_avg, :precision => 2) %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"></td>
+    </tr>
+  <% end %>
+</table>

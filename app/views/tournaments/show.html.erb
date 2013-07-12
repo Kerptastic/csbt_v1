@@ -2,36 +2,50 @@
     <%= stylesheet_link_tag 'tournament' %>
 <% end -%>
 
-<h3><%= @tourney.name %> - <%= @tourney.format %> Format <span class="float-right"><%= @tourney.date %></span></h3>
+<h3><%= @tourney.name %> - <%= @tourney.format %> Format <span class='float-right'><%= @tourney.date %></span></h3>
 <hr/>
 
-<div class="">
-  <div class="tabbable">
-    <ul class="nav nav-tabs">
-      <li>
-        <a href="#finals-tab" data-toggle="tab">Finals</a>
-      </li>
-      <li>
-        <a href="#semi-finals-tab" data-toggle="tab">Semi-Finals</a>
-      </li>
-      <% if @tourney.format == "Standard" || @tourney.format == "Round Robin" || @tourney.format == "Masters" %>
-          <li class="active">
-            <a href="#qualifying-tab" data-toggle="tab">Qualifying</a>
+
+<div class='tabbable'>
+    <ul class='nav nav-tabs'>
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+        <li class='active'>
+            <a href='#finals-tab' data-toggle='tab'>Finals</a>
+        </li>
+      <% end %>
+
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+        <li>
+            <a href='#semi-finals-tab' data-toggle='tab'>Semi-Finals</a>
+        </li>
+      <% end %>
+
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+          <li>
+            <a href='#qualifying-tab' data-toggle='tab'>Qualifying</a>
           </li>
       <% end %>
     </ul>
-    <div class="tab-content">
-      <% if @tourney.format == "Standard" || @tourney.format == "Round Robin" || @tourney.format == "Masters" %>
-          <div class="tab-pane active" id="qualifying-tab">
-            <%= render 'tournaments/partials/qualifying6', :locals => { :entries => @tourney.entries } %>
+
+    <div class='tab-content'>
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+        <div class='tab-pane active' id='finals-tab'>
+            <%= render 'tournaments/partials/step5', entries: @tourney.entries.select { |entry| entry.is_in_finals } %>
+        </div>
+      <% end %>
+
+
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+          <div class='tab-pane' id='semi-finals-tab'>
+            <%= render 'tournaments/partials/semi3', entries: @tourney.entries.select { |entry| entry.is_in_semis } %>
           </div>
       <% end %>
-      <div class="tab-pane" id="semi-finals-tab">
-        <%#= render "tournaments/partials/semifinals" %>
-      </div>
-      <div class="tab-pane" id="finals-tab">
-        <%#= render "tournaments/partials/finals" %>
-      </div>
+
+
+      <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
+          <div class='tab-pane' id='qualifying-tab'>
+            <%= render 'tournaments/partials/qualifying6', entries: @tourney.entries %>
+          </div>
+      <% end %>
     </div>
-  </div>
 </div>

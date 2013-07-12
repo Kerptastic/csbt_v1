@@ -1,70 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name='viewport' content="width=device-width, initial-scale=1.0">
-        <%= stylesheet_link_tag    'application', :media => 'all' %>
-        <%= javascript_include_tag 'application' %>
-        <%= yield(:register) if content_for? :register %>
-        <%= yield(:login) if content_for? :login %>
-        <%= yield(:profile) if content_for? :profile %>
-        <%= yield(:tournament) if content_for? :tournament %>
-        <%= csrf_meta_tags %>
-    </head>
+<head>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'application', :media => 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield(:register) if content_for? :register %>
+  <%= yield(:login) if content_for? :login %>
+  <%= yield(:profile) if content_for? :profile %>
+  <%= yield(:tournament) if content_for? :tournament %>
+  <%= csrf_meta_tags %>
+</head>
 
-    <body>
-        <header>
-            <div class="banner">
-            </div>
-        </header>
+<body>
+<header>
+  <div class="banner">
+  </div>
+</header>
 
-        <div class="container-fluid">
-            <div id="sponsors-bar" class="row-fluid sponsors-bar">
-                <div class="span3 logo">
-                    <a class="hammer-logo" href="http://www.hammerbowling.com/" rel="external"></a>
-                </div>
-                <div class="span3 logo">
-                    <a class="dexter-logo" href="http://www.dexterbowling.com/" rel="external"></a>
-                </div>
-                <div class="span3 logo">
-                    <a class="ty-logo" href="http://www.totallyyoursbowlingservices.com/" rel="external"></a>
-                </div>
-                <div class="span3 logo">
-                    <a class="golden-logo" href="http://www.goldenbowl300club.com/" rel="external"></a>
-                </div>
-            </div>
+<div class="container-fluid">
+  <div id="sponsors-bar" class="row-fluid sponsors-bar">
+    <div class="span3 logo">
+      <a class="hammer-logo" href="http://www.hammerbowling.com/" rel="external"></a>
+    </div>
+    <div class="span3 logo">
+      <a class="dexter-logo" href="http://www.dexterbowling.com/" rel="external"></a>
+    </div>
+    <div class="span3 logo">
+      <a class="ty-logo" href="http://www.totallyyoursbowlingservices.com/" rel="external"></a>
+    </div>
+    <div class="span3 logo">
+      <a class="golden-logo" href="http://www.goldenbowl300club.com/" rel="external"></a>
+    </div>
+  </div>
 
-            <div class="row-fluid">
-                <nav class="span3">
-                    <div class="sidebar-nav">
-                        <ul class="nav nav-list">
-                            <li class="nav-header"><a href="/">CSBT Home</a></li>
-                            <li><a href="/tournaments">Schedule</a></li>
-                            <li><a href="/profiles">Bowlers</a></li>
-                            <li><a href="/poy">POY Standings</a></li>
-                            <li><a href="/records">All-Time Records</a></li>
-                            <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?; '/login' else "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}" end %>>MY CSBT</a></li>
+  <div class="row-fluid">
+    <nav class="span3">
+      <div class="sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header"><a href="/">CSBT Home</a></li>
+          <li><a href="/tournaments">Schedule</a></li>
+          <li><a href="/profiles">Bowlers</a></li>
+          <li><a href="/poy">POY Standings</a></li>
+          <li><a href="/records">All-Time Records</a></li>
+          <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?;
+                                                 '/login'
+                                             else
+                                                 "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}"
+                                             end %>>MY CSBT</a></li>
 
-                            <% if user_signed_in? -%>
-                                <li><a href=<%= if current_user.nil? || current_user.id.nil?; '' else "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}/edit" end %>>Edit Profile</a></li>
-                                <li><a href="/statistics">Statistics</a></li>
-                                <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>
-                            <% end -%>
-                        </ul>
-                    </div>
-                </nav>
+          <% if user_signed_in? -%>
+              <li><a href=<%= if current_user.nil? || current_user.id.nil?;
+                                  ''
+                              else
+                                  "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}/edit"
+                              end %>>Edit Profile</a></li>
+              <li><a href="/statistics">Statistics</a></li>
+              <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>
+          <% end -%>
+        </ul>
+      </div>
+    </nav>
 
-                <div class="span9">
-                    <div class="content">
+    <div class="span9">
+      <div class="content">
 
-                    <%= yield %>
+        <%= yield %>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <footer class="">
-          &copy 2012 Colorado Scratch Bowler's Tour
-        </footer>
-    </body>
+<footer class="">
+  &copy 2012 Colorado Scratch Bowler's Tour
+</footer>
+</body>
 </html>

@@ -4,6 +4,9 @@ class TournamentsController < ApplicationController
         @tournaments
 
         if params[:season].nil?
+
+            puts Date.today.year
+
             @tournaments = Tournament.where('date >= \'2012-08-01\' && date <= ?', '%d-08-01' %  Date.today.year)
         else
             #parse out the season value
@@ -18,9 +21,8 @@ class TournamentsController < ApplicationController
         end
 
         respond_to do |format|
-            format.html
-            format.json { render :json => @tournaments}
-            #format.js { render :js => @tournaments }
+            format.html { puts 'type = html' }
+            format.js { puts 'type = js' }
         end
     end
 
