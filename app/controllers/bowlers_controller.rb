@@ -1,5 +1,16 @@
 class BowlersController < ApplicationController
     #
+    def index
+        @bowlers
+
+        if params[:chosenletter].nil?
+           @bowlers = Bowler.where('last_name LIKE ?', 'A');
+        else
+            @bowlers = Bowler.where('last_name LIKE ?', "#{params[:chosenletter]}%");
+        end
+    end
+
+    #
     def show
         @bowler = Bowler.where(:last_name => params[:lastname], :first_name => params[:firstname]).first
     end

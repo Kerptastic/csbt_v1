@@ -4,22 +4,17 @@
       <div class='accordion-group'>
         <div class='accordion-heading'>
           <a class='accordion-toggle' data-toggle='collapse' data-parent='#tourney-accordion' href='#tourney<%= index %>'>
-            <div class=''>
-              <%= "#{index+1}. #{tourney.name} - #{tourney.format} Format - " %><%= if tourney.entries.nil?;
-                                                                                        'TBD Entries'
-                                                                                    else
-                                                                                        "#{tourney.entries.size} Entries"
-                                                                                    end %>
+            <div>
+              <%= tourney.date.strftime('%m/%d/%Y') %>
             </div>
-            <div class='heading-date'>
-              <%= tourney.date %>
+            <div class='heading-tourney'>
+              <%= "#{tourney.name} - #{tourney.format} Format"%><%= if tourney.entries.nil?; 'TBD Entries' end %>
             </div>
+
           </a>
         </div>
 
-        <div id='tourney<%= index %>' class="accordion-body collapse <%= if index == 0;
-                                                                             'in'
-                                                                         end %>">
+        <div id='tourney<%= index %>' class="accordion-body collapse <%= if index == 0; 'in' end %>">
           <div class='accordion-inner'>
             <div class='info-section'>
               <div class='left-info-column'>
@@ -87,7 +82,7 @@
                 </div>
               </div>
 
-              <div style="width: 220px; height: 24px;">
+              <div style='width: 220px; height: 24px;'>
                 <div class='float-left'>
                   <a class='info' href="/tournament/<%= tourney.id %>">Full Results</a>
                 </div>

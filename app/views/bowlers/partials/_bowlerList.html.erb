@@ -1,0 +1,7 @@
+<ul>
+    <% @bowlers.sort { |a, b| a.last_name <=> b.last_name }.each do |b| %>
+       <li>
+         <a href="<%= b.profile_url %>"><%= b.last_name + ', ' + b.first_name %> </a>
+       </li>
+    <% end %>
+</ul>

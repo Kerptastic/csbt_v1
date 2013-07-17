@@ -94,19 +94,19 @@ textarea {
  *
 /**************************************************/
 .hammer-logo {
-    background-image: url("../assets/hammer_logo.png");
+    background-image: url("../assets/hammer_logo_trans.png");
 }
 
 .golden-logo {
-    background-image: url("../assets/goldenbowl_logo.png");
+    //background-image: url("../assets/goldenbowl_logo.png");
 }
 
 .ty-logo {
-    background-image: url("../assets/ty_logo.png");
+    //background-image: url("../assets/ty_logo.png");
 }
 
 .dexter-logo {
-    background-image: url("../assets/dexter_logo2.png");
+    background-image: url("../assets/dexter_logo_trans.png");
 }
 
 /**************************************************

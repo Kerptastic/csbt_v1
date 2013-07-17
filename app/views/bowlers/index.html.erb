@@ -1,9 +1,30 @@
-<% content_for :profile do -%>
-    <%= stylesheet_link_tag 'tournament' %>
-<% end -%>
+<% content_for :profile do %>
+    <%= stylesheet_link_tag 'bowler' %>
+    <%= javascript_include_tag 'viewmodels/bowler_view_model' %>
+<% end %>
 
-
+<h1>Bowlers</h1>
+<hr/>
 
 <div>
-    <p>All Bowlers Search Here!</p>
+  <div class='alpha-links'>
+    <ul class='link-list'>
+        <% alphabet.each do |letter| %>
+            <li>
+              <a id="<%= letter %>" class='alpha-link' href="#<%= letter.upcase %>" onclick="bowlerViewModel.loadBowlers('<%= letter %>')" data-bind='value: currentChosenLetter'><%= letter.upcase %></a>
+            </li>
+        <% end %>
+    </ul>
+  </div>
+
+  <%= form_tag( :bowler_path,
+                :id => 'bowler-list-form',
+                :method => :get,
+                :remote => true) do %>
+      <%= hidden_field_tag 'chosenletter' %>
+  <% end %>
+
+  <div id='bowler-display' style='padding-bottom: 1px;'>
+    <%= render 'bowlers/partials/bowlerList', :locals => { :bowlers => @bowlers } %>
+  </div>
 </div>

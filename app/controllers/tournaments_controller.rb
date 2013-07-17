@@ -5,9 +5,7 @@ class TournamentsController < ApplicationController
 
         if params[:season].nil?
 
-            puts Date.today.year
-
-            @tournaments = Tournament.where('date >= \'2012-08-01\' && date <= ?', '%d-08-01' %  Date.today.year)
+            @tournaments = Tournament.where('date >= \'2012-08-01\' && date <= ?', '%d-08-01' %  Date.today.year).reverse_order
         else
             #parse out the season value
             year = params[:season][0...4]
@@ -17,7 +15,7 @@ class TournamentsController < ApplicationController
 
             afterDate = '%d-08-01' % [nextYear]
 
-            @tournaments = Tournament.where('date >= ? && date <= ?', beforeDate, afterDate)
+            @tournaments = Tournament.where('date >= ? && date <= ?', beforeDate, afterDate).reverse_order
         end
 
         respond_to do |format|

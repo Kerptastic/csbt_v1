@@ -65,8 +65,6 @@ var TournamentViewModel = function() {
      *
      */
     self.selectedSeasonChanged = function(newValue) {
-        //var form = document.getElementById("season-form");
-
         $('#season').val(self.currentSeason());
 
         if(newValue != self.previousSeason)
@@ -75,23 +73,6 @@ var TournamentViewModel = function() {
 
             $('#season-form').submit();
         }
-
-
-//        $.ajax({
-//            url: "/tournaments/" + self.currentSeason(),
-//            type: "GET",
-//            dataType: "json",
-//            success: function(data, status, other) {
-//                //self.currentSeasonTourneys(data);
-//
-//                //alert("data retrieved");
-//
-//
-//            },
-//            error: function(data, status, other) {
-//
-//            }
-//        });
     };
 };
 
