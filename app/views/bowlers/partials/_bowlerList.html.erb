@@ -1,7 +1,25 @@
-<ul>
-    <% @bowlers.sort { |a, b| a.last_name <=> b.last_name }.each do |b| %>
-       <li>
-         <a href="<%= b.profile_url %>"><%= b.last_name + ', ' + b.first_name %> </a>
-       </li>
+
+<% div_closed = true %>
+    <% @bowlers.sort { |a, b| a.first_name <=> b.first_name }.each_with_index do |b, index| %>
+        <% if index % 3 == 0 && index != 0 then div_closed = false;%>
+            </div>
+        <% else div_closed = false; end %>
+
+        <% if index % 3 == 0 %>
+            <div class='row-fluid'>
+        <% end %>
+        <div class='span4'>
+          <div class='bowler-tile'>
+            <div class='tile-photo-holder'>
+              <img class='tile-photo' src="<%= if b.picture_url.nil? then 'assets/unknown.png'; else b.picture_url end %>" alt="<%= b.picture_url %>"/>
+            </div>
+            <div class='tile-name'>
+              <a class='tile-name-link' href="<%= b.profile_url %>"><%= b.first_name + ' ' + b.last_name %></a>
+            </div>
+          </div>
+        </div>
     <% end %>
-</ul>
+
+<% if div_closed == false %>
+    </div>
+<% end %>

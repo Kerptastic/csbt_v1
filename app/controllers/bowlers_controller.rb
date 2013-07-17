@@ -4,7 +4,7 @@ class BowlersController < ApplicationController
         @bowlers
 
         if params[:chosenletter].nil?
-           @bowlers = Bowler.where('last_name LIKE ?', 'A');
+           @bowlers = Bowler.where('last_name LIKE ?', 'A%');
         else
             @bowlers = Bowler.where('last_name LIKE ?', "#{params[:chosenletter]}%");
         end

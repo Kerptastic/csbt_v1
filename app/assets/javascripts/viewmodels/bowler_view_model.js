@@ -35,6 +35,8 @@ var BowlerViewModel = function() {
      */
     self.init = function() {
         self.addListeners();
+
+        toggleChosenLetterStyle(self.previousChosenLetter, self.previousChosenLetter);
     };
 
     /**
@@ -71,17 +73,30 @@ var BowlerViewModel = function() {
 
         if(newValue != self.previousChosenLetter)
         {
-            $('#' + self.previousChosenLetter).removeClass('selected-alpha-link');
+            toggleChosenLetterStyle(self.previousChosenLetter, self.currentChosenLetter());
 
             self.previousChosenLetter = self.currentChosenLetter();
 
             $('#bowler-list-form').submit();
         }
 
-        $('#' + self.currentChosenLetter()).addClass('selected-alpha-link');
+
     }
 };
 
+var toggleChosenLetterStyle = function(previous, current) {
+    $('#' + previous).removeClass('selected-alpha-link');
+    $('#' + previous).hover(function() {
+        $(this).addClass('selected-alpha-link:hover'); }, function() {
+        $(this).removeClass('selected-alpha-link:hover');
+    });
+
+    $('#' + current).addClass('selected-alpha-link');
+    $('#' + current).hover(function() {
+        $(this).addClass('selected-alpha-link:hover'); }, function() {
+        $(this).removeClass('selected-alpha-link:hover');
+    });
+};
 
 var bowlerViewModel = new BowlerViewModel();
 
