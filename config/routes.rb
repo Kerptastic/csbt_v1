@@ -20,6 +20,8 @@ CSBTV1::Application.routes.draw do
     get '/tournaments/' => 'tournaments#index', :as => :tournament_path
     get '/tournaments/:season' => 'tournaments#index', :as => :tournament_season_path
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
+
+    get '/records/' => 'records#index', :as => :record_path
   end
 
 

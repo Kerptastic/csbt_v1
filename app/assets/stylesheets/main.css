@@ -21,6 +21,14 @@ footer {
     color: #fffFff;
 }
 
+/*
+ * Standard h1 style
+ */
+h1 {
+    margin: 0 0 0 6px;
+    color: #ffffff;
+}
+
 /** fixes **/
 textarea {
     resize: none;

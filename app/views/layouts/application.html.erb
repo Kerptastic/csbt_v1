@@ -8,6 +8,7 @@
   <%= yield(:login) if content_for? :login %>
   <%= yield(:profile) if content_for? :profile %>
   <%= yield(:tournament) if content_for? :tournament %>
+  <%= yield(:record) if content_for? :record %>
   <%= csrf_meta_tags %>
 </head>
 
