@@ -5,3 +5,7 @@
 
 <h1>Records and Achievements</h1>
 <hr/>
+
+<div id='records-display' style='padding-bottom: 1px;'>
+  <%= render 'records/partials/scoring', :locals => { :bowlers => @bowlers } %>
+</div>

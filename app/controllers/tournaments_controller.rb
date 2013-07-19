@@ -26,7 +26,8 @@ class TournamentsController < ApplicationController
 
 
     def show
-        @tourney = Tournament.where(:id => params[:id]).first
+        #@tourney = Tournament.where(:id => params[:id]).includes(:entries).first
+        @tourney = Tournament.where(:id => params[:id]).includes(entries: [:bowler, :games]).first
     end
 
 end

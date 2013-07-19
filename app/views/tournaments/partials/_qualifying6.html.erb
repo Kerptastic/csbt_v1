@@ -10,8 +10,10 @@
     <td class="points-header">Points</td>
   </tr>
 
-  <% entries.sort { |a, b| b.qual_block_total <=> a.qual_block_total }.each_with_index do |entry, index| %>
-      <tr class="<%= %>">
+  <%# entries.sort { |a, b| b.bowler.full_name <=> a.bowler.full_name }.each_with_index do |entry, index| %>
+  <%# entries.sort { |a, b| b.qual_block_total <=> a.qual_block_total }.each_with_index do |entry, index| %>
+  <% @tourney.entries.each_with_index do |entry, index| %>
+      <tr>
         <td class="<%= if entry.is_qual_cut then 'cut cut-left' else 'cut-hidden' end %>"><%= if entry.is_qual_cut then 'CUT' elsif entry.is_high_senior then 'SENIOR' elsif entry.is_high_woman then 'WOMAN' else '' end %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
                    <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= index + 1 %></td>
@@ -22,21 +24,21 @@
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
                    <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(1) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(2) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.get_q_score(2) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(3) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.get_q_score(3) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(4) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.get_q_score(4) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(5) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.get_q_score(5) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.get_q_score(6) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.get_q_score(6) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.qual_block_total %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.qual_block_total %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= entry.qual_block_plus_minus %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= entry.qual_block_plus_minus %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
-                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%= number_with_precision(entry.qual_block_avg, :precision => 2) %></td>
+                   <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"><%#= number_with_precision(entry.qual_block_avg, :precision => 2) %></td>
         <td class="<%= if entry.is_qual_cut then 'cut' end %>
                    <%= if entry.is_high_woman || entry.is_high_senior then ' highlight' end %> centered-text"></td>
       </tr>

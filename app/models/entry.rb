@@ -9,8 +9,7 @@ class Entry < ActiveRecord::Base
     belongs_to :tournament
     has_many :games
 
-    #methods
-
+    #method
     def get_q_score(game_num)
         get_score('q', game_num)
     end
@@ -25,7 +24,7 @@ class Entry < ActiveRecord::Base
 
     def get_score(block, game_num)
         if games.length != 0
-            games.where(:gameid => "#{block}#{game_num}").first.score
+            games.where('gameid = ?', "#{block}#{game_num}").first.score
         end
     end
 
@@ -33,16 +32,14 @@ class Entry < ActiveRecord::Base
 
 
     def is_in_semis
-        if games.empty?
-        else
+        if games.length != 0
             !games.where('gameid like ?', 's%').empty?
         end
     end
 
 
     def is_in_finals
-        if games.empty?
-        else
+        if games.length != 0
             !games.where('gameid like ?', 'f%').empty?
         end
     end
@@ -61,7 +58,7 @@ class Entry < ActiveRecord::Base
         if games.empty?
             '-'
         else
-            games.where('gameid like ?', 'q%').all.sum(&:score)
+            games.where('gameid like ?', 'q%').sum(&:score)
         end
     end
 
@@ -106,7 +103,7 @@ class Entry < ActiveRecord::Base
         if games.empty?
             '-'
         else
-            games.where('gameid like ?', 's%').all.sum(&:score)
+            games.where('gameid like ?', 's%').sum(&:score)
         end
     end
 
