@@ -22,11 +22,15 @@ footer {
 }
 
 /*
- * Standard h1 style
+ * Site wide styling
  */
 h1 {
     margin: 0 0 0 6px;
     color: #ffffff;
+}
+
+hr {
+    margin: 10px 0 10px 0;
 }
 
 /** fixes **/

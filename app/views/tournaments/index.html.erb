@@ -6,24 +6,24 @@
 <h1>Tournament Schedule / Results</h1>
 <hr/>
 
-<div id='tournament-index'>
+<div id='tournaments-index'>
   <div class='season-choose'>
     <label class='float-left'>Season:</label>
     <select class='season-select' data-bind='value: currentSeason'>
-      <option selected='true'>2012-2013</option>
-      <option>2011-2012</option>
-      <option>2010-2011</option>
+      <% years.each_with_index do |year, index| %>
+          <option <% if index == 0 %> selected='true' <% end %>><%= year %></option>
+      <% end %>
     </select>
   </div>
 
   <%= form_tag( :tournament_path,
-                :id => 'season-form',
+                :id => 'index-form',
                 :method => :get,
                 :remote => true) do %>
-      <%= hidden_field_tag 'season' %>
+      <%= hidden_field_tag 'index' %>
   <% end %>
 
   <div id='tourney-display' style='padding-bottom: 1px;'>
-    <%= render 'tournaments/partials/seasonTourneys', :locals => { :tournaments => @tournaments } %>
+    <%= render 'tournaments/partials/seasonTourneys' %>
   </div>
 </div>

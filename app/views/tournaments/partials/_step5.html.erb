@@ -1,4 +1,4 @@
-<% sorted = entries.sort { |a, b| b.qual_plus_semis_total <=> a.qual_plus_semis_total } %>
+<% sorted = @tourney.entries.select { |entry| entry.is_in_stepladder }.sort { |a, b| b.calc_qual_semis_total_pinfall <=> a.calc_qual_semis_total_pinfall } %>
 
 <div class='game-1 float-left'>
   <div class='bracket-entry'>
@@ -11,7 +11,7 @@
       <a href="<%= sorted[4].bowler.profile_url %>"><%= sorted[4].bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= sorted[4].get_f_score(1) %>
+      <%= sorted[4].get_sl_score(1) %>
     </div>
   </div>
   <div class='bracket-entry connector'>
@@ -24,12 +24,12 @@
       <a href="<%= sorted[3].bowler.profile_url %>"><%= sorted[3].bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= sorted[3].get_f_score(1) %>
+      <%= sorted[3].get_sl_score(1) %>
     </div>
   </div>
 </div>
 
-<% winner = sorted[4].get_f_score(1) > sorted[3].get_f_score(1) ? sorted[4] : sorted[3] %>
+<% winner = sorted[4].get_sl_score(1) > sorted[3].get_sl_score(1) ? sorted[4] : sorted[3] %>
 
 
 
@@ -45,7 +45,7 @@
       <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= winner.get_f_score(2) %>
+      <%= winner.get_sl_score(2) %>
     </div>
   </div>
   <div class='bracket-entry connector'>
@@ -58,12 +58,12 @@
       <a href="<%= sorted[2].bowler.profile_url %>"><%= sorted[2].bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= sorted[2].get_f_score(2) %>
+      <%= sorted[2].get_sl_score(2) %>
     </div>
   </div>
 </div>
 
-<% winner = winner.get_f_score(2) > sorted[2].get_f_score(2) ? winner : sorted[2] %>
+<% winner = winner.get_sl_score(2) > sorted[2].get_sl_score(2) ? winner : sorted[2] %>
 
 
 
@@ -79,7 +79,7 @@
       <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= winner.get_f_score(3) %>
+      <%= winner.get_sl_score(3) %>
     </div>
   </div>
   <div class='bracket-entry connector'>
@@ -92,12 +92,12 @@
       <a href="<%= sorted[1].bowler.profile_url %>"><%= sorted[1].bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= sorted[1].get_f_score(3) %>
+      <%= sorted[1].get_sl_score(3) %>
     </div>
   </div>
 </div>
 
-<% winner = winner.get_f_score(3) > sorted[1].get_f_score(3) ? winner : sorted[1] %>
+<% winner = winner.get_sl_score(3) > sorted[1].get_sl_score(3) ? winner : sorted[1] %>
 
 
 <div class='game-4 float-left'>
@@ -112,7 +112,7 @@
       <a href="<%= winner.bowler.profile_url %>"><%= winner.bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= winner.get_f_score(4) %>
+      <%= winner.get_sl_score(4) %>
     </div>
   </div>
   <div class='bracket-entry connector'>
@@ -125,12 +125,12 @@
       <a href="<%= winner.bowler.profile_url %>"><%= sorted[0].bowler.last_name %></a>
     </div>
     <div class='score underline'>
-      <%= sorted[0].get_f_score(4) %>
+      <%= sorted[0].get_sl_score(4) %>
     </div>
   </div>
 </div>
 
-<% winner = winner.get_f_score(4) > sorted[0].get_f_score(4) ? winner : sorted[1] %>
+<% winner = winner.get_sl_score(4) > sorted[0].get_sl_score(4) ? winner : sorted[1] %>
 
 <div class='champion float-left'>
   <div class='bracket-entry'>

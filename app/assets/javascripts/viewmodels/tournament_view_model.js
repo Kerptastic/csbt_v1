@@ -11,24 +11,19 @@ var TournamentViewModel = function() {
 
     /**
      *
-     * @type {Array}
+     * @type {*}
      */
     self.listeners = [];
     /**
      *
      * @type {*}
      */
-    self.previousSeason = "2012-2013";
+    self.previousSeason = '2012-2013';
     /**
      *
      * @type {*}
      */
-    self.currentSeason = ko.observable("");
-    /**
-     *
-     * @type {*}
-     */
-    self.currentSeasonTourneys = ko.observableArray([]);
+    self.currentSeason = ko.observable('');
 
     /**
      *
@@ -65,13 +60,13 @@ var TournamentViewModel = function() {
      *
      */
     self.selectedSeasonChanged = function(newValue) {
-        $('#season').val(self.currentSeason());
+        $('#index').val(self.currentSeason());
 
         if(newValue != self.previousSeason)
         {
             self.previousSeason = self.currentSeason();
 
-            $('#season-form').submit();
+            $('#index-form').submit();
         }
     };
 };
@@ -85,5 +80,5 @@ var tourneyViewModel = new TournamentViewModel();
 $(document).ready(function() {
     tourneyViewModel.init();
 
-    ko.applyBindings(tourneyViewModel, document.getElementById('someElementId'))
+    ko.applyBindings(tourneyViewModel, document.getElementById('tournaments-index'));
 });
