@@ -8,7 +8,6 @@ var BowlerViewModel = function() {
      * @type {*}
      */
     var self = this;
-
     /**
      *
      * @type {Array}
@@ -18,24 +17,17 @@ var BowlerViewModel = function() {
      *
      * @type {*}
      */
-    self.previousChosenLetter = "A";
+    self.previousChosenLetter = 'A';
     /**
      *
      * @type {*}
      */
-    self.currentChosenLetter = ko.observable("");
-    /**
-     *
-     * @type {*}
-     */
-    self.currentBowlers = ko.observableArray([]);
+    self.currentChosenLetter = ko.observable('');
 
     /**
      *
      */
     self.init = function() {
-        self.addListeners();
-
         toggleChosenLetterStyle(self.previousChosenLetter, self.previousChosenLetter);
     };
 
@@ -43,9 +35,7 @@ var BowlerViewModel = function() {
      *
      */
     self.addListeners = function() {
-//        self.listeners.push(self.currentSeason.subscribe(function (newValue) {
-//            self.selectedSeasonChanged(newValue);
-//        }));
+
     };
 
     /**
@@ -79,8 +69,6 @@ var BowlerViewModel = function() {
 
             $('#bowler-list-form').submit();
         }
-
-
     }
 };
 
@@ -98,7 +86,9 @@ var toggleChosenLetterStyle = function(previous, current) {
     });
 };
 
+
 var bowlerViewModel = new BowlerViewModel();
+
 
 /**
  *
@@ -106,5 +96,5 @@ var bowlerViewModel = new BowlerViewModel();
 $(document).ready(function() {
     bowlerViewModel.init();
 
-    ko.applyBindings(bowlerViewModel, document.getElementById('someElementId'))
+    ko.applyBindings(bowlerViewModel, document.getElementById('bowlers-index'));
 });

@@ -1,11 +1,30 @@
 <% content_for :record do %>
     <%= stylesheet_link_tag 'records' %>
-    <%#= javascript_include_tag 'viewmodels/bowler_view_model' %>
+    <%= javascript_include_tag 'viewmodels/records_view_model' %>
 <% end %>
 
 <h1>Records and Achievements</h1>
 <hr/>
 
+
+<div>
+  <div class='records-choose'>
+    <label class='float-left'>Categories:</label>
+    <select id='category-select' class='category-select' data-bind='value: currentCategory'>
+        <% categories.keys.each do |category, index| %>
+          <option value='<%= category %>'<% if index == 0 %> selected='true' <% end %>><%= categories[category][0]  %></option>
+        <% end %>
+    </select>
+  </div>
+
+  <%= form_tag( :record_path,
+                :id => 'records-form',
+                :method => :get,
+                :remote => true) do %>
+      <%= hidden_field_tag 'category' %>
+  <% end %>
+</div>
+
 <div id='records-display' style='padding-bottom: 1px;'>
-  <%= render 'records/partials/scoring', :locals => { :bowlers => @bowlers } %>
+  <%#= render 'records/partials/choose' %>
 </div>

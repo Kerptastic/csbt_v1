@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708040512) do
+ActiveRecord::Schema.define(:version => 20130726010203) do
 
   create_table "bowlers", :force => true do |t|
     t.integer  "user_id",        :limit => 8
@@ -51,16 +51,31 @@ ActiveRecord::Schema.define(:version => 20130708040512) do
   end
 
   create_table "entries", :force => true do |t|
-    t.integer  "tournament_id",  :limit => 8
-    t.integer  "bowler_id",      :limit => 8
-    t.boolean  "is_qual_cut",                 :default => false
-    t.boolean  "is_semi_cut",                 :default => false
-    t.boolean  "is_high_woman",               :default => false
-    t.boolean  "is_high_senior",              :default => false
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.integer  "tournament_id",            :limit => 8
+    t.integer  "bowler_id",                :limit => 8
+    t.boolean  "is_qual_cut",                           :default => false
+    t.boolean  "is_semi_cut",                           :default => false
+    t.boolean  "is_high_woman",                         :default => false
+    t.boolean  "is_high_senior",                        :default => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.boolean  "is_winner"
     t.boolean  "is_runner_up"
+    t.integer  "total_pinfall",                         :default => 0,     :null => false
+    t.integer  "total_qual_pinfall",                    :default => 0,     :null => false
+    t.integer  "total_semi_pinfall",                    :default => 0,     :null => false
+    t.integer  "total_matchplay_pinfall",               :default => 0,     :null => false
+    t.integer  "total_stepladder_pinfall",              :default => 0,     :null => false
+    t.integer  "total_games",                           :default => 0,     :null => false
+    t.integer  "total_qual_games",                      :default => 0,     :null => false
+    t.integer  "total_semi_games",                      :default => 0,     :null => false
+    t.integer  "total_matchplay_games",                 :default => 0,     :null => false
+    t.integer  "total_matchplay_wins",                  :default => 0,     :null => false
+    t.integer  "total_stepladder_games",                :default => 0,     :null => false
+    t.integer  "total_stepladder_wins",                 :default => 0,     :null => false
+    t.integer  "highest_3_game_set",                    :default => 0,     :null => false
+    t.integer  "highest_6_game_set",                    :default => 0,     :null => false
+    t.integer  "highest_8_game_set",                    :default => 0,     :null => false
   end
 
   create_table "games", :force => true do |t|
@@ -90,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130708040512) do
     t.integer  "runner_up_id",      :limit => 8
     t.integer  "top_woman_id",      :limit => 8
     t.integer  "top_senior_id",     :limit => 8
+    t.boolean  "is_major"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,17 @@
+div {
+    color: #ffffff;
+}
+
+.records-choose {
+    color: #ffffff;
+    margin: 20px 0 0 0;
+}
+
+.records-choose label {
+    padding-top: 5px;
+}
+
+.category-select {
+    margin-left: 8px;
+    width: 170px;
+}

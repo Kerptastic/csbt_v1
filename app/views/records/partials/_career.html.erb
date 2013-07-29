@@ -1,0 +1,39 @@
+<h1>CAREER</h1>
+
+<h3>Career Events Bowled</h3>
+
+<table>
+    <%# @bowlers.sort { |a, b| b.total_tourneys <=> a.total_tourneys }.each_with_index do |bowler, index| %>
+        <tr>
+          <td><%#= index + 1 %></td>
+          <td><%#= bowler.full_name %></td>
+          <td><%#= bowler.total_tourneys %></td>
+        </tr>
+    <%# end %>
+</table>
+
+
+<h3>Career Pinfall</h3>
+<table>
+  <% @bowlers.sort { |a, b| b.career_pinfall <=> a.career_pinfall }.each_with_index do |bowler, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= bowler.full_name %></td>
+        <td><%= bowler.career_pinfall %></td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+
+         <!--
+, Total Wins: <%#= bowler.total_wins %>
+, Total Tourneys: <%#= bowler.total_tourneys %>
+, Career Avg: <%#= bowler.career_avg %>
+, Career Games: <%#= bowler.career_num_games %>
+, Career Majors: <%#= bowler.total_majors %>
+, Best 3 Games: <%#= bowler.best_3_game_total[:total] %> on <%#= bowler.best_3_game_total[:date]  %>
+, Best 6 Games: <%#= bowler.best_6_game_total[:total] %> on <%#= bowler.best_6_game_total[:date]  %>
+, Best 8 Games: <%#= bowler.best_8_game_total[:total] %> on <%#= bowler.best_8_game_total[:date]  %>
+                   -->

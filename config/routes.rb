@@ -18,10 +18,15 @@ CSBTV1::Application.routes.draw do
     get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
 
     get '/tournaments/' => 'tournaments#index', :as => :tournament_path
-    get '/tournaments/:season' => 'tournaments#index', :as => :tournament_season_path
+    get '/tournaments/:index' => 'tournaments#index', :as => :tournament_season_path
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
 
     get '/records/' => 'records#index', :as => :record_path
+    get '/records/choose' => 'records#choose', :as => :record_choose_path
+    get '/records/scoring' => 'records#scoring', :as => :record_scoring_path
+    get '/records/season' => 'records#season', :as => :record_season_path
+    get '/records/career' => 'records#career', :as => :record_career_path
+    get '/records/achievements' => 'records#achievements', :as => :record_achievements_path
   end
 
 

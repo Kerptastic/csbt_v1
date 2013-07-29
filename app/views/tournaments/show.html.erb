@@ -30,21 +30,22 @@
   <div class='tab-content'>
     <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
         <div class='tab-pane active' id='finals-tab'>
-          <%#= render 'tournaments/partials/step5', entries: @tourney.entries.select { |entry| entry.is_in_finals } %>
+          <%= render 'tournaments/partials/step5' %>
         </div>
     <% end %>
 
 
     <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
         <div class='tab-pane' id='semi-finals-tab'>
-          <%#= render 'tournaments/partials/semi3', entries: @tourney.entries.select { |entry| entry.is_in_semis } %>
+          <%= render 'tournaments/partials/semi3' %>
         </div>
     <% end %>
 
 
     <% if @tourney.format == 'Standard' || @tourney.format == 'Round Robin' || @tourney.format == 'Masters' %>
         <div class='tab-pane' id='qualifying-tab'>
-          <%= render 'tournaments/partials/qualifying6'%></div>
+          <%= render 'tournaments/partials/qualifying6'%>
+        </div>
     <% end %>
   </div>
 </div>

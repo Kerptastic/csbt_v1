@@ -11,7 +11,8 @@
     <td class="avg-header">Avg.</td>
     <td class="points-header">Points</td>
   </tr>
-  <% entries.sort { |a, b| b.qual_plus_semis_total <=> a.qual_plus_semis_total }.each_with_index do |entry, index| %>
+
+  <% @tourney.entries.select { |entry| entry.is_in_semis }.sort { |a, b| b.calc_qual_semis_total_pinfall <=> a.calc_qual_semis_total_pinfall }.each_with_index do |entry, index| %>
       <tr class="<%= %>">
         <td class="<%= if entry.is_semi_cut then 'cut cut-left' else 'cut-hidden' end %>"><%= if entry.is_semi_cut then 'CUT' end %></td>
         <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= index + 1 %></td>
@@ -22,11 +23,11 @@
         <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(1) %></td>
         <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(2) %></td>
         <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.get_s_score(3) %></td>
-        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.semi_block_total %></td>
-        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_block_total %></td>
-        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_plus_semis_total %></td>
-        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_plus_semis_plus_minus %></td>
-        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= number_with_precision(entry.qual_plus_semis_avg, :precision => 2) %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.total_semi_pinfall %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.total_qual_pinfall %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.calc_qual_semis_total_pinfall %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= entry.qual_semis_plus_minus %></td>
+        <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"><%= number_with_precision(entry.calc_qual_semis_avg, :precision => 2) %></td>
         <td class="<%= if entry.is_semi_cut then 'cut' end %> centered-text"></td>
     </tr>
   <% end %>
