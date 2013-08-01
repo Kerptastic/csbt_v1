@@ -15,10 +15,6 @@ class CreateBowlers < ActiveRecord::Migration
             t.string 'hometown_state', :default => 'CO'
             t.string 'bio', :limit => 1000
             t.string 'picture_url'
-            t.integer 'num_threes', :limit => 3
-            t.integer 'num_eights', :limit => 3
-            t.integer 'high_series', :limit => 3
-            t.integer 'high_game', :limit => 3
 
             #helpers
             t.timestamps

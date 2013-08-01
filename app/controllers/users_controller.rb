@@ -19,7 +19,9 @@ class UsersController < Devise::RegistrationsController
             @user.bowler = @bowler
         end
 
-        @user.bowler.picture_url  = "../assets/#{@user.bowler.first_name.downcase}_#{@user.bowler.last_name.downcase}.jpg"
+        @count = User.includes(:bowler).where('Bowlers.first_name = ? AND Bowlers.last_name = ?', @user.bowler.first_name, @user.bowler.last_name).count
+
+        @user.bowler.picture_url  = "../assets/#{@user.bowler.first_name.downcase}_#{@user.bowler.last_name.downcase}_#{@count + 1}.jpg"
         @user.bowler.contact_info = ContactInfo.new(params[:contact_info])
 
         if @user.save

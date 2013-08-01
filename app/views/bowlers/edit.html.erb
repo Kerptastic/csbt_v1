@@ -3,7 +3,7 @@
 <% end -%>
 
 
-<%= form_for @bowler, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}",
+<%= form_for [@bowler, @stats], :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}",
              :html => {:id => 'edit-bowler-form',
                        :class => ''} do |f| %>
 

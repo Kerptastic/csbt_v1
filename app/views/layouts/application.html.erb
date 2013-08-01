@@ -43,12 +43,18 @@
           <li><a href="/profiles">Bowlers</a></li>
           <li><a href="/poy">POY Standings</a></li>
           <li><a href="/records">All-Time Records</a></li>
-          <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?;
-                                                 '/login'
-                                             else
-                                                 "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}"
-                                             end %>>MY CSBT</a></li>
 
+          <% if user_signed_in? && current_user.try(:admin)-%>
+              <li class="nav-header"><a href="#">Admin Goodies</a></li>
+              <li><a href="/new_tournament">Create Tournament</a></li>
+              <li><a href="/new_bowler">Add Bowler</a></li>
+          <% end -%>
+
+          <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?;
+                                               '/login'
+                                             else
+                                               "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}"
+                                             end %>>MY CSBT</a></li>
           <% if user_signed_in? -%>
               <li><a href=<%= if current_user.nil? || current_user.id.nil?;
                                   ''

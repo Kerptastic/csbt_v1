@@ -18,11 +18,13 @@ class BowlersController < ApplicationController
     #
     def edit
         @bowler = nil
+        @stats = nil
 
         if !current_user.nil? && !current_user.bowler.nil? && !current_user.bowler.id.nil?
 
             if current_user.bowler[:first_name].downcase == params[:firstname].downcase && current_user.bowler[:last_name].downcase == params[:lastname].downcase
                 @bowler = current_user.bowler
+                @stats = @bowler.stats
             else
                 redirect_to :action => 'badboy'
             end

@@ -214,11 +214,6 @@ DEPENDENCIES
   rails (= 3.2.11)
   rspec-rails (>= 2.11.4)
   sass-rails (~> 3.2.3)
-<<<<<<< HEAD
-  seed_dump
-=======
-  therubyracer (>= 0.11.0)
->>>>>>> bf8d9f468ed90f49b15ac389c44d0dee9993edaf
   thin
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

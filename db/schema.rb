@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726010203) do
+ActiveRecord::Schema.define(:version => 20130729034615) do
+
+  create_table "bowler_stats", :force => true do |t|
+    t.integer  "bowler_id",          :limit => 8
+    t.integer  "high_3_game_set_id", :limit => 8
+    t.integer  "high_4_game_set_id", :limit => 8
+    t.integer  "high_6_game_set_id", :limit => 8
+    t.integer  "high_8_game_set_id", :limit => 8
+    t.integer  "num_titles",         :limit => 8
+    t.integer  "num_majors",         :limit => 8
+    t.integer  "num_events",         :limit => 8
+    t.integer  "num_games",          :limit => 8
+    t.integer  "total_pinfall",      :limit => 8
+    t.integer  "career_avg",         :limit => 8
+    t.integer  "career_money",       :limit => 8
+    t.integer  "num_cashes",         :limit => 8
+    t.integer  "match_play_games",   :limit => 8
+    t.integer  "match_play_wins",    :limit => 8
+    t.integer  "high_series",        :limit => 3
+    t.integer  "high_game",          :limit => 3
+    t.integer  "num_300s",           :limit => 3
+    t.integer  "num_800s",           :limit => 3
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
 
   create_table "bowlers", :force => true do |t|
     t.integer  "user_id",        :limit => 8
@@ -25,10 +49,6 @@ ActiveRecord::Schema.define(:version => 20130726010203) do
     t.string   "hometown_state",                 :default => "CO"
     t.string   "bio",            :limit => 1000
     t.string   "picture_url"
-    t.integer  "num_threes",     :limit => 3
-    t.integer  "num_eights",     :limit => 3
-    t.integer  "high_series",    :limit => 3
-    t.integer  "high_game",      :limit => 3
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
   end
@@ -93,6 +113,11 @@ ActiveRecord::Schema.define(:version => 20130726010203) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "tournament_templates", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tournaments", :force => true do |t|
     t.integer  "bowling_center_id", :limit => 8
     t.integer  "oil_pattern_id",    :limit => 8
@@ -109,11 +134,11 @@ ActiveRecord::Schema.define(:version => 20130726010203) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",               :limit => 25,                 :null => false
-    t.string   "email",                  :limit => 50,                 :null => false
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
-    t.string   "encrypted_password",                   :default => "", :null => false
+    t.string   "username",               :limit => 25,                    :null => false
+    t.string   "email",                  :limit => 50,                    :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.string   "encrypted_password",                   :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -122,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20130726010203) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin",                                :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

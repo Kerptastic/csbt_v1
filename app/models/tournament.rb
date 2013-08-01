@@ -24,4 +24,10 @@ class Tournament < ActiveRecord::Base
     belongs_to :top_senior, :class_name => 'Entry'
 
     has_many :entries
+
+    before_save :update_records
+
+    def update_records
+      puts 'updating record data'
+    end
 end
