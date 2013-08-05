@@ -15,6 +15,8 @@ class Bowler < ActiveRecord::Base
     belongs_to :user
     has_many :entries
 
+    accepts_nested_attributes_for :stats
+
     #methods
     def full_name
         "#{first_name} #{last_name}"
