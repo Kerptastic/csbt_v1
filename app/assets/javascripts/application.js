@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require libs/bootstrap.min
 //= require libs/knockout-2.2.1
+//= require libs/bootstrap-datepicker
+//= require bowlers

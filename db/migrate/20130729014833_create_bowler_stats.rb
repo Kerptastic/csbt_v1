@@ -14,7 +14,7 @@ class CreateBowlerStats < ActiveRecord::Migration
       t.integer 'num_events', :limit => 5
       t.integer 'num_games', :limit => 5
       t.integer 'total_pinfall', :limit => 5
-      t.integer 'career_avg', :limit => 5
+      t.decimal 'career_avg', :limit => 5, :precision => 5, :scale => 2
       t.integer 'career_money', :limit => 5
       t.integer 'num_cashes', :limit => 5
       t.integer 'match_play_games', :limit => 5

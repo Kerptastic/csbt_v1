@@ -46,8 +46,10 @@
 
           <% if user_signed_in? && current_user.try(:admin)-%>
               <li class="nav-header"><a href="#">Admin Goodies</a></li>
-              <li><a href="/new_tournament">Create Tournament</a></li>
-              <li><a href="/new_bowler">Add Bowler</a></li>
+              <li><a href="/tournaments/direct">Direct Tournament</a></li>
+              <li><a href="/tournaments/new">Create Tournament</a></li>
+              <li><a href="/tournament/edit">Edit Tournament</a></li>
+              <li><a href="/bowlers/new">Add Bowler</a></li>
           <% end -%>
 
           <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?;

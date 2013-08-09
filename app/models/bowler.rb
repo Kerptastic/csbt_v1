@@ -1,6 +1,6 @@
 class Bowler < ActiveRecord::Base
     attr_accessible :first_name, :last_name, :contact_info, :birthday, :height_ft, :height_in, :joined_date,
-                    :hometown_city, :hometown_state, :bio, :picture_url, :stats
+                    :hometown_city, :hometown_state, :bio, :picture_url, :stats, :stats_attributes
 
     #validations
     validates :first_name, :presence => true,
