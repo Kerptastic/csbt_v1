@@ -1,13 +1,14 @@
 class BowlerStats < ActiveRecord::Base
   attr_accessible :high_3_game_set, :high_4_game_set, :high_6_game_set, :high_8_game_set, :titles, :majors,
-                  :num_events, :num_games, :total_pinfall, :career_avg, :career_money, :num_cashes, :match_play_wins,
-                  :match_play_matches, :high_series, :high_game, :num_300s, :num_800s
+                  :num_events, :num_games, :total_pinfall, :season_avg, :career_avg, :career_money, :num_cashes,
+                  :match_play_wins, :match_play_matches, :high_series, :high_game, :num_300s, :num_800s
 
   has_one :high_3_game_set, :class_name => 'Entry'
   has_one :high_4_game_set, :class_name => 'Entry'
   has_one :high_6_game_set, :class_name => 'Entry'
   has_one :high_8_game_set, :class_name => 'Entry'
   belongs_to :bowler
+
 end
 
 

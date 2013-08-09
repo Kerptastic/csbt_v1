@@ -15,11 +15,15 @@ CSBTV1::Application.routes.draw do
     get '/profile/:lastname.:firstname' => 'bowlers#show', :as => :bowler_show
     put '/profile/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update
     get '/profile/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit
+    get '/bowlers/new' => 'bowlers#create', :as => :bowler_create
     get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy
 
-    get '/tournaments/' => 'tournaments#index', :as => :tournament_path
-    get '/tournaments/:index' => 'tournaments#index', :as => :tournament_season_path
+    get '/tournaments' => 'tournaments#index', :as => :tournament_season_path
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show
+    get '/tournaments/new' => 'tournaments#create', :as => :tournament_create
+    get '/tournament/edit' => 'tournaments#edit', :as => :tournament_edit
+    get '/tournament/direct' => 'tournament#direct', :as => :tournament_direct
+    get '/badboy' => 'tournaments#badboy', :as => :bowler_badboy
 
     get '/records/' => 'records#index', :as => :record_path
     get '/records/choose' => 'records#choose', :as => :record_choose_path

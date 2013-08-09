@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729034615) do
+ActiveRecord::Schema.define(:version => 20130806005448) do
 
   create_table "bowler_stats", :force => true do |t|
     t.integer  "bowler_id",          :limit => 8
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130729034615) do
     t.integer  "num_events",         :limit => 8
     t.integer  "num_games",          :limit => 8
     t.integer  "total_pinfall",      :limit => 8
-    t.integer  "career_avg",         :limit => 8
+    t.decimal  "career_avg",                      :precision => 5, :scale => 2
     t.integer  "career_money",       :limit => 8
     t.integer  "num_cashes",         :limit => 8
     t.integer  "match_play_games",   :limit => 8
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20130729034615) do
     t.integer  "high_game",          :limit => 3
     t.integer  "num_300s",           :limit => 3
     t.integer  "num_800s",           :limit => 3
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
+    t.decimal  "season_avg",                      :precision => 5, :scale => 2
   end
 
   create_table "bowlers", :force => true do |t|

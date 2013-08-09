@@ -15,17 +15,17 @@
         <tbody>
             <tr>
                 <td class="info-heading">Age:</td>
-                <td class="info-data"><%= @bowler.birthday %></td>
+                <td class="info-data"><%= Date.today.year - @bowler.birthday.year %></td>
                 <td class="info-heading">Height:</td>
                 <td class="info-data"><%= @bowler.height %></td>
                 <td class="info-heading">Hometown:</td>
                 <td class="info-data"><%= @bowler.hometown_city %>, <%= @bowler.hometown_state %></td>
                 <td class="info-heading">2013 Avg:</td>
-                <td class="info-data"><%= number_with_precision(@bowler.stats.career_avg, :precision => 2) %></td>
+                <td class="info-data"><%= number_with_precision(@bowler.stats.season_avg, :precision => 2) %></td>
             </tr>
             <tr>
                 <td class="info-heading">Joined:</td>
-                <td class="info-data"><%= @bowler.joined_date %></td>
+                <td class="info-data"><%= @bowler.joined_date.strftime('%m/%d/%Y') %></td>
                 <td class="info-heading">Titles:</td>
                 <td class="info-data"><%= @bowler.stats.num_titles %></td>
                 <td class="info-heading"></td>

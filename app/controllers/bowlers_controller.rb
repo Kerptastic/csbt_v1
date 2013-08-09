@@ -11,6 +11,11 @@ class BowlersController < ApplicationController
     end
 
     #
+    def new
+
+    end
+
+    #
     def show
         @bowler = Bowler.where(:last_name => params[:lastname], :first_name => params[:firstname]).first
     end
@@ -33,7 +38,9 @@ class BowlersController < ApplicationController
 
     #
     def update
-        Bowler.update_all(params[:bowler], "id = #{current_user.bowler.id}")
+        #Bowler.update_all(params[:bowler], "id = #{current_user.bowler.id}")
+        @b = Bowler.find("#{current_user.bowler.id}")
+        @b.update_attributes params[:bowler]
 
         redirect_to :action => 'show'
     end
