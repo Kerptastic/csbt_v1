@@ -23,6 +23,16 @@ var BowlerViewModel = function() {
      * @type {*}
      */
     self.currentChosenLetter = ko.observable('');
+    /**
+     *
+     * @type {*}
+     */
+    self.bowlerFirstName = ko.observable('');
+    /**
+     *
+     * @type {*}
+     */
+    self.bowlerLastName = ko.observable('');
 
     /**
      *
@@ -96,5 +106,5 @@ var bowlerViewModel = new BowlerViewModel();
 $(document).ready(function() {
     bowlerViewModel.init();
 
-    ko.applyBindings(bowlerViewModel, document.getElementById('bowlers-index'));
+    ko.applyBindings(bowlerViewModel, document.getElementById('bowlers'));
 });

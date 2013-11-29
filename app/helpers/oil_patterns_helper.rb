@@ -1,0 +1,2 @@
+module OilPatternsHelper
+end

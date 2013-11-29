@@ -1,4 +1,4 @@
-<% content_for :profile do %>
+<% content_for :bowler do %>
     <%= stylesheet_link_tag 'bowlers' %>
     <%= javascript_include_tag 'viewmodels/bowler_view_model' %>
 <% end %>
@@ -6,7 +6,7 @@
 <h1>Bowlers</h1>
 <hr/>
 
-<div id='bowlers-index'>
+<div id='bowlers'>
   <div class='alpha-links'>
     <ul class='link-list'>
         <% alphabet.each do |letter| %>

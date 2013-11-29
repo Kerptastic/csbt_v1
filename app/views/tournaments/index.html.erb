@@ -1,4 +1,4 @@
-<% content_for :profile do -%>
+<% content_for :tournament do -%>
     <%= stylesheet_link_tag 'schedule' %>
     <%= javascript_include_tag 'viewmodels/tournament_view_model' %>
 <% end -%>
@@ -16,7 +16,7 @@
     </select>
   </div>
 
-  <%= form_tag( :tournament_path,
+  <%= form_tag( :tournament_season_path,
                 :id => 'index-form',
                 :method => :get,
                 :remote => true) do %>

@@ -1,57 +1,57 @@
-<% content_for :profile do -%>
-    <%= stylesheet_link_tag 'profiles' %>
+<% content_for :bowler do -%>
+    <%= stylesheet_link_tag 'bowlers' %>
 <% end -%>
 
-<div class="photo-holder">
+<div class='photo-holder'>
     <img src="<%= @bowler.picture_url %>" alt="<%= @bowler.picture_url %>" class="photo"/>
 </div>
 
 
-<div class="basic-info">
+<div class='basic-info'>
     <h1><%= @bowler.full_name %></h1>
     <hr/>
 
-    <table class="basic-info-table">
+    <table class='basic-info-table'>
         <tbody>
             <tr>
-                <td class="info-heading">Age:</td>
-                <td class="info-data"><%= Date.today.year - @bowler.birthday.year %></td>
-                <td class="info-heading">Height:</td>
-                <td class="info-data"><%= @bowler.height %></td>
-                <td class="info-heading">Hometown:</td>
-                <td class="info-data"><%= @bowler.hometown_city %>, <%= @bowler.hometown_state %></td>
-                <td class="info-heading">2013 Avg:</td>
-                <td class="info-data"><%= number_with_precision(@bowler.stats.season_avg, :precision => 2) %></td>
+                <td class='info-heading'>Age:</td>
+                <td class='info-data'><%= Date.today.year - @bowler.birthday.year %></td>
+                <td class='info-heading'>Height:</td>
+                <td class='info-data'><%= @bowler.height %></td>
+                <td class='info-heading'>Hometown:</td>
+                <td class='info-data'><%= @bowler.hometown_city %>, <%= @bowler.hometown_state %></td>
+                <td class='info-heading'>2013 Avg:</td>
+                <td class='info-data'><%= number_with_precision(@bowler.stats.season_avg, :precision => 2) %></td>
             </tr>
             <tr>
-                <td class="info-heading">Joined:</td>
-                <td class="info-data"><%= @bowler.joined_date.strftime('%m/%d/%Y') %></td>
-                <td class="info-heading">Titles:</td>
-                <td class="info-data"><%= @bowler.stats.num_titles %></td>
-                <td class="info-heading"></td>
-                <td class="info-data"></td>
-                <td class="info-heading">Career Avg:</td>
-                <td class="info-data"><%= number_with_precision(@bowler.stats.career_avg, :precision => 2) %></td>
+                <td class='info-heading'>Joined:</td>
+                <td class='info-data'><%= @bowler.joined_date.strftime('%m/%d/%Y') %></td>
+                <td class='info-heading'>Titles:</td>
+                <td class='info-data'><%= @bowler.stats.num_titles %></td>
+                <td class='info-heading'></td>
+                <td class='info-data'></td>
+                <td class='info-heading'>Career Avg:</td>
+                <td class='info-data'><%= number_with_precision(@bowler.stats.career_avg, :precision => 2) %></td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<div class="personal-info">
-    <div class="tabbable">
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a href="#bio-tab" data-toggle="tab">Bio</a>
+<div class='personal-info'>
+    <div class='tabbable'>
+        <ul class='nav nav-tabs'>
+            <li class='active'>
+                <a href='#bio-tab' data-toggle='tab'>Bio</a>
             </li>
             <li>
-                <a href="#stats-tab" data-toggle="tab">Stats</a>
+                <a href='#stats-tab' data-toggle='tab'>Stats</a>
             </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="bio-tab">
-                <p><%= @bowler.bio %></p>
+        <div class='tab-content'>
+            <div class='tab-pane active' id='bio-tab'>
+                <p class='bio-content'><%= @bowler.bio %></p>
             </div>
-          <div class="tab-pane" id="stats-tab">
+          <div class='tab-pane' id='stats-tab'>
                 <p>Put some stats here!</p>
           </div>
         </div>

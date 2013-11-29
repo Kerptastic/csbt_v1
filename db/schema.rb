@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806005448) do
+ActiveRecord::Schema.define(:version => 20130827024430) do
 
   create_table "bowler_stats", :force => true do |t|
     t.integer  "bowler_id",          :limit => 8
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20130806005448) do
     t.integer  "top_woman_id",      :limit => 8
     t.integer  "top_senior_id",     :limit => 8
     t.boolean  "is_major"
+    t.integer  "cash_ratio_value",  :limit => 3,  :default => 4
   end
 
   create_table "users", :force => true do |t|

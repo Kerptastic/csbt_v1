@@ -1,7 +1,26 @@
-<% content_for :profile do -%>
-    <%#= stylesheet_link_tag 'schedule' %>
-    <%#= javascript_include_tag 'viewmodels/tournament_view_model' %>
-<% end -%>
+<% content_for :bowler do %>
+    <%= stylesheet_link_tag 'bowlers' %>
+    <%= javascript_include_tag 'viewmodels/bowler_view_model' %>
+<% end %>
 
 <h1>New Bowler</h1>
 <hr/>
+
+<%= form_for @bowler, url: '/bowlers', remote: true,
+             :html => { :id => 'new-bowler-form',
+                        :class => '' }  do |f| %>
+    <div class='edit-section'>
+        <%= f.label :first_name, 'First Name:', :for => 'first-name', :class => 'name-label' %>
+        <%= f.text_field :first_name, :id => 'first-name', :class => '' %>
+    </div>
+    <div class='edit-section'>
+        <%= f.label :last_name, 'Last Name:', :for => 'last-name', :class => 'name-label' %>
+        <%= f.text_field :last_name, :id => 'last-name', :class => '' %>
+    </div>
+    <%= f.submit 'Create', :id => 'create-button', :class => 'btn btn-primary btn-large new-bowler-btn' %>
+<% end %>
+
+<div id='bowlers'>
+    <p id='saved-msg' class='hidden' ><span data-bind='text: bowlerFirstName'></span> has been added.</p>
+    <p id='exists-msg' class='hidden'><span data-bind='text: bowlerFirstName'></span> already exists.</p>
+</div>

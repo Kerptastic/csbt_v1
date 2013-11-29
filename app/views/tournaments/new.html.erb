@@ -1,7 +1,107 @@
-<% content_for :profile do -%>
-    <%#= stylesheet_link_tag 'schedule' %>
-    <%#= javascript_include_tag 'viewmodels/tournament_view_model' %>
-<% end -%>
+<% content_for :tournament do %>
+    <%= stylesheet_link_tag 'tournaments' %>
+    <%= stylesheet_link_tag 'oil_patterns' %>
+    <%= stylesheet_link_tag 'dialogs' %>
+    <%= javascript_include_tag 'tournaments' %>
+    <%= javascript_include_tag 'dialogs' %>
+    <%= javascript_include_tag 'viewmodels/tournament_view_model' %>
+<% end %>
 
-<h1>New Tournament Setup</h1>
-<hr/>
+
+<%= form_for @tournament, url: '/tournaments/new', remote: true,
+             :html             => { :id    => 'new-tournament-form',
+                                    :class => '' } do |f| %>
+    <h1>New Tournament Setup</h1>
+    <hr/>
+
+    <div class='left-edit-column'>
+      <div class='edit-section'>
+        <%= f.label :name, 'Name:', :for => 'name', :class => '' %>
+        <%= f.text_field :name, :id => 'name', :class => '' %>
+      </div>
+
+      <div class='edit-section'>
+        <%= f.label :bowling_center, 'Bowling Center:', :for => 'bowling_center', :class => '' %>
+        <%= f.select :bowling_center, options_from_collection_for_select(@centers, 'id', 'name'), {}, { :id => 'bowling-center', :class => '', 'data-bind' => 'value: selectedBowlingCenterId' } %>
+
+        <div class='edit-btn-grp btn-group'>
+          <a class='btn'><i class='icon-pencil'></i></a>
+          <a class='btn'><i class='icon-plus'></i></a>
+        </div>
+      </div>
+
+      <div class='edit-section'>
+        <%= f.label :format, 'Format:', :for => 'format', :class => 'edit-format-label' %>
+        <%= f.select :format, options_for_select(formats, 'Standard'), {}, { :id => 'format', :class => '' } %>
+
+        <div class='edit-btn-grp btn-group'>
+          <a class='btn'><i class='icon-pencil'></i></a>
+          <a class='btn'><i class='icon-plus'></i></a>
+        </div>
+      </div>
+
+      <div class='edit-section'>
+        <%= f.check_box :is_major, :id => 'is-major', :class => '', :checked => false %>
+        <%= f.label :is_major, 'Is Major:', :for => 'is-major', :class => '' %>
+      </div>
+    </div>
+
+
+    <div class='right-edit-column'>
+      <div class='edit-section'>
+        <%= f.label :cash_ratio_value, 'Cash Ratio 1 in:', :for => 'cash_ratio_value', :class => 'edit-cash-label' %>
+        <%= f.select :cash_ratio_value, options_for_select(ratio_values, 4), {}, { :id => 'cash-ratio', :class => 'edit-cash-select' } %>
+      </div>
+
+
+      <div class='edit-section'>
+        <%= f.label :oil_pattern, 'Oil Pattern:', :for => 'oil_pattern', :class => '' %>
+        <%= f.select :oil_pattern, options_from_collection_for_select(@patterns, 'id', 'name'), {}, { :id => 'oil-pattern-select', :class => '', 'data-bind' => 'value: selectedOilPatternId' } %>
+
+        <div class='edit-btn-grp btn-group'>
+          <a class='btn' data-toggle='modal' data-target='#update-pattern-modal'><i class='icon-pencil'></i></a>
+          <a class='btn' data-toggle='modal' data-target='#add-pattern-modal'><i class='icon-plus'></i></a>
+        </div>
+      </div>
+
+      <div class='edit-section'>
+        <%= f.label :date, 'Date:', :for => 'date', :class => 'edit-date-label' %>
+        <%= f.hidden_field :date %>
+
+        <div class='input-append date' id='date-picker' data-date='12-02-2012' data-date-format='mm-dd-yyyy'>
+          <input class='span2' size='16' type='text' value='12-02-2012'>
+          <span class='add-on'><i class='icon-th'></i></span>
+        </div>
+      </div>
+
+      <%= f.submit 'Create', :id => 'create-button', :class => 'btn btn-primary btn-large new-tourney-btn' %>
+    </div>
+<% end %>
+
+
+
+<div id='tournaments'>
+  <p id='saved-msg' class='hidden'><span data-bind='text: newTourneyName'></span> has been added.</p>
+  <p id='exists-msg' class='hidden'><span data-bind='text: newTourneyName'></span> already exists.</p>
+</div>
+
+
+
+<div id='add-pattern-modal' class='dialog modal hide fade'>
+  <%= render 'oil_patterns/partials/new' %>
+</div>
+
+
+
+<div id='update-pattern-modal' class='dialog modal hide fade'>
+  <%= render 'oil_patterns/partials/update' %>
+</div>
+
+
+
+<script>
+    initializeTourneyDatePicker();
+</script>
+
+
+

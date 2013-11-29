@@ -1,0 +1,13 @@
+<% if @saved %>
+    $('#saved-msg').removeClass('hidden');
+    $('#exists-msg').addClass('hidden');
+<% else %>
+    $('#saved-msg').addClass('hidden');
+    $('#exists-msg').removeClass('hidden');
+<% end %>
+
+$('#first-name').val("");
+$('#last-name').val("");
+
+bowlerViewModel.bowlerFirstName("<%= @saved_bowler.first_name %>");
+bowlerViewModel.bowlerLastName("<%= @saved_bowler.last_name %>");

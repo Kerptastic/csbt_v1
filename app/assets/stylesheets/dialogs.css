@@ -1,0 +1,29 @@
+.csbt-dialog h2 {
+    color: #fff;
+    margin: 8px 0 5px 20px;
+}
+
+.csbt-dialog hr {
+    margin: 10px 12px 18px 12px;
+}
+
+.csbt-dialog .edit-section input {
+    width: 280px;
+}
+
+.csbt-dialog .edit-section {
+    margin: 10px 0 5px 0;
+}
+
+.csbt-dialog .edit-section label {
+    margin: 0 0 0 20px;
+    width: 50px;
+}
+
+.csbt-dialog .buttons {
+    margin: -4px 12px 12px 0;
+}
+
+.csbt-dialog .btn {
+    margin: 0 4px 0 0px;
+}

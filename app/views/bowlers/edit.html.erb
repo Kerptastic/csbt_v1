@@ -1,35 +1,36 @@
-<% content_for :profile do -%>
-    <%= stylesheet_link_tag 'profiles' %>
+<% content_for :bowler do -%>
+    <%= stylesheet_link_tag 'bowlers' %>
+    <%= javascript_include_tag 'bowlers' %>
 <% end -%>
 
 
-<%= form_for @bowler, :url => "/profile/#{@bowler.last_name}.#{@bowler.first_name}",
-             :html => {:id => 'edit-bowler-form',
-                       :class => ''} do |f| %>
+<%= form_for @bowler, :url => "/bowler/#{@bowler.last_name}.#{@bowler.first_name}",
+             :html => { :id => 'edit-bowler-form',
+                        :class => '' } do |f| %>
 
     <%= f.fields_for :stats do |s| %>
         <h1>Edit Your Profile</h1>
         <hr/>
 
-        <div class="left-edit-column">
-          <div class="edit-section">
+        <div class='left-edit-column'>
+          <div class='edit-section'>
             <%= f.label :bio, 'Bio:', :for => 'bio', :class => 'edit-bio-label' %>
             <%= f.text_area :bio, :id => 'bio', :class => 'edit-bio' %>
           </div>
         </div>
 
-        <div class="center-edit-column">
-          <div class="edit-section">
+        <div class='center-edit-column'>
+          <div class='edit-section'>
             <%= f.label :birthday, 'Birthday:', :for => 'birthday', :class => 'edit-profile-label' %>
             <%= f.hidden_field 'birthday' %>
 
-            <div class="input-append date" id="birthday-picker" data-date="12-02-2012" data-date-format="mm-dd-yyyy">
-              <input class="span2" size="16" type="text" value="12-02-2012">
-              <span class="add-on"><i class="icon-th"></i></span>
+            <div class='input-append date' id='birthday-picker' data-date='12-02-2012' data-date-format='mm-dd-yyyy'>
+              <input class='span2' size='16' type='text' value='12-02-2012'>
+              <span class='add-on'><i class='icon-th'></i></span>
             </div>
           </div>
 
-          <div class="edit-section">
+          <div class='edit-section'>
             <%= f.label :height_ft, 'Height:', :for => 'height_ft', :class => 'edit-profile-label' %>
             <%= f.select :height_ft, options_for_select(height_ft, @bowler.height_ft), {}, {:class => 'edit-height-select'} %>
             <%= f.label :height_ft, 'ft.', :for => 'height_ft', :class => 'ft-label' %>
@@ -37,24 +38,24 @@
             <%= f.label :height_in, 'in.', :for => 'height_in', :class => 'in-label' %>
           </div>
 
-          <div class="edit-section">
+          <div class='edit-section'>
             <%= s.label :high_game, 'High Game:', :for => 'high_game', :class => 'edit-profile-label' %>
             <%= s.text_field :high_game, :id => 'high_game', :class => 'edit-profile-field' %>
           </div>
 
-          <div class="edit-section">
+          <div class='edit-section'>
             <%= s.label :high_series, 'High Series:', :for => 'high_series', :class => 'edit-profile-label' %>
             <%= s.text_field :high_series, :id => 'high_series', :class => 'edit-profile-field' %>
           </div>
         </div>
 
-        <div class="right-edit-column">
-          <div class="edit-section">
+        <div class='right-edit-column'>
+          <div class='edit-section'>
             <%= f.label :hometown_city, 'Born - City:', :for => 'hometown_city', :class => 'edit-profile-label' %>
             <%= f.text_field :hometown_city, :id => 'hometown', :class => 'edit-profile-field' %>
           </div>
 
-          <div class="edit-section">
+          <div class='edit-section'>
             <%= f.label :hometown_state, 'Born - State:', :for => 'hometown_state', :class => 'edit-profile-label' %>
             <%= f.select :hometown_state, options_for_select(us_states, @bowler.hometown_state), {}, {:class => 'edit-profile-select'} %>
           </div>
@@ -68,9 +69,10 @@
             <%= s.label :num_800s, 'Total 800s:', :for => 'num_800s', :class => 'edit-profile-label' %>
             <%= s.text_field :num_800s, :id => 'num_800s', :class => 'edit-profile-field' %>
           </div>
-    <% end %>
 
-    <%= f.submit 'Update', :id => 'submit-button', :class => 'btn btn-primary btn-large edit-submit-button' %>
+          <%= f.submit 'Update', :id => 'submit-button', :class => 'btn btn-primary btn-large edit-submit-button' %>
+        </div>
+    <% end %>
     </div>
 <% end %>
 

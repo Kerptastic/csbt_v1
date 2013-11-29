@@ -1,15 +1,8 @@
-/**
- * Created with JetBrains RubyMine.
- * User: macgasm
- * Date: 12/21/12
- * Time: 6:53 PM
- * To change this template use File | Settings | File Templates.
- */
 
 (function ($) {
     $.fn.formToWizard = function (options) {
         options = $.extend({
-            submitButton:"submit-button"
+            submitButton: "submit-button"
         }, options);
 
         var element = this;

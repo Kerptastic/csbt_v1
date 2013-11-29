@@ -53,6 +53,7 @@ class Entry < ActiveRecord::Base
             games.each do |g|
                 return g.score if g.gameid.eql? "#{block}#{game_num}"
             end
+            return 'DNF'
         end
     end
 

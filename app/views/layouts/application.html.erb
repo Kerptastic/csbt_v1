@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= yield(:register) if content_for? :register %>
   <%= yield(:login) if content_for? :login %>
-  <%= yield(:profile) if content_for? :profile %>
+  <%= yield(:bowler) if content_for? :bowler %>
   <%= yield(:tournament) if content_for? :tournament %>
   <%= yield(:record) if content_for? :record %>
   <%= csrf_meta_tags %>
@@ -40,7 +40,7 @@
         <ul class="nav nav-list">
           <li class="nav-header"><a href="/">CSBT Home</a></li>
           <li><a href="/tournaments">Schedule</a></li>
-          <li><a href="/profiles">Bowlers</a></li>
+          <li><a href="/bowlers">Bowlers</a></li>
           <li><a href="/poy">POY Standings</a></li>
           <li><a href="/records">All-Time Records</a></li>
 
@@ -48,20 +48,20 @@
               <li class="nav-header"><a href="#">Admin Goodies</a></li>
               <li><a href="/tournaments/direct">Direct Tournament</a></li>
               <li><a href="/tournaments/new">Create Tournament</a></li>
-              <li><a href="/tournament/edit">Edit Tournament</a></li>
+              <li><a href="/tournaments/edit">Edit Tournament</a></li>
               <li><a href="/bowlers/new">Add Bowler</a></li>
           <% end -%>
 
           <li class="nav-header"><a href=<%= if current_user.nil? || current_user.id.nil?;
                                                '/login'
                                              else
-                                               "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}"
+                                               "/bowler/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}"
                                              end %>>MY CSBT</a></li>
           <% if user_signed_in? -%>
               <li><a href=<%= if current_user.nil? || current_user.id.nil?;
                                   ''
                               else
-                                  "/profile/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}/edit"
+                                  "/bowler/#{current_user.bowler.last_name.downcase}.#{current_user.bowler.first_name.downcase}/edit"
                               end %>>Edit Profile</a></li>
               <li><a href="/statistics">Statistics</a></li>
               <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a></li>

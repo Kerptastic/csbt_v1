@@ -1,9 +1,9 @@
-table, h3, div {
+h3, table.game-data, .game-1, .game-2, .game-3, .game-4, .champion {
     color: #ffffff;
 }
 
 .game-data {
-    margin: 0 auto 18px auto;
+    margin: 0 50px 18px 50px;
 }
 
 .bracket {
@@ -63,6 +63,8 @@ table, h3, div {
 }
 
 .games-6-header {
+    min-width: 212px;
+    max-width: 212px;
     width: 212px;
 }
 
@@ -141,11 +143,89 @@ table, h3, div {
     margin-bottom: 40px;
 }
 
-.champion{
+.champion {
     margin-top: 108px;
 }
 
 .pad {
     width: 10px;
     margin-top: 20px;
+}
+
+/**
+ *
+ */
+.left-edit-column {
+    width: 430px;
+    min-width: 430px;
+    float: left;
+}
+
+.right-edit-column {
+    width: 440px;
+    min-width: 440px;
+    height: 300px;
+    margin: 20px 0 0 430px;
+}
+
+label {
+    padding-top: 4px;
+    float: left;
+}
+
+
+.left-edit-column label,
+.right-edit-column label {
+    width: 110px;
+}
+
+.left-edit-column input,
+.right-edit-column input {
+    width: 186px;
+}
+
+.left-edit-column select,
+.right-edit-column select {
+    width: 200px;
+}
+
+.edit-section {
+    margin: 10px 0 5px 0;
+}
+
+.edit-section > #cash-ratio {
+    width: 60px;
+}
+
+
+.edit-section > #name {
+    width: 280px;
+}
+
+.edit-format-label {
+    width: 65px;
+    height: 30px;
+}
+
+.edit-cash-label {
+    width: 110px;
+    float: left;
+}
+
+
+.edit-btn-grp {
+    margin: -10px 0 0 10px;
+}
+
+#date-picker {
+    width: 250px;
+    margin: 10px 0 20px 0;
+}
+
+#date-picker input {
+    width: 98px;
+}
+
+.new-tourney-btn {
+    margin: 0px 0 10px 210px;
 }

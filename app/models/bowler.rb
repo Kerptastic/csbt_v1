@@ -3,7 +3,7 @@ class Bowler < ActiveRecord::Base
                     :hometown_city, :hometown_state, :bio, :picture_url, :stats, :stats_attributes
 
     #validations
-    validates :first_name, :presence => true,
+    validates :first_name, :presence => true, :uniqueness => { :scope => :last_name },
               :format                => { :with => /\A[a-zA-Z]+\z/, :message => 'Only letters allowed' }
     validates :last_name, :presence => true,
               :format               => { :with => /\A[a-zA-Z]+\z/, :message => 'Only letters allowed' }

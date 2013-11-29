@@ -1,10 +1,11 @@
 class BowlersController < ApplicationController
+
     #
     def index
         @bowlers
 
         if params[:chosenletter].nil?
-           @bowlers = Bowler.where('last_name LIKE ?', 'A%');
+            @bowlers = Bowler.where('last_name LIKE ?', 'A%');
         else
             @bowlers = Bowler.where('last_name LIKE ?', "#{params[:chosenletter]}%");
         end
@@ -12,7 +13,15 @@ class BowlersController < ApplicationController
 
     #
     def new
+       @bowler = Bowler.new
+    end
 
+    #
+    def create
+        @saved_bowler = Bowler.new(params[:bowler])
+        @saved = @saved_bowler.save
+
+        render :new
     end
 
     #
@@ -38,7 +47,6 @@ class BowlersController < ApplicationController
 
     #
     def update
-        #Bowler.update_all(params[:bowler], "id = #{current_user.bowler.id}")
         @b = Bowler.find("#{current_user.bowler.id}")
         @b.update_attributes params[:bowler]
 

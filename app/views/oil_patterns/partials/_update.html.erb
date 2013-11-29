@@ -1,0 +1,30 @@
+<%= form_for @tourney_oil_pattern, url: '/oil_patterns/update', remote: true,
+             :html => { :id => 'update-oil-pattern-form',
+                        :class => 'csbt-dialog' }  do |f| %>
+
+    <h2>Edit Oil Pattern</h2>
+    <hr/>
+
+    <div class='edit-section'>
+      <%= f.label :name, 'Name:', :for => 'name', :class => 'name-label' %>
+      <%= f.text_field :name, :id => 'name', :class => '' %>
+    </div>
+    <div class='edit-section'>
+      <%= f.label :url, 'URL:', :for => 'url', :class => 'url-label' %>
+      <%= f.text_field :url, :id => 'url', :class => '' %>
+      <%= f.hidden_field :id, :id => 'id' %>
+    </div>
+
+    <hr/>
+
+    <div class='buttons float-right'>
+      <a id='close-btn' class='btn' data-dismiss='modal' aria-hidden='true' onclick='dialogClose()' >Close</a>
+      <%= f.submit 'Update', :id => 'update-button', :class => 'btn btn-primary'%>
+    </div>
+
+<% end %>
+
+<div id='update-messages'>
+  <p id='saved-msg' class='hidden'><span id='pattern-name'></span> - has been updated.</p>
+  <p id='failed-msg' class='hidden'><span id='pattern-name'></span> - failed to update.</p>
+</div>

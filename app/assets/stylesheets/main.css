@@ -26,11 +26,15 @@ footer {
  */
 h1 {
     margin: 0 0 0 6px;
-    color: #ffffff;
+    color: #fff;
 }
 
 hr {
     margin: 10px 0 10px 0;
+}
+
+label, p {
+    color: #fff;
 }
 
 /** fixes **/
@@ -98,6 +102,9 @@ textarea {
     margin-top: 0px;
 }
 
+.dialog {
+    background-color: #212120;
+}
 
 
 /**************************************************
