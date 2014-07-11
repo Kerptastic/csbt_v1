@@ -25,7 +25,7 @@ CSBTV1::Application.routes.draw do
     post '/tournaments/new' => 'tournaments#create', :as => :tournament_create_path
     get '/tournaments/edit' => 'tournaments#edit', :as => :tournament_edit_path
     get '/tournaments/direct' => 'tournaments#direct', :as => :tournament_direct_path
-    get '/badboy' => 'tournaments#badboy', :as => :bowler_badboy_path
+    get '/badboy' => 'tournaments#badboy', :as => :tournaments_badboy_path
 
     get '/oil_patterns' => 'oil_patterns#index', :as => :oil_pattern_path
     post '/oil_patterns/new' => 'oil_patterns#create', :as => :oil_pattern_create_path
