@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
                     #not changeable
                     :password_confirmation, :remember_me
 
-     #validations
+    #validations
     validates :email, :presence => true
     validates :username, :presence => true
     validates :password, :presence => true, :confirmation => true

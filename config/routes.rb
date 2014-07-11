@@ -31,7 +31,9 @@ CSBTV1::Application.routes.draw do
     get '/tournaments/:id/direct' => 'tournaments#direct', :as => :tournament_direct_path
     get '/tournaments/:id/entries' => 'tournaments#entries', :as => :tournament_entries_path
     get '/tournaments/pending' => 'tournaments#pending', :as => :tournament_pending_path
-    get '/badboy' => 'tournaments#badboy', :as => :bowler_badboy_path
+    get '/tournaments/direct' => 'tournaments#direct', :as => :tournament_direct_path
+    get '/tournaments/edit' => 'tournaments#edit', :as => :tournament_edit_path
+    get '/badboy' => 'tournaments#badboy', :as => :tournaments_badboy_path
 
     get '/oil_patterns' => 'oil_patterns#index', :as => :oil_pattern_path
     post '/oil_patterns/new' => 'oil_patterns#create', :as => :oil_pattern_create_path
