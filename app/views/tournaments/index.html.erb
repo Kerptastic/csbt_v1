@@ -1,6 +1,6 @@
 <% content_for :tournament do -%>
-    <%= stylesheet_link_tag 'schedule' %>
-    <%= javascript_include_tag 'viewmodels/tournament_view_model' %>
+    <%= stylesheet_link_tag 'tournament_schedule' %>
+    <%= javascript_include_tag 'viewmodels/tournament_schedule_view_model' %>
 <% end -%>
 
 <h1>Tournament Schedule / Results</h1>
@@ -8,14 +8,13 @@
 
 <div id='tournaments-index'>
   <div class='season-choose'>
-    <label class='float-left'>Season:</label>
-    <select class='season-select' data-bind='value: currentSeason'>
+    <label class='season-label float-left'>Season:</label>
+    <select class='season-select form-control' data-bind='value: currentSeason'>
       <% years.each_with_index do |year, index| %>
           <option <% if index == 0 %> selected='true' <% end %>><%= year %></option>
       <% end %>
     </select>
   </div>
-
   <%= form_tag( :tournament_season_path,
                 :id => 'index-form',
                 :method => :get,
@@ -23,7 +22,7 @@
       <%= hidden_field_tag 'index' %>
   <% end %>
 
-  <div id='tourney-display' style='padding-bottom: 1px;'>
+  <div class='schedule-container' id='tourney-display' style='padding-bottom: 1px;'>
     <%= render 'tournaments/partials/seasonTourneys' %>
   </div>
 </div>

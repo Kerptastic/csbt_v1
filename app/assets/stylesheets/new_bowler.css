@@ -1,0 +1,11 @@
+.edit-section input {
+    width: 180px;
+}
+
+.edit-section label {
+    margin-right: 12px;
+}
+
+#bowlers-messages {
+    float: left;
+}

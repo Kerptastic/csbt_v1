@@ -1,17 +1,17 @@
 <% content_for :bowler do %>
-    <%= stylesheet_link_tag 'bowlers' %>
-    <%= javascript_include_tag 'viewmodels/bowler_view_model' %>
+    <%= stylesheet_link_tag 'bowler_search' %>
+    <%= javascript_include_tag 'viewmodels/bowler_search_view_model' %>
 <% end %>
 
-<h1>Bowlers</h1>
+<h1>Bowler Search</h1>
 <hr/>
 
-<div id='bowlers'>
+<div id='bowler-search'>
   <div class='alpha-links'>
     <ul class='link-list'>
         <% alphabet.each do |letter| %>
             <li>
-              <a id="<%= letter %>" class='alpha-link' href="#<%= letter.upcase %>" onclick="bowlerViewModel.loadBowlers('<%= letter %>')" data-bind='value: currentChosenLetter'><%= letter.upcase %></a>
+              <a id="<%= letter %>" class='alpha-link' href="#<%= letter.upcase %>" onclick="bowlerSearchViewModel.loadBowlers('<%= letter %>')" data-bind='value: currentChosenLetter'><%= letter.upcase %></a>
             </li>
         <% end %>
     </ul>

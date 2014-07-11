@@ -16,7 +16,7 @@ class Bowler < ActiveRecord::Base
     has_many :entries
 
     accepts_nested_attributes_for :stats
-
+  
     #methods
     def full_name
         "#{first_name} #{last_name}"
@@ -27,7 +27,7 @@ class Bowler < ActiveRecord::Base
     end
 
     def profile_url
-        "/profile/#{last_name.downcase}.#{first_name.downcase}"
+        "/bowler/#{last_name.downcase}.#{first_name.downcase}"
     end
 
 

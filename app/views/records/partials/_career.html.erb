@@ -15,11 +15,11 @@
 
 <h3>Career Pinfall</h3>
 <table>
-  <% @bowlers.sort { |a, b| b.career_pinfall <=> a.career_pinfall }.each_with_index do |bowler, index| %>
+  <% @bowlers.sort { |a, b| b.stats.total_pinfall <=> a.stats.total_pinfall }.each_with_index do |bowler, index| %>
       <tr>
         <td><%= index + 1 %></td>
         <td><%= bowler.full_name %></td>
-        <td><%= bowler.career_pinfall %></td>
+        <td><%= bowler.stats.total_pinfall %></td>
       </tr>
   <% end %>
 </table>

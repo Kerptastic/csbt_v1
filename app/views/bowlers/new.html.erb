@@ -1,26 +1,35 @@
 <% content_for :bowler do %>
-    <%= stylesheet_link_tag 'bowlers' %>
+    <%= stylesheet_link_tag 'new_bowler' %>
     <%= javascript_include_tag 'viewmodels/bowler_view_model' %>
 <% end %>
-
-<h1>New Bowler</h1>
-<hr/>
 
 <%= form_for @bowler, url: '/bowlers', remote: true,
              :html => { :id => 'new-bowler-form',
                         :class => '' }  do |f| %>
+               
+<h1>New Bowler</h1>
+<hr/>
+
+<div class='lowered-container'>
     <div class='edit-section'>
-        <%= f.label :first_name, 'First Name:', :for => 'first-name', :class => 'name-label' %>
-        <%= f.text_field :first_name, :id => 'first-name', :class => '' %>
+        <%= f.label :first_name, 'First Name:', :for => 'first-name', :id => 'name-label', :class => '' %>
+        <%= f.text_field :first_name, :id => 'first-name', :class => 'form-control' %>
     </div>
     <div class='edit-section'>
-        <%= f.label :last_name, 'Last Name:', :for => 'last-name', :class => 'name-label' %>
-        <%= f.text_field :last_name, :id => 'last-name', :class => '' %>
+        <%= f.label :last_name, 'Last Name:', :for => 'last-name', :id => 'name-label', :class => '' %>
+        <%= f.text_field :last_name, :id => 'last-name', :class => 'form-control' %>
     </div>
-    <%= f.submit 'Create', :id => 'create-button', :class => 'btn btn-primary btn-large new-bowler-btn' %>
+        
+    <hr class='bottom-bar'/>
+    
+    <div id='bowlers-messages'>
+        <p id='saved-msg' class='hidden success-text' ><span data-bind='text: bowlerFirstName'></span> has been added.</p>
+        <p id='exists-msg' class='hidden error-text'><span data-bind='text: bowlerFirstName'></span> already exists.</p>
+    </div>
+    <%= f.submit 'Create', :id => 'create-button', :class => 'btn btn-primary btn-large right-action-btn' %>
+    <div class='clear-both'>
+    </div>
+
+</div>
 <% end %>
 
-<div id='bowlers'>
-    <p id='saved-msg' class='hidden' ><span data-bind='text: bowlerFirstName'></span> has been added.</p>
-    <p id='exists-msg' class='hidden'><span data-bind='text: bowlerFirstName'></span> already exists.</p>
-</div>

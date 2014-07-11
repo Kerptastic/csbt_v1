@@ -1,3 +1,11 @@
+.schedule-container {
+    margin-top: 30px;    
+}
+
+.season-label {
+    margin-right: 8px;
+}
+
 .season-choose {
     color: #ffffff;
     margin: 20px 0 -8px 0;
@@ -8,19 +16,18 @@
 }
 
 .season-select {
-    margin-left: 8px;
     width: 110px;
 }
 
-.accordion-toggle {
+.csbt-panel-heading {
     background-color: #595959;
 }
 
-.accordion-inner {
+.panel-body {
     background-color: #111111;
 }
 
-.accordion-toggle, .accordion-toggle:hover {
+.panel-toggle, .panel-toggle:hover {
     color: #ffffff;
     font-size: 18px;
     font-weight: bold;
@@ -28,7 +35,7 @@
 
 .heading-tourney {
     float: right;
-    margin-top: -22px;
+    margin-top: -25px;
 }
 
 
@@ -82,4 +89,22 @@
     width: 310px;
     height: 30px;
     margin-left: 460px;
+}
+
+.edit-tourney-btn {
+    margin-left: 5px;   
+}
+
+.activate-tourney-btn {
+    margin-right: -5px;   
+}
+
+.edit-tourney-btn > a {
+    margin: 5px 14px 0 0px;
+    padding-right: 14px;
+}
+
+.activate-tourney-btn > a {
+    margin: 5px 8px 0 6px;
+    padding-right: 14px;
 }

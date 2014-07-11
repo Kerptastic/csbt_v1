@@ -1,0 +1,9 @@
+<% if @saved %>
+$('#update-messages #saved-msg').removeClass('hidden');
+$('#update-messages #failed-msg').addClass('hidden');
+<% else %>
+$('#update-messages #saved-msg').addClass('hidden');
+$('#update-messages #failed-msg').removeClass('hidden');
+<% end %>
+
+$('#update-messages #pattern-name').text('<%= @updated_center.name %>');

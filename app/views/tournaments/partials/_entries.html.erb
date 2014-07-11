@@ -1,0 +1,33 @@
+<div id='direct-page' >
+    <label>Choose Bowler:</label>
+    <input type="text" data-provide="typeahead" class='typeahead'>
+    <a id='add-entry-btn' class='btn btn-primary activate-btn' onclick='tourneyViewModel.addEntry()'>Add Entry</a>
+    
+    
+    <hr/>
+    
+    <table>
+        <tr class='header-row'>
+                <td>#</td>
+                <td>Last Name</td>
+                <td>First Name</td>
+                <td>Starting Lane</td>
+                <td>Paid</td>
+                <td></td>
+        </tr>
+        
+        <tbody data-bind="foreach: currentTourneyEntries">
+            <tr>
+                <td></td>
+                <td data-bind="text: last_name"></td>
+                <td data-bind="text: first_name"></td>
+                <td></td>
+                <td></td>
+                <td><span class="glyphicon glyphicon-search"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p data-bind="text: tourneyViewModel.currentTourneyEntries().length"></p>
+    
+</div>

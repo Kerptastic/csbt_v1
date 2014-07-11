@@ -1,0 +1,65 @@
+<% content_for :tournament do %>
+<%= stylesheet_link_tag 'activate' %>
+<% end %>
+<%= form_for @tournament, :url => "/tournaments/#{@tournament.id}/activate/perform", :remote => true,:method => :post, :html => {:id => 'update-tournament-form' } do |f| %> <h1>Activate - <%= @tournament.name %> - <%= @tournament.date.strftime('%m/%d/%Y') %></h1>
+<hr/>
+<div>
+    <%= fields_for :tournament_setup do |t| %>
+    <div class='left-edit-column'>
+        <div class='edit-section'>
+            <%= t.label :left_move_type, 'Left Move Type:', :for => 'left_move_type', :class => '' %>
+            <%= t.select :left_move_type, options_for_select(lane_move_type, 'Skip'), {}, { :class => '' } %>
+        </div>
+        <div class='edit-section'>
+            <%= t.label :left_move_dir, 'Left Move Direction:', :for => 'left_move_dir', :class => '' %>
+            <%= t.select :left_move_dir, options_for_select(lane_move_dir, 'Left'), {}, { :class => '' } %>
+        </div>
+        <div class='edit-section'>
+            <%= t.label :left_move_amt, 'Left Move Amount:', :for => 'left_move_amt', :class => '' %>
+            <%= t.select :left_move_amt, options_for_select(lane_move_values, 1), {}, { :class => '' } %>
+        </div>
+    </div>
+    <div class='right-edit-column'>
+        <div class='edit-section'>
+            <%= t.label :right_move_type, 'Right Move Type:', :for => 'right_move_type', :class => '' %>
+            <%= t.select :right_move_type, options_for_select(lane_move_type, 'Skip'), {}, { :class => '' } %>
+        </div>
+        <div class='edit-section'>
+            <%= t.label :right_move_dir, 'Right Move Direction:', :for => 'right_move_dir', :class => '' %>
+            <%= t.select :right_move_dir, options_for_select(lane_move_dir, 'Right'), {}, { :class => '' } %>
+        </div>
+        <div class='edit-section'>
+            <%= t.label :right_move_amt, 'Right Move Amount:', :for => 'right_move_amt', :class => '' %>
+            <%= t.select :right_move_amt, options_for_select(lane_move_values, 1), {}, { :class => '' } %>
+        </div>
+    </div>
+    <hr class='bottom-bar'/>
+    <div id='tourney-messages' class='tourney-messages float-left'>
+        <p id='saved-msg' class='hidden'>
+            <!-- <span data-bind='text: currentTourneyName'></span> has been
+            created. -->
+        </p>
+        <p id='already-activated-msg' class='hidden'>
+            <!-- <span data-bind='text: currentTourneyName'></span> already
+            exists. -->
+        </p>
+        <p id='failed-msg' class='hidden'>
+            <!-- Tournament creation failed. <span data-bind='text:
+            errorMsg'></span> -->
+        </p>
+    </div>
+    <% end %>
+    <%= f.submit 'Activate', :id => 'create-button', :class => 'btn btn-primary btn-large activate-btn float-right' %>
+    <div class='clear-both'>
+    </div>
+</div>
+<% end %>
+<!-- <div class='edit-section'>
+<%#= t.label :starting_lane, 'Starting Lane:', :for => 'starting_lane', :class =>
+'' %>
+<%#= t.text_field :starting_lane, :id => 'starting_lane', :class => '' %>
+</div>
+<div class='edit-section'>
+<%#= t.label :num_lanes, 'Total Lanes:', :for => 'num_lanes', :class => '' %>
+<%#= t.text_field :num_lanes, :id => 'num_lanes', :class => '' %>
+</div> -->

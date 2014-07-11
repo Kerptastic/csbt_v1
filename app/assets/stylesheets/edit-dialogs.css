@@ -1,0 +1,17 @@
+.dialog .edit-section input {
+    width: 380px;
+}
+
+#name-label, 
+#url-label {
+    width: 60px;
+}
+
+#new-oil-pattern-dialog,
+#update-oil-pattern-dialog,
+#new-bowling-center-dialog,
+#update-bowling-center-dialog {
+    width: 490px;
+}
+
+

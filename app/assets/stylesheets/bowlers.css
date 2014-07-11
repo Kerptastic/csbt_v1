@@ -1,6 +1,6 @@
-/**
+/*/**
 * Main Profile layout and headers
-*/
+
 .basic-info {
     margin-left: 180px;
     min-width: 535px;
@@ -13,7 +13,7 @@
 
 /**
 * Main profile tabs for bio and stats
-*/
+
 .nav-tabs {
     height: 50px;
     margin-bottom: 10px;
@@ -31,7 +31,7 @@
 
 /**
 * Bowlers info table.
-*/
+
 .info-heading {
     font-weight: bold;
 }
@@ -52,7 +52,7 @@
 
 /**
 * Bowler profile photo and personal info
-*/
+
 .photo {
     width: 170px;
     height: 200px;
@@ -180,85 +180,4 @@ select {
 }
 
 
-/**
- * Bowler search links
- */
-.alpha-links {
-    min-width: 720px;
-    text-align: center;
-}
-
-.link-list {
-    margin: 2px auto;
-}
-
-.link-list li {
-    display: inline;
-    text-align: center;
-}
-
-.alpha-link {
-    padding: 8px;
-}
-
-.selected-alpha-link, .selected-alpha-link:hover {
-    font-weight: bold;
-    font-size: 22px;
-    color: #fff;
-}
-
-.selected-alpha-link:hover {
-    color: #9c9c9c;
-}
-
-/**
- * Bowler tiles and display
- */
-.bowler-tile {
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    width: 280px;
-    height: 120px;
-    margin: 4px 12px 8px 0;
-    text-align: center;
-}
-
-.tile-photo, .tile-photo-holder {
-    width: 92px;
-    height: 112px;
-    margin-top: 2px;
-}
-
-.tile-photo-holder {
-    float: left;
-}
-
-
-.bowler-tile a {
-    font-size: 18px;
-    padding-left: 8px;
-    text-align: center;
-}
-
-.tile-name {
-    margin-top: 8px;
-}
-
-/**
- * New Bowler Form
- */
-
-#new-bowler-form {
-    margin: 20px 0 0 0;
-}
-
-.name-label {
-    width: 84px;
-    height: 30px;
-    padding-top: 5px;
-    float: left;
-}
-
-.new-bowler-btn {
-    margin: 0px 0 10px 210px;
-}
+*/

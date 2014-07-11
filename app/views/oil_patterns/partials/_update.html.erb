@@ -1,30 +1,35 @@
-<%= form_for @tourney_oil_pattern, url: '/oil_patterns/update', remote: true,
-             :html => { :id => 'update-oil-pattern-form',
-                        :class => 'csbt-dialog' }  do |f| %>
+<div id='update-oil-pattern-dialog' class='modal-dialog'>
+    <div class='modal-content'>
+    <%= form_for @tourney_oil_pattern, url: '/oil_patterns/update', remote: true,
+        :html => { :id => 'update-oil-pattern-form',
+                   :class => 'csbt-dialog' }  do |f| %>
+        <div class='modal-header'>
+            <h2>Edit Oil Pattern</h2>
+        </div>
 
-    <h2>Edit Oil Pattern</h2>
-    <hr/>
+        <div class='modal-body'>
+            <div class='edit-section'>
+              <%= f.label :name, 'Name:', :for => 'name', :id => 'name-label', :class => '' %>
+              <%= f.text_field :name, :id => 'name', :class => 'form-control' %>
+            </div>
+            <div class='edit-section'>
+              <%= f.label :url, 'URL:', :for => 'url', :id => 'url-label', :class => '' %>
+              <%= f.text_field :url, :id => 'url', :class => 'form-control' %>
+              <%= f.hidden_field :id, :id => 'id' %>
+            </div>
+        </div>
 
-    <div class='edit-section'>
-      <%= f.label :name, 'Name:', :for => 'name', :class => 'name-label' %>
-      <%= f.text_field :name, :id => 'name', :class => '' %>
+        <div class='modal-footer'>
+            <div class='buttons float-right'>
+              <button id='close-btn' class='btn' data-dismiss='modal' aria-hidden='true' onclick='dialogClose()'>Close</button>
+              <%= f.submit 'Update', :id => 'update-button', :class => 'btn btn-primary'%>
+            </div>
+        </div>    
+        <% end %>
+        
+        <div id='update-messages'>
+            <p id='saved-msg' class='hidden'><span id='pattern-name'></span> - has been updated.</p>
+            <p id='failed-msg' class='hidden'><span id='pattern-name'></span> - failed to update.</p>
+        </div>
     </div>
-    <div class='edit-section'>
-      <%= f.label :url, 'URL:', :for => 'url', :class => 'url-label' %>
-      <%= f.text_field :url, :id => 'url', :class => '' %>
-      <%= f.hidden_field :id, :id => 'id' %>
-    </div>
-
-    <hr/>
-
-    <div class='buttons float-right'>
-      <a id='close-btn' class='btn' data-dismiss='modal' aria-hidden='true' onclick='dialogClose()' >Close</a>
-      <%= f.submit 'Update', :id => 'update-button', :class => 'btn btn-primary'%>
-    </div>
-
-<% end %>
-
-<div id='update-messages'>
-  <p id='saved-msg' class='hidden'><span id='pattern-name'></span> - has been updated.</p>
-  <p id='failed-msg' class='hidden'><span id='pattern-name'></span> - failed to update.</p>
 </div>

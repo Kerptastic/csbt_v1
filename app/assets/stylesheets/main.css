@@ -24,7 +24,7 @@ footer {
 /*
  * Site wide styling
  */
-h1 {
+h1, h2 {
     margin: 0 0 0 6px;
     color: #fff;
 }
@@ -33,7 +33,8 @@ hr {
     margin: 10px 0 10px 0;
 }
 
-label, p {
+label, 
+p {
     color: #fff;
 }
 
@@ -89,7 +90,7 @@ textarea {
 }
 
 .content {
-    min-width: 864px;
+    min-width: 900px;
     background-color: #212120;
     border-radius: 8px;
     -moz-border-radius: 8px;
@@ -104,6 +105,10 @@ textarea {
 
 .dialog {
     background-color: #212120;
+}
+
+.bottom-bar {
+	margin: 24px 0 12px 0;
 }
 
 
@@ -154,11 +159,27 @@ textarea {
     color: #ffffff;
 }
 
+.nav > li {
+    line-height: 1em;
+}
+
 .nav > li a:hover {
     color: #000000;
 }
 
+.nav > li.menu > a {
+    padding-left: 8px;
+    font-weight: bold;
+}
 
+.nav > li.menu-item {
+    font-size: 12px;
+    padding-top: 0px;
+}
+
+.nav > li.menu-item > a {
+    padding-left: 26px;
+}
 
 
 /**************************************************
@@ -186,6 +207,37 @@ textarea {
     float: none;
     margin-left: auto;
     margin-right: auto;
+}
+
+.error-text {    
+    color: #ff0000;
+}
+
+.success-text {
+    color: #00CC00;
+}
+
+/***************************************************
+ * 
+ * Site wide styles to be applied automatically
+ *
+ ***************************************************/
+.lowered-container {
+    margin-top: 24px;
+}
+
+.edit-section {
+    margin: 0 0 16px 0;
+}
+
+.edit-section label {
+    float: left;
+    padding-top: 6px;
+}
+
+.right-action-btn {
+    float: right;
+    margin: 0px 0 10px 0px;
 }
 
 /**************************************************

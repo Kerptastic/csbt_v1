@@ -1,0 +1,12 @@
+<% if @saved %>
+$('#update-messages #saved-msg').removeClass('hidden');
+$('#update-messages #failed-msg').addClass('hidden');
+<% else %>
+$('#update-messages #saved-msg').addClass('hidden');
+$('#update-messages #failed-msg').removeClass('hidden');
+<% end %>
+
+$('#new-oil-pattern-form #name').val("");
+$('#new-oil-pattern-form #url').val("");
+
+$('#update-messages #center-name').text('<%= @new_center.name %>');

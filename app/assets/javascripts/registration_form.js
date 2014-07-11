@@ -73,5 +73,5 @@
             $("#steps li").removeClass("current-step");
             $("#stepDesc" + i).addClass("current-step");
         }
-    }
+    };
 })(jQuery);

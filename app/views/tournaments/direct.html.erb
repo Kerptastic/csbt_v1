@@ -1,0 +1,38 @@
+<% content_for :tournament do -%>
+    <%= stylesheet_link_tag 'tournaments' %>
+    <%= stylesheet_link_tag 'tables' %>
+    <%= javascript_include_tag 'viewmodels/tournament_view_model' %>
+<% end -%>
+
+
+<div class='tabbable'>
+    <ul class='nav nav-tabs'>
+        <li class=''>
+            <a href='#control-panel-tab' data-toggle='tab'>Control Panel</a>
+        </li>
+        <li class=''>
+            <a href='#scores-tab' data-toggle='tab'>Scores</a>
+        </li>
+        <li class='active'>
+            <a href='#entries-tab' data-toggle='tab'>Entries</a>
+        </li>
+    </ul>
+    <div class='tab-content'>
+        <div class='tab-pane' id='control-panel-tab'>
+            <%= render 'tournaments/partials/control_panel' %>
+        </div>
+        <div class='tab-pane' id='scores-tab'>
+            <%#= render 'tournaments/partials/directEntries' %>
+        </div>
+        <div class='tab-pane active' id='entries-tab'>
+            <%= render 'tournaments/partials/entries' %>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        tourneyViewModel.getEntries("<%= @tournament.id %>");
+    });
+    
+</script>

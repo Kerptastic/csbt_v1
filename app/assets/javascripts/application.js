@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require libs/bootstrap.min
-//= require libs/knockout-2.2.1
+//= require libs/knockout-3.0.0
 //= require libs/bootstrap-datepicker

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827024430) do
+ActiveRecord::Schema.define(:version => 20140125174857) do
 
   create_table "bowler_stats", :force => true do |t|
     t.integer  "bowler_id",          :limit => 8
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130827024430) do
     t.integer  "highest_3_game_set",                    :default => 0,     :null => false
     t.integer  "highest_6_game_set",                    :default => 0,     :null => false
     t.integer  "highest_8_game_set",                    :default => 0,     :null => false
+    t.integer  "starting_lane",            :limit => 3, :default => 0
   end
 
   create_table "games", :force => true do |t|
@@ -114,25 +115,40 @@ ActiveRecord::Schema.define(:version => 20130827024430) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "tournament_setups", :force => true do |t|
+    t.integer  "starting_lane",   :limit => 3
+    t.integer  "num_lanes",       :limit => 3
+    t.string   "left_move_type"
+    t.string   "right_move_type"
+    t.string   "left_move_dir"
+    t.string   "right_move_dir"
+    t.integer  "left_move_amt",   :limit => 1
+    t.integer  "right_move_amt",  :limit => 1
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "tournament_templates", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "tournaments", :force => true do |t|
-    t.integer  "bowling_center_id", :limit => 8
-    t.integer  "oil_pattern_id",    :limit => 8
-    t.string   "name",              :limit => 45,                         :null => false
+    t.integer  "bowling_center_id",   :limit => 8
+    t.integer  "oil_pattern_id",      :limit => 8
+    t.string   "name",                :limit => 45,                         :null => false
     t.date     "date"
-    t.string   "format",            :limit => 45, :default => "Standard", :null => false
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
-    t.integer  "winner_id",         :limit => 8
-    t.integer  "runner_up_id",      :limit => 8
-    t.integer  "top_woman_id",      :limit => 8
-    t.integer  "top_senior_id",     :limit => 8
+    t.string   "format",              :limit => 45, :default => "Standard", :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.integer  "winner_id",           :limit => 8
+    t.integer  "runner_up_id",        :limit => 8
+    t.integer  "top_woman_id",        :limit => 8
+    t.integer  "top_senior_id",       :limit => 8
     t.boolean  "is_major"
-    t.integer  "cash_ratio_value",  :limit => 3,  :default => 4
+    t.integer  "cash_ratio_value",    :limit => 3,  :default => 4
+    t.integer  "tournament_setup_id", :limit => 8
+    t.boolean  "activated"
   end
 
   create_table "users", :force => true do |t|

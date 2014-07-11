@@ -1,23 +1,32 @@
-<% if @saved %>
-    $('#saved-msg').removeClass('hidden');
+<% if @failed %>
+	tourneyViewModel.errorMsg("<%= @error_msg %>")
+    $('#failed-msg').removeClass('hidden'); 
+	$('#saved-msg').addClass('hidden');
     $('#exists-msg').addClass('hidden');
 <% else %>
-    $('#saved-msg').addClass('hidden');
-    $('#exists-msg').removeClass('hidden');
+	tourneyViewModel.currentTourneyName("<%= @saved_tourney.name %>");
+	
+	$('#failed-msg').addClass('hidden');
+		
+	<% if @saved %>
+		$('#saved-msg').removeClass('hidden');
+    	$('#exists-msg').addClass('hidden');
+    	    	
+		$('#name').val("");
+		$('#cash-ratio').val(4);
+		$('#oil-pattern').val(0);
+		$('#bowling-center').val(0);
+		$('#format').val(0);
+		$('#is-major').prop('checked', false);
+
+	<% else %>
+		$('#exists-msg').removeClass('hidden');
+    	$('#saved-msg').addClass('hidden');
+	<% end %>
 <% end %>
 
-$('#name').val("");
-$('#cash-ratio').val(4);
-$('#oil-pattern').val(0);
-$('#bowling-center').val(0);
-$('#format').val(0);
-$('#is-major').prop('checked', false);
+<!-- var tourneyDate = new Date(); -->
 
-var tourneyDate = new Date();
-
-$('#date-picker').datepicker('setValue', tourneyDate).on('changeDate', function(ev) {
-    $('#tournament_date').val(new Date(ev.date));
-});
-
-
-tournamentViewModel.newTourneyName("<%#= @saved_tourney.name %>");
+<!-- $('#date-picker').datepicker('setValue', tourneyDate).on('changeDate', function(ev) { -->
+    <!-- $('#tournament_date').val(new Date(ev.date)); -->
+<!-- }); -->

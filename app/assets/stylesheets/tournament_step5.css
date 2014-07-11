@@ -1,0 +1,67 @@
+h3, .game-1, .game-2, .game-3, .game-4, .champion {
+    color: #ffffff;
+}
+
+.bracket {
+    margin: 0;
+}
+
+.underline {
+    border-bottom: 1px solid #fff;
+}
+
+.connector {
+    border-right: 1px solid #fff;
+}
+
+.seed {
+    width: 24px;
+}
+
+.bowler {
+    width: 100px;
+}
+
+.champion-bowler {
+    width: 210px;
+}
+
+.score {
+    width: 34px;
+    margin-left: 130px;
+}
+
+.bracket-entry {
+    padding-top: 50px;
+}
+
+.game-1, .game-2, .game-3, .game-4 {
+    width: 164px;
+}
+
+.game-1 {
+    margin-top: -36px;
+}
+
+.game-2 {
+    margin-top: 0px;
+}
+
+.game-3 {
+    margin-top: 36px;
+}
+
+.game-4 {
+    margin-top: 72px;
+    margin-bottom: 40px;
+}
+
+.champion {
+    width: 184px;
+    margin-top: 108px;
+}
+
+.pad {
+    width: 10px;
+    margin-top: 20px;
+}

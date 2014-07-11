@@ -1,95 +1,119 @@
-<div class='accordion' id='tourney-accordion'>
-
-  <% @tournaments.each_with_index do |tourney, index| %>
-      <div class='accordion-group'>
-        <div class='accordion-heading'>
-          <a class='accordion-toggle' data-toggle='collapse' data-parent='#tourney-accordion' href='#tourney<%= index %>'>
+<div class='panel-group' id='tourney-accordion'>
+    <% @tournaments.each_with_index do |tourney, index| %>
+    <div class='panel'>
+        <div class='panel-heading csbt-panel-heading'>
+            <!-- <% if user_signed_in? && current_user.try(:admin) %>
+            <div class='edit-tourney-btn float-left'>
+            <a href="tournaments/<%= tourney.id %>/edit" class='btn btn-small'><i
+            class='icon-pencil'></i> Edit</a>
+            </div>
+            <% end %>  -->
+            <a class='panel-toggle' data-toggle='collapse' data-parent='#tourney-accordion' href='#tourney<%= index %>'>
             <div>
-              <%= tourney.date.strftime('%m/%d/%Y') %>
+                <%= tourney.date.strftime('%m/%d/%Y') %>
             </div>
             <div class='heading-tourney'>
-              <%= "#{tourney.name} - #{tourney.format} Format"%><%= if tourney.entries.nil?; 'TBD Entries' end %>
-            </div>
-
-          </a>
+                <%= "#{tourney.name} - #{tourney.format} Format"%><%= if tourney.entries.nil?; 'TBD Entries' end %>
+            </div> </a>
         </div>
-
-        <div id='tourney<%= index %>' class="accordion-body collapse <%= if index == 0; 'in' end %>">
-          <div class='accordion-inner'>
-            <div class='info-section'>
-              <div class='left-info-column'>
-                <div class='float-left'>
-                  <p class='info-label left-info-label'>Champion:</p>
+        <div id='tourney<%= index %>' class="panel-collapse collapse <%= if index == 0; 'in' end %>">
+            <div class='panel-body'>
+                <div class='info-section'>
+                    <div class='left-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label left-info-label'>
+                                Champion:
+                            </p>
+                        </div>
+                        <div>
+                            <% if tourney.winner.nil? %>
+                            <p>
+                                TBD
+                            </p>
+                            <% else %> 
+                                <a class='info' href="<%= tourney.winner.bowler.profile_url %>"><%= tourney.winner.bowler.full_name %></a>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class='center-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label center-info-label'>
+                                Top Senior:
+                            </p>
+                        </div>
+                        <div>
+                            <% if tourney.top_senior.nil? %>
+                            <p>
+                                None
+                            </p>
+                            <% else %> <a class='info' href="<%= tourney.top_senior.bowler.profile_url %>"><%= tourney.top_senior.bowler.full_name %></a>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class='right-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label right-info-label'>
+                                Bowling Center:
+                            </p>
+                        </div>
+                        <div>
+                            <a class='info' href="<%= tourney.bowling_center.url %>"><%= tourney.bowling_center.name %></a>
+                        </div>
+                    </div>
+                    <div class='left-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label left-info-label'>
+                                Runner-Up:
+                            </p>
+                        </div>
+                        <div>
+                            <% if tourney.runner_up.nil? %>
+                                <p>
+                                    TBD
+                                </p>
+                            <% else %> 
+                                <a class='info' href="<%= tourney.runner_up.bowler.profile_url %>"><%= tourney.runner_up.bowler.full_name %></a>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class='center-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label center-info-label'>
+                                Top Woman:
+                            </p>
+                        </div>
+                        <div>
+                            <% if tourney.top_woman.nil? %>
+                                <p>
+                                    None
+                                </p>
+                            <% else %> 
+                                <a class='info' href="<%= tourney.top_woman.bowler.profile_url %>"><%= tourney.top_woman.bowler.full_name %></a>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class='right-info-column'>
+                        <div class='float-left'>
+                            <p class='info-label right-info-label'>
+                                Oil Pattern:
+                            </p>
+                        </div>
+                        <div>
+                            <a class='info' href="<%= tourney.oil_pattern.url %>"><%= tourney.oil_pattern.name %></a>
+                        </div>
+                    </div>
+                    <div style='width: 220px; height: 24px;'>
+                        <div class='float-left'>
+                            <% if tourney.date < Date.today %> 
+                                <a class='info' href="/tournament/<%= tourney.id %>">Full Results</a>
+                            <% else %> 
+                                <span class='info'>Full Results Coming Soon!</span>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <% if tourney.winner.nil? %>
-                      <p>TBD</p>
-                  <% else %>
-                      <a class='info' href="<%= tourney.winner.bowler.profile_url %>"><%= tourney.winner.bowler.full_name %></a>
-                  <% end %>
-                </div>
-              </div>
-              <div class='center-info-column'>
-                <div class='float-left'>
-                  <p class='info-label center-info-label'>Top Senior:</p>
-                </div>
-                <div>
-                  <% if tourney.top_senior.nil? %>
-                    <p>None</p>
-                  <% else %>
-                    <a class='info' href="<%= tourney.top_senior.bowler.profile_url %>"><%= tourney.top_senior.bowler.full_name %></a>
-                  <% end %>
-                </div>
-              </div>
-              <div class='right-info-column'>
-                <div class='float-left'>
-                  <p class='info-label right-info-label'>Bowling Center:</p>
-                </div>
-                <div>
-                  <a class='info' href="<%= tourney.bowling_center.url %>"><%= tourney.bowling_center.name %></a>
-                </div>
-              </div>
-
-              <div class='left-info-column'>
-                <div class='float-left'>
-                  <p class='info-label left-info-label'>Runner-Up:</p>
-                </div>
-                <div>
-                  <% if tourney.runner_up.nil? %>
-                      <p>TBD</p>
-                  <% else %>
-                      <a class='info' href="<%= tourney.runner_up.bowler.profile_url %>"><%= tourney.runner_up.bowler.full_name %></a>
-                  <% end %>
-                </div>
-              </div>
-              <div class='center-info-column'>
-                <div class='float-left'>
-                  <p class='info-label center-info-label'>Top Woman:</p>
-                </div>
-                <div>
-                  <% if tourney.top_woman.nil? %>
-                      <p>None</p>
-                  <% else %>
-                      <a class='info' href="<%= tourney.top_woman.bowler.profile_url %>"><%= tourney.top_woman.bowler.full_name %></a>
-                  <% end %> </div>
-              </div>
-              <div class='right-info-column'>
-                <div class='float-left'>
-                  <p class='info-label right-info-label'>Oil Pattern:</p>
-                </div>
-                <div>
-                  <a class='info' href="<%= tourney.oil_pattern.url %>"><%= tourney.oil_pattern.name %></a>
-                </div>
-              </div>
-
-              <div style='width: 220px; height: 24px;'>
-                <div class='float-left'>
-                  <a class='info' href="/tournament/<%= tourney.id %>">Full Results</a>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-  <% end %>
+    </div>
+    <% end %>
 </div>

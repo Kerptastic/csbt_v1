@@ -1,0 +1,19 @@
+table {
+    margin-top: 14px;
+}
+
+table td.name-header {
+    width: 180px;
+}
+
+table td.bowling-center-header {
+    width: 150px;
+}
+
+table td.date-header {
+    width: 100px;
+}
+
+table td.entries-header {
+    width: 80px;
+}

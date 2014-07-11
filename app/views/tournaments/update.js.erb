@@ -1,0 +1,18 @@
+<% if @failed %>
+	tourneyViewModel.errorMsg("<%= @error_msg %>")
+    $('#failed-msg').removeClass('hidden'); 
+	$('#saved-msg').addClass('hidden');
+    $('#exists-msg').addClass('hidden');
+<% else %>
+	tourneyViewModel.currentTourneyName("<%= @updated_tourney.name %>");
+	
+	$('#failed-msg').addClass('hidden');
+		
+	<% if @saved %>
+		$('#saved-msg').removeClass('hidden');
+    	$('#exists-msg').addClass('hidden');
+	<% else %>
+		$('#exists-msg').removeClass('hidden');
+    	$('#saved-msg').addClass('hidden');
+	<% end %>
+<% end %>

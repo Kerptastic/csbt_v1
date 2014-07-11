@@ -3,19 +3,20 @@ CSBTV1::Application.routes.draw do
              :controllers => { :registrations => 'users', :sessions => 'sessions' },
              :skip => [:registrations, :sessions]
   as :user do
-    get '/login' => 'sessions#new', :as => :new_user_session_path
-    post '/login' => 'sessions#create', :as => :user_session_path
-    delete '/logout' => 'sessions#destroy', :as => :destroy_user_session_path
+    get '/login' => 'sessions#new', :as => :new_user_session
+    post '/login' => 'sessions#create', :as => :user_session
+    delete '/logout' => 'sessions#destroy', :as => :destroy_user_session
 
     get '/register' => 'users#new', :as => :new_user_registration_path
     post '/register' => 'users#create', :as => :user_registration_path
     delete '/cancel' => 'users#destroy'
 
     get '/bowlers' => 'bowlers#index', :as => :bowler_path
-    get '/bowler/:lastname.:firstname' => 'bowlers#show', :as => :bowler_show_path
-    put '/bowler/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update_path
-    get '/bowler/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit_path
     get '/bowlers/new' => 'bowlers#new', :as => :bowler_new_path
+    get '/bowlers/all' => 'bowlers#all', :as => :bowler_all_path
+    get '/bowler/:lastname.:firstname' => 'bowlers#show', :as => :bowler_show_path
+    get '/bowler/:lastname.:firstname/edit' => 'bowlers#edit', :as => :bowler_edit_path
+    put '/bowler/:lastname.:firstname' => 'bowlers#update', :as => :bowler_update_path
     post '/bowlers' => 'bowlers#create', :as => :bowler_create_path
     get '/badboy' => 'bowlers#badboy', :as => :bowler_badboy_path
 
@@ -23,8 +24,13 @@ CSBTV1::Application.routes.draw do
     get '/tournament/:id' => 'tournaments#show', :as => :tournament_show_path
     get '/tournaments/new' => 'tournaments#new', :as => :tournament_new_path
     post '/tournaments/new' => 'tournaments#create', :as => :tournament_create_path
-    get '/tournaments/edit' => 'tournaments#edit', :as => :tournament_edit_path
-    get '/tournaments/direct' => 'tournaments#direct', :as => :tournament_direct_path
+    put '/tournaments/:id' => 'tournaments#update', :as => :tournament_update_path
+    get '/tournaments/:id/edit' => 'tournaments#edit', :as => :tournament_edit_path
+    # get '/tournaments/:id/activate' => 'tournaments#activate', :as => :tournament_activate_path
+    # post '/tournaments/:id/activate/perform' => 'tournaments#activate_perform', :as => :tournament_activate_perform_path
+    get '/tournaments/:id/direct' => 'tournaments#direct', :as => :tournament_direct_path
+    get '/tournaments/:id/entries' => 'tournaments#entries', :as => :tournament_entries_path
+    get '/tournaments/pending' => 'tournaments#pending', :as => :tournament_pending_path
     get '/badboy' => 'tournaments#badboy', :as => :bowler_badboy_path
 
     get '/oil_patterns' => 'oil_patterns#index', :as => :oil_pattern_path

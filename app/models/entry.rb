@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-    attr_accessible :bowler, :tournament, :games, :is_qual_cut, :is_semi_cut,
+    attr_accessible :bowler, :starting_lane, :tournament, :games, :is_qual_cut, :is_semi_cut,
                     :is_high_woman, :is_high_senior, :is_winner, :is_runner_up,
                     :total_matchplay_games, :total_matchplay_wins,
                     :total_stepladder_games, :total_stepladder_wins,
@@ -14,6 +14,17 @@ class Entry < ActiveRecord::Base
     belongs_to :bowler
     belongs_to :tournament
     has_many :games
+    
+    #
+    #
+    #
+    def as_json(options={})
+         {  
+             :id => self.id,  
+             :bowler => self.bowler,
+             :tournament => self.tournament
+         }   
+    end
 
     #
     # Gets a qualifying score for the given game number.
@@ -62,7 +73,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_num_qual_games
         games.each do |g|
-            self.total_qual_games += 1 if g.gameid.start_with? 'q'
+        self.total_qual_games += 1 if g.gameid.start_with? 'q'
         end
     end
 
@@ -71,7 +82,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_num_semi_games
         games.each do |g|
-            self.total_semi_games += 1 if g.gameid.start_with? 'se'
+        self.total_semi_games += 1 if g.gameid.start_with? 'se'
         end
     end
 
@@ -80,7 +91,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_num_matchplay_games
         games.each do |g|
-            self.total_matchplay_games += 1 if g.gameid.start_with? 'mp'
+        self.total_matchplay_games += 1 if g.gameid.start_with? 'mp'
         end
     end
 
@@ -89,7 +100,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_num_stepladder_games
         games.each do |g|
-            self.total_stepladder_games += 1 if g.gameid.start_with? 'sl'
+        self.total_stepladder_games += 1 if g.gameid.start_with? 'sl'
         end
     end
 
@@ -98,7 +109,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_total_qual_pinfall
         games.each do |g|
-            self.total_qual_pinfall += g.score if g.gameid.start_with? 'q'
+        self.total_qual_pinfall += g.score if g.gameid.start_with? 'q'
         end
     end
 
@@ -107,7 +118,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_total_semi_pinfall
         games.each do |g|
-            self.total_semi_pinfall += g.score if g.gameid.start_with? 'se'
+        self.total_semi_pinfall += g.score if g.gameid.start_with? 'se'
         end
     end
 
@@ -116,7 +127,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_total_matchplay_pinfall
         games.each do |g|
-            self.total_matchplay_pinfall += g.score if g.gameid.start_with? 'mp'
+        self.total_matchplay_pinfall += g.score if g.gameid.start_with? 'mp'
         end
     end
 
@@ -125,7 +136,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_total_stepladder_pinfall
         games.each do |g|
-            self.total_stepladder_pinfall += g.score if g.gameid.start_with? 'sl'
+        self.total_stepladder_pinfall += g.score if g.gameid.start_with? 'sl'
         end
     end
 
@@ -164,7 +175,6 @@ class Entry < ActiveRecord::Base
         Float(self.total_stepladder_pinfall) / Float(self.total_stepladder_games)
     end
 
-
     #
     # Gets the plus/minus value for the qualifying block.
     #
@@ -176,38 +186,38 @@ class Entry < ActiveRecord::Base
         elsif plusminus == 0
             result = 'E'
         else
-            result = plusminus
+        result = plusminus
         end
 
         result
     end
 
     #
-    # Gets the plus/minus value for the qualifying and the semifinal blocks together.
+    # Gets the plus/minus value for the qualifying and the semifinal blocks
+    # together.
     #
     def qual_semis_plus_minus
         plusminus = calc_qual_semis_total_pinfall -
-            ((self.total_qual_games + self.total_semi_games) * 200)
+        ((self.total_qual_games + self.total_semi_games) * 200)
 
         if plusminus > 0
             result = "+#{plusminus}"
         elsif plusminus == 0
             result = 'E'
         else
-            result = plusminus
+        result = plusminus
         end
 
         result
     end
 
-
     #
-    # Calculates the total pin fall for the qualifying and semifinal blocks today.
+    # Calculates the total pin fall for the qualifying and semifinal blocks
+    # today.
     #
     def calc_qual_semis_total_pinfall
         self.total_qual_pinfall + self.total_semi_pinfall
     end
-
 
     #
     # Calculates the total pin fall for this entry.
@@ -221,7 +231,7 @@ class Entry < ActiveRecord::Base
     #
     def calc_total_games
         self.total_games = self.total_qual_games + self.total_semi_games +
-            self.total_matchplay_games + self.total_stepladder_games
+        self.total_matchplay_games + self.total_stepladder_games
     end
 
     #
@@ -289,8 +299,6 @@ class Entry < ActiveRecord::Base
         #
         #self.highest_8_game_set = best_total
     end
-
-
 
     #
     #

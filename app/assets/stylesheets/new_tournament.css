@@ -1,0 +1,65 @@
+.left-edit-column {
+    width: 450px;
+    float: left;
+}
+
+.left-edit-column label {
+    width: 118px;  
+}
+
+.left-edit-column input[type="text"],
+.left-edit-column select {
+    width: 300px;
+}
+
+.right-edit-column {
+    width: 440px;
+    margin: 20px 0 0 450px;
+}
+
+.right-edit-column label {
+    width: 120px;
+}
+
+.right-edit-column select {
+    float: left;
+    width: 210px;
+}
+
+.edit-btn-grp {
+    margin: 0 0 0 12px;
+}
+
+.tourney-messages {
+    float: left;
+    width: 500px; 
+}
+
+.new-tourney-btn {
+    float: right;
+    margin: 0px 0 12px 0px;
+}
+
+#format-select {
+    width: 200px;
+}
+
+#cash-ratio-select {
+    float: left;
+    width: 56px;
+    margin-right: 12px;
+}
+
+#is-major-label {
+    width: 70px;
+}
+
+#is-major-checkbox { 
+    float: left;
+    width: 14px;
+    margin-top: -1px;
+}
+
+#date-picker {
+    width: 210px;
+}

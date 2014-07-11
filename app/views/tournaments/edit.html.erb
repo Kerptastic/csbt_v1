@@ -1,0 +1,88 @@
+<% content_for :tournament do %>
+<%= stylesheet_link_tag 'tournaments' %>
+<%= stylesheet_link_tag 'oil_patterns' %>
+<%= stylesheet_link_tag 'dialogs' %>
+<%= javascript_include_tag 'tournaments' %>
+<%= javascript_include_tag 'dialogs' %>
+<%= javascript_include_tag 'viewmodels/tournament_view_model' %>
+<% end %>
+
+<%= form_for @tournament, :url => "/tournaments/#{@tournament.id}", :remote => true,
+:method => :put, :html => {:id => 'update-tournament-form' } do |f| %>
+
+<h1>Edit Tournament</h1>
+<hr/>
+<div>
+    <div class='left-edit-column'>
+        <div class='edit-section'>
+            <%= f.label :name, 'Name:', :for => 'name', :class => '' %>
+            <%= f.text_field :name, :id => 'name', :class => '' %>
+            <%= f.hidden_field :id %>
+        </div>
+        <div class='edit-section'>
+            <%= f.label :format, 'Format:', :for => 'format', :class => 'edit-format-label' %>
+            <%= f.select :format, options_for_select(formats, @tournament.format), {}, { :id => 'format', :class => '' } %>
+        </div>
+        <div class='edit-section'>
+            <%= f.label :cash_ratio_value, 'Cash Ratio 1 in:', :for => 'cash_ratio_value', :class => 'edit-cash-label' %>
+            <%= f.select :cash_ratio_value, options_for_select(ratio_values, @tournament.cash_ratio_value), {}, { :id => 'cash-ratio', :class => 'edit-cash-select' } %>
+            <%= f.label :is_major, 'Is Major:', :for => 'is-major', :class => 'edit-major-label' %>
+            <%= f.check_box :is_major, :id => 'is-major', :checked => @tournament.is_major, :class => 'edit-major-checkbox' %>
+        </div>
+    </div>
+    <div class='right-edit-column'>
+        <div class='edit-section'>
+            <%= f.label :date, 'Date:', :for => 'date', :class => 'edit-date-label' %>
+            <%= f.hidden_field :date %>
+            <div class='input-append date' id='date-picker' data-date='12-02-2012' data-date-format='mm-dd-yyyy'>
+                <input class='span2' size='16' type='text' value='12-02-2012'>
+                <span class='add-on'><i class='icon-th'></i></span>
+            </div>
+        </div>
+        <div class='edit-section'>
+            <%= f.label :bowling_center_id, 'Bowling Center:', :for => 'bowling_center', :class => '' %>
+            <%= f.select :bowling_center_id, options_from_collection_for_select(@centers, 'id', 'name', @tournament.bowling_center_id), {}, { :id => 'bowling-center', :class => '', 'data-bind' => 'value: selectedBowlingCenterId' } %>
+            
+            <div class='edit-btn-grp btn-group'>
+                <a class='btn' data-toggle='modal' data-target='#update-center-modal'><i class='icon-pencil'></i></a>
+                <a class='btn' data-toggle='modal' data-target='#add-center-modal'><i class='icon-plus'></i></a>
+            </div>
+        </div>
+        <div class='edit-section'>
+            <%= f.label :oil_pattern_id, 'Oil Pattern:', :for => 'oil_pattern', :class => '' %>
+            <%= f.select :oil_pattern_id, options_from_collection_for_select(@patterns, 'id', 'name', @tournament.oil_pattern_id), {}, { :id => 'oil-pattern-select', :class => '', 'data-bind' => 'value: selectedOilPatternId' } %>
+            <div class='edit-btn-grp btn-group'>
+                <a class='btn' data-toggle='modal' data-target='#update-pattern-modal'><i class='icon-pencil'></i></a>
+                <a class='btn' data-toggle='modal' data-target='#add-pattern-modal'><i class='icon-plus'></i></a>
+            </div>
+        </div>
+    </div>
+    <hr class='bottom-bar'/>
+    <div id='tourney-messages' class='tourney-messages float-left'>
+        <p id='saved-msg' class='hidden'>
+            <span data-bind='text: currentTourneyName'></span> has been updated.
+        </p>
+        <p id='failed-msg' class='hidden'>
+            Tournament update failed. <span data-bind='text: errorMsg'></span>
+        </p>
+    </div>
+    <%= f.submit 'Update', :id => 'create-button', :class => 'btn btn-primary btn-large new-tourney-btn float-right' %>
+    <div class='clear-both'>
+    </div>
+</div>
+<% end %>
+
+<div id='add-pattern-modal' class='dialog modal hide fade'>
+    <%= render 'oil_patterns/partials/new' %>
+</div>
+<div id='update-pattern-modal' class='dialog modal hide fade'>
+    <%= render 'oil_patterns/partials/update' %>
+</div>
+
+<div id='add-center-modal' class='dialog modal hide fade'>
+    <%= render 'bowling_centers/partials/new' %>
+</div>
+<div id='update-center-modal' class='dialog modal hide fade'>
+    <%= render 'bowling_centers/partials/update' %>
+</div>
+<script>initializeTourneyDatePicker();</script>

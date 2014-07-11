@@ -1,5 +1,4 @@
 class BowlersController < ApplicationController
-
     #
     def index
         @bowlers
@@ -13,7 +12,7 @@ class BowlersController < ApplicationController
 
     #
     def new
-       @bowler = Bowler.new
+        @bowler = Bowler.new
     end
 
     #
@@ -58,4 +57,11 @@ class BowlersController < ApplicationController
         #log something here
     end
 
+    def all
+        @bowlers = Bowler.where("last_name LIKE :prefix", prefix: "#{params[:last_name]}%").order('last_name')
+
+        respond_to do |format|
+            format.js { render :json => @bowlers }
+        end
+    end
 end

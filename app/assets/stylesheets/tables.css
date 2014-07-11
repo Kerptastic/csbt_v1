@@ -1,0 +1,21 @@
+table {
+    color: #ffffff;
+}
+
+td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 3px;
+}
+
+.underline {
+    border-bottom: 1px solid #fff;
+}
+
+.red-outline {
+    border: 2px solid red;
+}
+
+.header-row {
+    font-weight: bold;
+}
